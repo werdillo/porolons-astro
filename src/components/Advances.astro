@@ -1,0 +1,46 @@
+---
+const contentItems = [
+	{
+		imgSrc: "./assets/images/Vector.svg",
+		text: "Vienīgais Vita pārstāvis Latvijā un Igaunijā",
+	},
+	{
+		imgSrc: "./assets/images/Vector (1).svg",
+		text: "Pārstrādājam 120 tonnas porolona mēnesī",
+	},
+	{
+		imgSrc: "./assets/images/Vector (2).svg",
+		text: "Produkcija atbilst OEKO-TEX sertifikāta prasībām",
+	},
+	{
+		imgSrc: "./assets/images/Vector (3).svg",
+		text: "Vairāk nekā 20 gadu pieredze",
+	},
+];
+---
+
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="heading">
+					<h1>Uzticieties profesionāļiem</h1>
+				</div>
+			</div>
+			{
+				contentItems.map((item) => (
+					<div class="col-md-3 text-center">
+						<div class="icon">
+							<img
+								src={item.imgSrc}
+								class="img-fluid"
+								alt="icon"
+							/>
+							<p>{item.text}</p>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,100 @@
+---
+const accordionItems = [
+	{
+		id: "flush-collapseTwo",
+		headingId: "flush-headingTwo",
+		imgSrc: "./assets/images/Vector (5).svg",
+		title: "Loksnes",
+		body: "Tiek izgatavotas speciālajās iekārtās, sagriežot putu poliuretāna blokus. Porolona loksnes tiek izmantotas matraču, mēbeļu detaļu un citu izstrādājumu ražošanā.",
+	},
+	{
+		id: "flush-collapseThree",
+		headingId: "flush-headingThree",
+		imgSrc: "./assets/images/Vector (6).svg",
+		title: "Sasmalcinātais porolons",
+		body: "Porolona detaļas, sasmalcinātas speciālajā iekārtā, tiek izmantotas spilvenu, segu un iepakojumu utt. piepildīšanai. Sasmalcināšanai tiek izmantots vidēja mīkstuma vieglais porolons.",
+	},
+	{
+		id: "flush-collapsefour",
+		headingId: "flush-headingfour",
+		imgSrc: "./assets/images/Vector (7).svg",
+		title: "Ruļļu (lentveidīgs) porolons",
+		body: "Tiek izmantots laminēšanai ar dažādiem papildus materiāliem.",
+	},
+	{
+		id: "flush-collapsefive",
+		headingId: "flush-headingfive",
+		imgSrc: "./assets/images/Vector (8).svg",
+		title: "Detaļas, sagataves mēbelēm un pārējā produkcija",
+		body: "Tiek izgatavotas ar speciālu porolona pārstrādes iekārtu palīdzību pēc iepriekš saskaņotajiem rasējumiem. Pēc pasūtītāju vēlmēm mēs sagatavojam pusfabrikātus, savienojam detaļas no porolona, pielīmējam sinteponu, tīklu, aplīmējam ar līmplēvi utt.",
+	},
+	{
+		id: "flush-collapsesix",
+		headingId: "flush-headingsix",
+		imgSrc: "./assets/images/Vector (9).svg",
+		title: "Profilēts (olveidīgais) porolons",
+		body: "Tiek izmantots akustisko sistēmu ražošanai, iekārtu un trauslu izstrādājumu iepakošanai utt. Izmantojams matraču ražošanai, atsperes efekta palielināšanai, mēbeļu detaļu, sarežģītas formas sūkļu ražošanai. Izgatavojam dažādus profilus.",
+	},
+	{
+		id: "flush-collapseseven",
+		headingId: "flush-headingseven",
+		imgSrc: "./assets/images/Vector (10).svg",
+		title: "Laminētais porolons",
+		body: "Tiek veidoti standartizmēra porolona bloki, kurus izmanto lokšņu, detaļu utt. ražošanai. Izgatavojam dažāda veida porolona blokus, kuriem piemīt dažādas īpašības.",
+	},
+];
+---
+
+<section id="accordian">
+	<div class="container">
+		<div class="row">
+			<div class="heading text-center">
+				<h1>Mēs piedāvājam:</h1>
+			</div>
+			<div class="faqs">
+				<div
+					class="accordion accordion-flush"
+					id="accordionFlushExample"
+				>
+					{
+						accordionItems.map((item) => (
+							<div class="accordion-item">
+								<h2
+									class="accordion-header"
+									id={item.headingId}
+								>
+									<button
+										class="accordion-button collapsed"
+										type="button"
+										data-bs-toggle="collapse"
+										data-bs-target={`#${item.id}`}
+										aria-expanded="false"
+										aria-controls={item.id}
+									>
+										<img
+											src={item.imgSrc}
+											class="img-fluid mr-4"
+											width="55px"
+											alt=""
+										/>
+										{item.title}
+									</button>
+								</h2>
+								<div
+									id={item.id}
+									class="accordion-collapse collapse"
+									aria-labelledby={item.headingId}
+									data-bs-parent="#accordionFlushExample"
+								>
+									<div class="accordion-body">
+										{item.body}
+									</div>
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,79 @@
+---
+const photoItems = [
+	{
+		imgSrc: "./assets/images/Rectangle 95.png",
+		text: "Mēbeles",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 97.png",
+		text: "Matrači un matraču pārvalki",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 99.png",
+		text: "Spilveni",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 101.png",
+		text: "Preces mājai",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 103.png",
+		text: "Apģērbs + Apavi",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 105.png",
+		text: "Šūšanas rūpniecība",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 107.png",
+		text: "Ortopēdija",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 109.png",
+		text: "Sports",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 111.png",
+		text: "Transporta līdzekļi",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 113.png",
+		text: "Celtniecība",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 115.png",
+		text: "Hermetizācija un skaņas izolācija",
+	},
+	{
+		imgSrc: "./assets/images/Rectangle 117.png",
+		text: "Iepakojumi",
+	},
+];
+---
+
+<section id="photos">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center photoHeading">
+				<div class="heading">
+					<h1>Izstrādājumi no porolona dažādām nozarēm:</h1>
+				</div>
+			</div>
+			{
+				photoItems.map((item) => (
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="item">
+							<img src={item.imgSrc} class="img-fluid" alt="" />
+							<p>{item.text}</p>
+						</div>
+					</div>
+				))
+			}
+			<!-- <div class="col-md-12 text-center buttonField">
+              <div class="button">
+                  <a href="#contact" class="btn btn-danger">Sazinieties ar mums</a>
+              </div>
+          </div> -->
+		</div>
+	</div>
+</section>

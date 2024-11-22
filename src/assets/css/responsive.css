@@ -1,0 +1,109 @@
+ 
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+    
+}
+
+
+
+
+
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 770px) {
+    /* #hero .text-area{position: relative; top: 50%;} */
+#hero .text-area h1{font-size: 34px; line-height: 30px; margin-bottom: 20px;}
+    #hero .text-area p{ font-size: 20px; line-height: 12px;margin-bottom: 20px;}
+    #hero .text-area .btn{padding: 12px 18px;font-size: 12px; font-weight: 500;}
+    #content .heading h1 {font-size: 20px; margin-bottom: 20px;}
+    #content {padding: 50px 0;}
+
+
+
+
+
+
+
+    #location {padding: 50px 0;}
+    #location .text-area h3 {font-size: 30px; line-height: 45px; margin-bottom: 30px; text-align: center;}
+    #location .map iframe {width: 100% !important; height: 150px;}
+    #location .img-wrapper img {width: 100%;height: 130px;}
+    #location .text-area .email {margin-bottom: 0;}
+    #location .text-area p {font-size: 12px; line-height: 23px; font-weight: 600; margin: 0 0 7px 0;}
+    #location .text-area .loc {margin-bottom: 7px;}
+    #location .points {padding: 0px 30px;}
+    #location .points p {color: #ffffff; margin: 2px; font-size: 12px;}
+
+
+
+
+
+
+    .navbar .nav-link.phone {top: 3px;right: 40px;font-size: 15px;}
+    .navbar .navbar-nav .nav-link span {font-size: 11px;}
+    .navbar-collapse.show .navbar-nav {display: inline-block; width: 100%;}
+    .navbar .navbar-nav .nav-link {display: inline-block;}
+    .navbar .navbar-nav .nav-link.phoneIcon img {max-height: 33px; position: relative; top: 3px;}
+
+
+
+}
+
+
+
+/* Large Mobile :320. */
+@media only screen and (min-width: 320px) and (max-width: 475px) {
+
+    #hero{background-image: url(../images/3_6.png); background-repeat: no-repeat; background-size: cover; background-position: bottom; width: 100%; height: 300px; display: flex; align-items: center;}
+    #hero .text-area{position: relative; top: 0;}
+    #hero .text-area h1{font-size: 22px; line-height: 22px; margin-bottom: 16px;}
+    #hero .text-area p{ font-size: 14px; line-height: 12px;margin-bottom: 20px;}
+    #hero .text-area .btn{padding: 10px 14px;font-size: 12px; font-weight: 500;}
+    #content .heading h1 {font-size: 18px; margin-bottom: 20px;}
+    #content {padding: 50px 0;}
+    #content .icon {margin: 10px 30px; text-align: left; display: flex; align-items: center;}
+    #content .icon img {width: 45px;margin-right: 10px;float: left;}
+    #content .button {margin-top: 20px;}
+    #photos .heading h1 {font-size: 25px; line-height: 36px; margin-bottom: 20px;}
+    #photos {padding: 50px 0;}
+    #photos .row>* {width: 50%;}
+    #photos .photoHeading {width: 100%;}
+    #photos .item {margin: 20px 0;}
+    #photos .item p {font-size: 13px; line-height: 20px;}
+    #photos .buttonField {width: 100%;}
+    #accordian {padding: 50px 0;}
+    #accordian .heading h1 {font-size: 20px; margin-bottom: 25px;}
+    #accordian .container {width: auto !important;}
+    #accordian .accordion-flush .accordion-item .accordion-button img {width: 40px !important}
+    #accordian .accordion-button  {padding: 1rem 1.25rem; font-size: 16px; line-height: 28px;}
+    #contact {height: auto; position: relative; display: inline-block; padding: 50px 0;}
+    #contact .contact-form {position: relative; top: 0; right: auto; transform: translate(0%,0%); left: auto; width: 85%; margin: auto; padding: 22px;}
+    #contact .contact-form form h4 {font-size: 20px; line-height: 26px; margin-bottom: 20px;}
+    #location {padding: 50px 0;}
+    #location .text-area h3 {font-size: 30px; line-height: 45px; margin-bottom: 30px; text-align: center;}
+    #location .map iframe {width: 100% !important; height: 150px;}
+    #location .img-wrapper img {width: 100%;height: 130px;}
+    #location .text-area .email {margin-bottom: 0;}
+    #location .text-area p {font-size: 12px; line-height: 23px; font-weight: 600; margin: 0 0 7px 0;}
+    #location .text-area .loc {margin-bottom: 7px;}
+    #location .points {padding: 0px 30px;}
+    #location .points p {color: #ffffff; margin: 2px; font-size: 12px;}
+    #contact .contact-form form input {width: 100%;}
+    #contact .contact-form form .ques input {width: 100%;}
+    #contact .contact-form .msg-box h5 {font-weight: 500; font-size: 17px; line-height: 28px;}
+    #location .copyright {display: none;}
+    #location .col-md-6 {margin: 15px 0;}
+    #contact .contact-form form .button .btn {padding: 8px 24px; font-size: 15px;}
+    #photos .button .btn {padding: 8px 24px; font-size: 15px;}
+    #content .button .btn {padding: 8px 24px; font-size: 15px;}
+    .navbar .navbar-toggler:focus {box-shadow: 0 0 0 0.1rem !important;}
+    .navbar .navbar-toggler {padding: .25rem .5rem;}
+    .hidden-lg {display: block;}
+    .navbar-brand img {max-height: 35px;}
+
+    .navbar .nav-link.phone {top: 3px;right: 40px;font-size: 15px;}
+    .navbar .navbar-nav .nav-link span {font-size: 11px;}
+    .navbar-collapse.show .navbar-nav {display: inline-block; width: 100%;}
+    .navbar .navbar-nav .nav-link {display: inline-block;}
+    .navbar .navbar-nav .nav-link.phoneIcon img {max-height: 33px; position: relative; top: 3px;}
+
+}
