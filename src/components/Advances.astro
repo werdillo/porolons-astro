@@ -1,5 +1,11 @@
 ---
 const { lang } = Astro.props;
+
+const title = {
+	lv: "Uzticieties profesionāļiem",
+	ru: "Доверьтесь профессионалам",
+	en: "Trust the professionals"
+}
 const contentItems = [
 	{
 		imgSrc: "./assets/images/Vector.svg",
@@ -33,7 +39,7 @@ const contentItems = [
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<div class="heading">
-					<h1>Uzticieties profesionāļiem</h1>
+					<h1>{title[lang]}</h1>
 				</div>
 			</div>
 			{
