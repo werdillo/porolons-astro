@@ -1,20 +1,30 @@
+---
+const { lang } = Astro.props;
+
+
+const title = {
+	lv: "Izstrādājumu",
+	ru: "Производство",
+	en: "Production of the goods",
+}
+
+const scheme = {
+	lv: "Ielādēt braukšanas maršrutu",
+	ru: "Скачать схему проезда",
+	en: "Download the entrance scheme",
+}
+
+---
+
 <!-- Location -->
 <section id="location">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="text-area">
-					<h3>Sazinieties ar mums</h3>
-					<!-- <div class="email">
-							<p class="warning">Cien.sadarbības partneri!</p>
-						
-							<p class="warning">Šogad porolona ražošana dodas ziemas brīvdienās no 22.12.-02.01.</p>
-						
-						</div> -->
-
+					<h3>{title[lang]}</h3>
 					<div class="email">
 						<p><i class="fa fa-envelope"></i> order@eliza-k.lv</p>
-						<!-- <p> <i class="fa fa-phone"></i>  + 371 67 570 331. + 371 28 363 860</p> -->
 						<p>
 							<i class="fa fa-phone"></i>27 862 121; 26 653 510;
 						</p>
@@ -31,7 +41,6 @@
 						<p>Pirmd-Piekt 8:30 - 16:00,</p>
 						<p>Pārtraukums 12:00 – 13:00,</p>
 						<p>Sestd, Svētd - brīvdiena.</p>
-						<!-- <p> pusdienu pārtraukums 12:00 – 13:00 (Slēgts).</p> -->
 					</div>
 				</div>
 			</div>
@@ -55,14 +64,36 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="points">
-					<p>1. Mēbeļu salons</p>
-					<p>2. Caurlaides punkts (gājējiem)</p>
-					<p>3. Caurlaides punkts (transportam)</p>
-					<p>4. Mēbeļu noliktava</p>
-					<p>5. Porolona ražošanas cehs</p>
-					<p>6. Audumu noliktava</p>
-				</div>
+				{lang === "lv" &&
+					<div class="points">
+						<p>1. Mēbeļu salons</p>
+						<p>2. Caurlaides punkts (gājējiem)</p>
+						<p>3. Caurlaides punkts (transportam)</p>
+						<p>4. Mēbeļu noliktava</p>
+						<p>5. Porolona ražošanas cehs</p>
+						<p>6. Audumu noliktava</p>
+					</div>
+				}
+				{lang === "ru" &&
+					<div class="points">
+						<p> 1. Салон мебели</p>
+						<p> 2. Пропускной пункт (для пешеходов)</p>
+						<p> 3. Пропускной пункт (для транспорта)</p>
+						<p> 4. Мебельный склад</p>
+						<p> 5. Цех по производству поролона</p>
+						<p> 6. Склад ткани</p>
+					</div>
+				}
+				{lang === "en" &&
+					<div class="points">
+						<p> 1. Furniture salon</p>
+						<p> 2. Checkpoint (for pedestrians)</p>
+						<p> 3. Checkpoint (for transport)</p>
+						<p> 4. Furniture warehouse</p>
+						<p> 5. Polyurethane foam production shop</p>
+						<p> 6. Fabric warehouse</p>
+					</div>
+				}
 			</div>
 			<div class="col-md-12">
 				<div class="copyright">
@@ -71,8 +102,8 @@
 						target="_blank"
 					>
 						<h6>
-							<img src="./assets/images/Union.svg" alt="" /> Ielādēt
-							braukšanas maršrutu
+							<img src="./assets/images/Union.svg" alt="" /> 
+							{scheme[lang]}
 						</h6>
 					</a>
 				</div>
