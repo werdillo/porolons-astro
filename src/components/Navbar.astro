@@ -1,5 +1,6 @@
 ---
 
+const { lang } = Astro.props;
 ---
 
 <!-- Header -->
@@ -23,10 +24,9 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav ml-auto">
-				<a class="nav-link hidden-lg" href="#">
+				<!-- <a class="nav-link hidden-lg" href="#">
 					<span>Braukšanas maršruts</span>
-				</a>
-				<!-- <a class="nav-link" href="./LV-lv.html"><span>RU</span></a> -->
+				</a> -->
 				<div class="dropdown">
 					<button
 						class="btn btn-secondary dropdown-toggle"
@@ -34,20 +34,29 @@
 						data-bs-toggle="dropdown"
 						aria-expanded="false"
 					>
-						LV
+						{lang.toUpperCase()}
 					</button>
 					<ul class="dropdown-menu">
-						<li>
-							<a class="dropdown-item" href="./LV-en.html">EN</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="./LV-lv.html">RU</a>
-						</li>
+						{ lang !== "lv" &&
+							<li>
+								<a class="dropdown-item" href="/">LV</a>
+							</li>
+						}
+						{ lang !== "en" &&
+							<li>
+								<a class="dropdown-item" href="/en">EN</a>
+							</li>
+						}
+						{ lang !== "ru" &&
+							<li>
+								<a class="dropdown-item" href="/ru">RU</a>
+							</li>
+						}						
 					</ul>
 				</div>
-				<a class="nav-link hidden-lg phoneIcon" href="#">
+				<!-- <a class="nav-link hidden-lg phoneIcon" href="#">
 					<img src="./assets/images/phone_icon.png" />
-				</a>
+				</a> -->
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,23 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Advances from "../components/Advances.astro";
+import Production from "../components/Production.astro";
+import Accordion from "../components/Accordion.astro";
+import Hero from "../components/Hero.astro";
+import Location from "../components/Location.astro";
+import "../assets/css/responsive.css";
+import "../assets/css/style.css";
+import "../assets/css/bootstrap.min.css";
+import Layout from "../layouts/Layout.astro";
+
+const lang = "lv" 
+---
+
+<Layout lang={lang}>
+	<Navbar lang={lang}/>
+	<Hero lang={lang}/>
+	<Advances lang={lang}/>
+	<Production lang={lang}/>
+	<Accordion lang={lang} />
+	<Location lang={lang}/>
+</Layout>
