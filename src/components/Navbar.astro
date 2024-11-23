@@ -21,40 +21,32 @@ const { lang } = Astro.props;
 		>
 			<!-- <span class="navbar-toggler-icon"></span> -->
 		</button>
-			<div class="navbar-nav ml-auto">
-				<!-- <a class="nav-link hidden-lg" href="#">
-					<span>Braukšanas maršruts</span>
-				</a> -->
-				<div class="dropdown">
-					<button
-						class="btn btn-secondary dropdown-toggle"
-						type="button"
-						data-bs-toggle="dropdown"
-						aria-expanded="false"
-					>
-						{lang.toUpperCase()}
-					</button>
-					<ul class="dropdown-menu">
-						{ lang !== "lv" &&
-							<li>
-								<a class="dropdown-item" href="/">LV</a>
-							</li>
-						}
-						{ lang !== "en" &&
-							<li>
-								<a class="dropdown-item" href="/en">EN</a>
-							</li>
-						}
-						{ lang !== "ru" &&
-							<li>
-								<a class="dropdown-item" href="/ru">RU</a>
-							</li>
-						}						
-					</ul>
-				</div>
-				<!-- <a class="nav-link hidden-lg phoneIcon" href="#">
-					<img src="./assets/images/phone_icon.png" />
-				</a> -->
-			</div>
+		<div class="dropdown">
+			<button
+				class="btn btn-secondary dropdown-toggle"
+				type="button"
+				data-bs-toggle="dropdown"
+				aria-expanded="false"
+			>
+				{lang.toUpperCase()}
+			</button>
+			<ul class="dropdown-menu">
+				{ lang !== "lv" &&
+					<li>
+						<a class="dropdown-item" href="/">LV</a>
+					</li>
+				}
+				{ lang !== "en" &&
+					<li>
+						<a class="dropdown-item" href="/en">EN</a>
+					</li>
+				}
+				{ lang !== "ru" &&
+					<li>
+						<a class="dropdown-item" href="/ru">RU</a>
+					</li>
+				}						
+			</ul>
+		</div>
 	</div>
 </nav>
