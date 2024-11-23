@@ -1,13 +1,23 @@
 ---
-import Navbar from "../components/Navbar.astro";
-import Advances from "../components/Advances.astro";
-import Production from "../components/Production.astro";
-import Accordion from "../components/Accordion.astro";
-import Hero from "../components/Hero.astro";
-import Location from "../components/Location.astro";
-import "../assets/css/responsive.css";
-import "../assets/css/style.css";
-import "../assets/css/bootstrap.min.css";
+import Navbar from "../../components/Navbar.astro";
+import Advances from "../../components/Advances.astro";
+import Production from "../../components/Production.astro";
+import Accordion from "../../components/Accordion.astro";
+import Hero from "../../components/Hero.astro";
+import Location from "../../components/Location.astro";
+import "../../assets/css/responsive.css";
+import "../../assets/css/style.css";
+import "../../assets/css/bootstrap.min.css";
+
+const { lang } = Astro.params;
+
+export function getStaticPaths() {
+	return [
+		{ params: { lang: "en" } },
+		{ params: { lang: "lv" } },
+		{ params: { lang: "ru" } },
+	];
+}
 ---
 
 <html lang="en">
@@ -67,8 +77,8 @@ import "../assets/css/bootstrap.min.css";
 	</head>
 	<body>
 		<Navbar />
-		<Hero />
-		<Advances />
+		<Hero lang={lang}/>
+		<Advances lang={lang}/>
 		<Production />
 		<Accordion />
 		<Location />

@@ -1,20 +1,29 @@
 ---
+const { lang } = Astro.props;
 const contentItems = [
 	{
 		imgSrc: "./assets/images/Vector.svg",
-		text: "Vienīgais Vita pārstāvis Latvijā un Igaunijā",
+		text_lv: "Vienīgais Vita pārstāvis Latvijā un Igaunijā",
+		text_ru: "Единственный представитель Vita в Латвии и Эстонии",
+		text_en: "The only Vita representative in Latvia and Estonia",
 	},
 	{
 		imgSrc: "./assets/images/Vector (1).svg",
-		text: "Pārstrādājam 120 tonnas porolona mēnesī",
+		text_lv: "Pārstrādājam 120 tonnas porolona mēnesī",
+		text_ru: "Перерабатываем 120 тон поролона ежемесячно",
+		text_en: "Monthly we process 120 tons of foam rubber",
 	},
 	{
 		imgSrc: "./assets/images/Vector (2).svg",
-		text: "Produkcija atbilst OEKO-TEX sertifikāta prasībām",
+		text_lv: "Produkcija atbilst OEKO-TEX sertifikāta prasībām",
+		text_ru: "Продукция соответствует сертификации OEKO-TEX",
+		text_en: "Products comply with OEKO-TEX certification",
 	},
 	{
 		imgSrc: "./assets/images/Vector (3).svg",
-		text: "Vairāk nekā 20 gadu pieredze",
+		text_lv: "Vairāk nekā 20 gadu pieredze",
+		text_ru: "Более 20 лет опыта",
+		text_en: "More than 20 years of experience",
 	},
 ];
 ---
@@ -36,7 +45,7 @@ const contentItems = [
 								class="img-fluid"
 								alt="icon"
 							/>
-							<p>{item.text}</p>
+							<p>{item["text_" + lang]}</p>
 						</div>
 					</div>
 				))

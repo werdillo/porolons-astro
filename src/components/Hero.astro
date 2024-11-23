@@ -1,13 +1,35 @@
+---
+const { lang } = Astro.props;
+
+const title1 = {
+	lv: "Izstrādājumu",
+	ru: "Производство",
+	en: "Production of the goods",
+}
+const title2 = {
+	lv: "ražošana no porolona",
+	ru: "изделий из поролона",
+	en: "from polyurethane foam",
+}
+
+const text = {
+	lv: "Putu poliuretāns ražotnēm un fiziskajām personām",
+	ru: "Пенополиуретан для предприятий и частных лиц.",
+	en: "Polyurethane foam for the enterprise and/or individual orders.",
+}
+
+---
+
 <section id="hero">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="text-area">
 					<h1 style="margin-top: 20px;">
-						Izstrādājumu <br />
-						ražošana no porolona
+						{title1[lang]} <br />
+						{title2[lang]}
 						<p style="margin-top: 20px;">
-							Putu poliuretāns ražotnēm un fiziskajām personām
+							{text[lang]}
 						</p>
 						<!-- <a href="#contact" class="btn btn-danger">Sazinieties ar mums</a> -->
 					</h1>
