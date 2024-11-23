@@ -1,52 +1,84 @@
 ---
+const { lang } = Astro.props;
+
+const title = {
+	lv: "Izstrādājumi no porolona dažādām nozarēm:",
+	ru: "Доверьтесь профессионалам:",
+	en: "Trust the professionals:",
+}
+
 const photoItems = [
 	{
 		imgSrc: "./assets/images/Rectangle 95.png",
-		text: "Mēbeles",
+		text_lv: "Mēbeles",
+		text_ru: "Мебель",
+		text_en: "Furniture",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 97.png",
-		text: "Matrači un matraču pārvalki",
+		text_lv: "Matrači un matraču pārvalki",
+		text_ru: "Матрасы и наматрасники",
+		text_en: "Mattresses and mattress pads",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 99.png",
-		text: "Spilveni",
+		text_lv: "Spilveni",
+		text_ru: "Подушки",
+		text_en: "Pillows",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 101.png",
-		text: "Preces mājai",
+		text_lv: "Preces mājai",
+		text_ru: "Товары домашнего обихода",
+		text_en: "Household goods",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 103.png",
-		text: "Apģērbs + Apavi",
+		text_lv: "Apģērbs + Apavi",
+		text_ru: "Одежда+ Обувь",
+		text_en: "Clothing+ Footwear",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 105.png",
-		text: "Šūšanas rūpniecība",
+		text_lv: "Šūšanas rūpniecība",
+		text_ru: "Швейная промышленность",
+		text_en: "Garment industry",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 107.png",
-		text: "Ortopēdija",
+		text_lv: "Ortopēdija",
+		text_ru: "Ортопедия",
+		text_en: "Orthopedics",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 109.png",
-		text: "Sports",
+		text_lv: "Sports",
+		text_ru: "Спорт",
+		text_en: "Sport",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 111.png",
-		text: "Transporta līdzekļi",
+		text_lv: "Transporta līdzekļi",
+		text_ru: "Транспортные средства",
+		text_en: "Transport equipment",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 113.png",
-		text: "Celtniecība",
+		text_lv: "Celtniecība",
+		text_ru: "Строительство",
+		text_en: "Construction",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 115.png",
-		text: "Hermetizācija un skaņas izolācija",
+		text_lv: "Hermetizācija un skaņas izolācija",
+		text_ru: "Герметизация и звукоизоляция",
+		text_en: "Sealing and sound insulation",
 	},
 	{
 		imgSrc: "./assets/images/Rectangle 117.png",
-		text: "Iepakojumi",
+		text_lv: "Iepakojumi",
+		text_ru: "Упаковки",
+		text_en: "Packaging",
 	},
 ];
 ---
@@ -56,7 +88,7 @@ const photoItems = [
 		<div class="row">
 			<div class="col-md-12 text-center photoHeading">
 				<div class="heading">
-					<h1>Izstrādājumi no porolona dažādām nozarēm:</h1>
+					<h1>{title[lang]}</h1>
 				</div>
 			</div>
 			{
@@ -64,7 +96,7 @@ const photoItems = [
 					<div class="col-md-3 col-sm-6 text-center">
 						<div class="item">
 							<img src={item.imgSrc} class="img-fluid" alt="" />
-							<p>{item.text}</p>
+							<p>{item["text_" + lang]}</p>
 						</div>
 					</div>
 				))
