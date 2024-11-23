@@ -1,4 +1,6 @@
 ---
+import Contacts from "./Contacts";
+
 const { lang } = Astro.props;
 
 
@@ -20,30 +22,7 @@ const scheme = {
 <section id="location">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
-				<div class="text-area">
-					<h3>{title[lang]}</h3>
-					<div class="email">
-						<p><i class="fa fa-envelope"></i> order@eliza-k.lv</p>
-						<p>
-							<i class="fa fa-phone"></i>27 862 121; 26 653 510;
-						</p>
-					</div>
-					<div class="loc d-flex">
-						<i class="fa fa-map-marker-alt"></i>
-						<p>
-							Porolona cehs A.Deglava ielā 46-k2 (iebraukt
-							teritorijā var no caurlaižu punkta A.Deglava ielā
-							52A)
-						</p>
-					</div>
-					<div class="time">
-						<p>Pirmd-Piekt 8:30 - 16:00,</p>
-						<p>Pārtraukums 12:00 – 13:00,</p>
-						<p>Sestd, Svētd - brīvdiena.</p>
-					</div>
-				</div>
-			</div>
+			<Contacts lang={lang} client:only/>
 			<div class="col-md-6 text-center">
 				<div class="map">
 					<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.883035795374!2d24.16610721581141!3d56.95080518089065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eece158cc4adef%3A0xa8ed74d6041415d4!2sAugusta%20Deglava%20iela%2046%2C%20Latgales%20priek%C5%A1pils%C4%93ta%2C%20R%C4%ABga%2C%20LV-1035%2C%20Latvia!5e0!3m2!1sen!2s!4v1613081736325!5m2!1sen!2s" width="500" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
