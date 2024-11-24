@@ -1,5 +1,4 @@
 ---
-import Contacts from "./Contacts";
 
 const { lang } = Astro.props;
 
@@ -12,14 +11,54 @@ const scheme = {
 	ru: "Скачать схему проезда",
 	en: "Download the entrance scheme",
 }
+const title = {
+	lv: "Izstrādājumu",
+	ru: "Производство",
+	en: "Production of the goods",
+}
+const email = "order@eliza-k.lv"
+const phone = "27862121, 26653510"
+const address = "Rīga, A. Deglava iela 52A, LV-1035"
 
+const item = {
+	weekday_ru: "Пн-Пт 8:30 - 16:00",
+	break_ru: "Перерыв 12:00 - 13:00",
+	weeken_ru: "Сб, Вскр - закрыто",
+	weekday_lv: "Pirmd-Piekt 8:30 - 16:00",
+	break_lv: "Pārtraukums 12:00 - 13:00",
+	weeken_lv: "Sestd, Svētd - brīvdiena",
+	weekday_en: "Mon-Fri 8:30 - 16:00",
+	break_en: "Break 12:00 - 13:00",
+	weeken_en: "Sat, Sun - closed",
+}
 ---
 
 <!-- Location -->
 <section id="location">
 	<div class="container">
 		<div class="row">
-			<Contacts lang={lang} client:only/>
+			<div class="col-md-6">
+				<div class="text-area">
+				<h3>{title[lang]}</h3>
+					<div class="email">
+						<p><i class="fa fa-envelope"></i>{email}</p>
+						<p>
+							<i class="fa fa-phone"></i>{phone}
+						</p>
+					</div>
+					<div class="loc d-flex">
+						<i class="fa fa-map-marker-alt"></i>
+						<p>
+						{address}
+						</p>
+					</div>
+					<div class="time">
+						<p>{item['weekday_' + lang]}</p>
+						<p>{item['break_' + lang]}</p>
+						<p>{item['weeken_' + lang]}</p>
+					</div>
+				</div>
+			</div>
 			<div class="col-md-6 text-center">
 				<div class="map">
 					<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.883035795374!2d24.16610721581141!3d56.95080518089065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eece158cc4adef%3A0xa8ed74d6041415d4!2sAugusta%20Deglava%20iela%2046%2C%20Latgales%20priek%C5%A1pils%C4%93ta%2C%20R%C4%ABga%2C%20LV-1035%2C%20Latvia!5e0!3m2!1sen!2s!4v1613081736325!5m2!1sen!2s" width="500" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
