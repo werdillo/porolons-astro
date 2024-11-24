@@ -8,6 +8,12 @@ import Accordion4 from "../assets/images/accordion/Accordion4.svg"
 import Accordion5 from "../assets/images/accordion/Accordion5.svg"
 import Accordion6 from "../assets/images/accordion/Accordion6.svg"
 
+const title = {
+	lv: "Mēs piedāvājam:",
+	ru: "Мы предоставляем:",
+	en: "We offer:",
+}
+
 const accordionItems = [
 	{
 		id: "flush-collapseTwo",
@@ -83,7 +89,7 @@ const accordionItems = [
 	<div class="container">
 		<div class="row">
 			<div class="heading text-center">
-				<h1>Mēs piedāvājam:</h1>
+				<h1>{title[lang]}</h1>
 			</div>
 			<div class="faqs">
 				<div
