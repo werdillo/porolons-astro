@@ -3,12 +3,9 @@ import Contacts from "./Contacts";
 
 const { lang } = Astro.props;
 
-
-const title = {
-	lv: "Izstrādājumu",
-	ru: "Производство",
-	en: "Production of the goods",
-}
+import { Image } from "astro:assets";
+import Map from "../assets/images/map.png"
+import Union from "../assets/images/union.svg"
 
 const scheme = {
 	lv: "Ielādēt braukšanas maršrutu",
@@ -39,7 +36,7 @@ const scheme = {
 			</div>
 			<div class="col-md-6">
 				<div class="img-wrapper">
-					<img src="/assets/images/map copy 2@2x 1.png" alt="" />
+					<Image src={Map} alt="" />
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -81,7 +78,7 @@ const scheme = {
 						target="_blank"
 					>
 						<h6>
-							<img src="./assets/images/Union.svg" alt="" /> 
+							<Image src={Union} alt="" /> 
 							{scheme[lang]}
 						</h6>
 					</a>
