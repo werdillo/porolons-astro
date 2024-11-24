@@ -1,11 +1,18 @@
 ---
 const { lang } = Astro.props;
+import { Image } from "astro:assets";
+import Accordion1 from "../assets/images/accordion/Accordion1.svg"
+import Accordion2 from "../assets/images/accordion/Accordion2.svg"
+import Accordion3 from "../assets/images/accordion/Accordion3.svg"
+import Accordion4 from "../assets/images/accordion/Accordion4.svg"
+import Accordion5 from "../assets/images/accordion/Accordion5.svg"
+import Accordion6 from "../assets/images/accordion/Accordion6.svg"
 
 const accordionItems = [
 	{
 		id: "flush-collapseTwo",
 		headingId: "flush-headingTwo",
-		imgSrc: "./assets/images/Vector (5).svg",
+		imgSrc: Accordion1,
 		title_lv: "Loksnes",
 		title_ru: "Листы",
 		title_en: "Sheets",
@@ -16,7 +23,7 @@ const accordionItems = [
 	{
 		id: "flush-collapseThree",
 		headingId: "flush-headingThree",
-		imgSrc: "./assets/images/Vector (6).svg",
+		imgSrc: Accordion2,
 		title_lv: "Sasmalcinātais porolons",
 		title_ru: "Измельчённый поролон",
 		title_en: "Crushed foam rubber",
@@ -27,7 +34,7 @@ const accordionItems = [
 	{
 		id: "flush-collapsefour",
 		headingId: "flush-headingfour",
-		imgSrc: "./assets/images/Vector (7).svg",
+		imgSrc: Accordion3,
 		title_lv: "Ruļļu (lentveidīgs) porolons",
 		title_ru: "Рулонный (ленточный) поролон",
 		title_en: "Rolled (ribbon) foam rubber",
@@ -38,7 +45,7 @@ const accordionItems = [
 	{
 		id: "flush-collapsefive",
 		headingId: "flush-headingfive",
-		imgSrc: "./assets/images/Vector (8).svg",
+		imgSrc: Accordion4,
 		title_lv: "Detaļas, sagataves mēbelēm un pārējā produkcija",
 		title_ru: "Детали, заготовки для мебели и прочая продукция",
 		title_en: "Parts, blanks for the furniture and other products",
@@ -49,7 +56,7 @@ const accordionItems = [
 	{
 		id: "flush-collapsesix",
 		headingId: "flush-headingsix",
-		imgSrc: "./assets/images/Vector (9).svg",
+		imgSrc: Accordion5,
 		title_lv: "Profilēts (olveidīgais) porolons",
 		title_ru: "Профилированный (яйцеобразный) поролон",
 		title_en: "Profiled (egg-shaped) foam rubber",
@@ -60,7 +67,7 @@ const accordionItems = [
 	{
 		id: "flush-collapseseven",
 		headingId: "flush-headingseven",
-		imgSrc: "./assets/images/Vector (10).svg",
+		imgSrc: Accordion6,
 		title_lv: "Laminētais porolons",
 		title_ru: "Ламинированный",
 		title_en: "Laminated",
@@ -98,10 +105,10 @@ const accordionItems = [
 										aria-expanded="false"
 										aria-controls={item.id}
 									>
-										<img
+										<Image
 											src={item.imgSrc}
 											class="img-fluid mr-4"
-											width="55px"
+											width="55"
 											alt=""
 										/>
 										{item["title_" + lang]}
