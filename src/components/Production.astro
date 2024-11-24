@@ -1,6 +1,20 @@
 ---
 const { lang } = Astro.props;
 
+import { Image } from "astro:assets";
+import Production1 from "../assets/images/production/Production1.png"
+import Production2 from "../assets/images/production/Production2.png"
+import Production3 from "../assets/images/production/Production3.png"
+import Production4 from "../assets/images/production/Production4.png"
+import Production5 from "../assets/images/production/Production5.png"
+import Production6 from "../assets/images/production/Production6.png"
+import Production7 from "../assets/images/production/Production7.png"
+import Production8 from "../assets/images/production/Production8.png"
+import Production9 from "../assets/images/production/Production9.png"
+import Production10 from "../assets/images/production/Production10.png"
+import Production11 from "../assets/images/production/Production11.png"
+import Production12 from "../assets/images/production/Production12.png"
+
 const title = {
 	lv: "Izstrādājumi no porolona dažādām nozarēm:",
 	ru: "Доверьтесь профессионалам:",
@@ -9,73 +23,73 @@ const title = {
 
 const photoItems = [
 	{
-		imgSrc: "./assets/images/Rectangle 95.png",
+		imgSrc: Production1,
 		text_lv: "Mēbeles",
 		text_ru: "Мебель",
 		text_en: "Furniture",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 97.png",
+		imgSrc: Production2,
 		text_lv: "Matrači un matraču pārvalki",
 		text_ru: "Матрасы и наматрасники",
 		text_en: "Mattresses and mattress pads",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 99.png",
+		imgSrc: Production3,
 		text_lv: "Spilveni",
 		text_ru: "Подушки",
 		text_en: "Pillows",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 101.png",
+		imgSrc: Production4,
 		text_lv: "Preces mājai",
 		text_ru: "Товары домашнего обихода",
 		text_en: "Household goods",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 103.png",
+		imgSrc: Production5,
 		text_lv: "Apģērbs + Apavi",
 		text_ru: "Одежда+ Обувь",
 		text_en: "Clothing+ Footwear",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 105.png",
+		imgSrc: Production6,
 		text_lv: "Šūšanas rūpniecība",
 		text_ru: "Швейная промышленность",
 		text_en: "Garment industry",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 107.png",
+		imgSrc: Production7,
 		text_lv: "Ortopēdija",
 		text_ru: "Ортопедия",
 		text_en: "Orthopedics",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 109.png",
+		imgSrc: Production8,
 		text_lv: "Sports",
 		text_ru: "Спорт",
 		text_en: "Sport",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 111.png",
+		imgSrc: Production9,
 		text_lv: "Transporta līdzekļi",
 		text_ru: "Транспортные средства",
 		text_en: "Transport equipment",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 113.png",
+		imgSrc: Production10,
 		text_lv: "Celtniecība",
 		text_ru: "Строительство",
 		text_en: "Construction",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 115.png",
+		imgSrc: Production11,
 		text_lv: "Hermetizācija un skaņas izolācija",
 		text_ru: "Герметизация и звукоизоляция",
 		text_en: "Sealing and sound insulation",
 	},
 	{
-		imgSrc: "./assets/images/Rectangle 117.png",
+		imgSrc: Production12,
 		text_lv: "Iepakojumi",
 		text_ru: "Упаковки",
 		text_en: "Packaging",
@@ -95,7 +109,7 @@ const photoItems = [
 				photoItems.map((item) => (
 					<div class="col-md-3 col-sm-6 text-center">
 						<div class="item">
-							<img src={item.imgSrc} class="img-fluid" alt="" />
+							<Image src={item.imgSrc} class="img-fluid" alt="" />
 							<p>{item["text_" + lang]}</p>
 						</div>
 					</div>
