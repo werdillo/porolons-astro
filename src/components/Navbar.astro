@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import Logo from "../assets/images/logo.svg"
 const { lang } = Astro.props;
 ---
 
@@ -7,7 +8,7 @@ const { lang } = Astro.props;
 <nav class="navbar navbar-expand-lg">
 	<div class="container">
 		<a class="navbar-brand" href="#">
-			<img src="../assets/images/logo.svg" alt="logo" />
+			<Image src={Logo} alt=""/>
 		</a>
 		<!-- <a class="nav-link phone" href="#">+371 28 363 860</a> -->
 		<button
