@@ -39,7 +39,7 @@ body{font-family: 'Open Sans', sans-serif; overflow-x: hidden;}
   background: #5c636a;
 
 }
-.navbar{min-height: 7vh;  font-family: 'Ubuntu', sans-serif;}
+.navbar{background: #fff; min-height: 7vh;  font-family: 'Ubuntu', sans-serif;}
 .navbar .navbar-nav .nav-link{color: #3E3E3E; margin: 0 5px; font-size: 18px; letter-spacing: 0.5px}
 .navbar .navbar-nav .nav-link span{background: rgba(141, 136, 136, 0.16); color: var(--main-accent); padding: 8px 24px; border-radius: 50px; font-size: 20px; font-weight: bold;}
 .navbar .navbar-toggler{color: var(--main-accent); font-size: 32px;}
