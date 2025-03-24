@@ -17,7 +17,8 @@ const title = {
 	en: "Production of the goods",
 }
 const email = "order@eliza-k.lv"
-const phone = "27862121, 26653510"
+const phone1 = "27862121"
+const phone2 = "26653510"
 const address = "Rīga, A. Deglava iela 52A, LV-1035"
 
 const item = {
@@ -41,15 +42,22 @@ const item = {
 				<div class="text-area">
 				<h3>{title[lang]}</h3>
 					<div class="email">
-						<p><i class="fa fa-envelope"></i>{email}</p>
 						<p>
-							<i class="fa fa-phone"></i>{phone}
+							<i class="fa fa-envelope"></i>
+							<a href={`mailto:${email}`} class="contact-link">{email}</a>
+						</p>
+						<p>
+							<i class="fa fa-phone"></i>
+							<a href={`tel:+371${phone1}`} class="contact-link">{phone1}</a>, 
+							<a href={`tel:+371${phone2}`} class="contact-link">{phone2}</a>
 						</p>
 					</div>
 					<div class="loc d-flex">
 						<i class="fa fa-map-marker-alt"></i>
 						<p>
-						{address}
+							<a href={`https://maps.google.com/?q=${address}`} target="_blank" class="contact-link">
+								{address}
+							</a>
 						</p>
 					</div>
 					<div class="time">
@@ -61,7 +69,6 @@ const item = {
 			</div>
 			<div class="col-md-6 text-center">
 				<div class="map">
-					<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.883035795374!2d24.16610721581141!3d56.95080518089065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eece158cc4adef%3A0xa8ed74d6041415d4!2sAugusta%20Deglava%20iela%2046%2C%20Latgales%20priek%C5%A1pils%C4%93ta%2C%20R%C4%ABga%2C%20LV-1035%2C%20Latvia!5e0!3m2!1sen!2s!4v1613081736325!5m2!1sen!2s" width="500" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d790.9258588960025!2d24.166916021392023!3d56.95046509910395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecf1ae790db37%3A0x341a98d829cf03d0!2sEL%C4%AAZA-K%20porolona%20cehs!5e0!3m2!1sru!2slv!4v1667739898401!5m2!1sru!2slv"
 						width="500"
@@ -112,10 +119,7 @@ const item = {
 			</div>
 			<div class="col-md-12">
 				<div class="copyright">
-					<a
-						href="./assets/images/map copy 2@2x 1.png"
-						target="_blank"
-					>
+					<a href="/map.png" target="_blank">
 						<h6>
 							<Image src={Union} alt="" /> 
 							{scheme[lang]}
@@ -128,5 +132,23 @@ const item = {
 </section>
 
 <style>
+	.contact-link {
+		color: inherit;
+		text-decoration: none;
+		cursor: pointer;
+	}
 	
+	.contact-link:hover {
+		text-decoration: none;
+		opacity: 0.8; 
+	}
+	
+	.contact-link {
+		border-bottom: 1px dotted transparent;
+		padding-bottom: 1px;
+	}
+	
+	.contact-link:hover {
+		border-bottom-color: currentColor;
+	}
 </style>
