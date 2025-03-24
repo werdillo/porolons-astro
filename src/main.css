@@ -47,12 +47,31 @@ body{font-family: 'Open Sans', sans-serif; overflow-x: hidden; padding-top: 60px
 .navbar .nav-link.phone {position: absolute; top: 10px; right: 110px; color: #3E3E3E; font-size: 18px; letter-spacing: 0.5px}
 .hidden-lg {display: none;}
 /* HERO */
-#hero{background-image: url(./assets/images/hero.jpeg); background-repeat: no-repeat; background-size: cover; background-position: bottom; width: 100%; height: 60vh;}
+#hero{background-image: url(./assets/images/hero.jpg); background-repeat: no-repeat; background-size: cover; background-position: bottom; width: 100%; height: 60vh;}
 #hero .text-area{position: relative; top: 50%;}
 #hero .text-area h1{font-size: 88px; color: #ffffff;  font-family: 'Ubuntu', sans-serif; line-height: 90px; ;letter-spacing: 0.02em; margin-bottom: 20px;}
 #hero .text-area p{font-family: 'Open Sans', sans-serif; font-size: 38px; line-height: 52px; font-weight: 600; letter-spacing: -0.01em; color: #ffffff; margin-bottom: 40px;}
 #hero .text-area .btn{background: var(--main-accent); border-radius: 8px; outline: none; border: none; padding: 16px 24px; color: var(--btn-accent); font-size: 20px; font-weight: 500;}
 
+.text-area.hero {
+  position: relative;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.5); /* Darken with transparency */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.text-area.hero::before {
+  content: "";
+  filter: blur(5px); /* Apply blur */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Darken with a semi-transparent overlay */
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
 /* CONTENT */
 #content{padding: 100px 0;}
 #content .heading h1{font-size: 40px; color: #565656;  font-family: 'Ubuntu', sans-serif; line-height: 57px; font-weight: 500; margin-bottom: 80px;}
@@ -91,7 +110,7 @@ body{font-family: 'Open Sans', sans-serif; overflow-x: hidden; padding-top: 60px
 
 
 /* contact */
-#contact{background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(./assets/images/3_6.png) ; background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; height: 100vh; position: relative;}
+#contact{background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(./assets/images/hero.jpg) ; background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; height: 100vh; position: relative;}
 #contact .contact-form{position: absolute; top: 50%; right: 50%; transform: translate(50%,-50%); background-color: #ffffff; padding:30px; border-radius: 12px;}
 #contact .contact-form form h4{font-weight: 500; font-size: 40px; line-height: 48px; font-family: 'Ubuntu'; margin-bottom: 30px; color: #565656;}
 #contact .contact-form form .input{margin: 26px 0;}
@@ -182,7 +201,7 @@ body{font-family: 'Open Sans', sans-serif; overflow-x: hidden; padding-top: 60px
 /* Large Mobile :320. */
 @media only screen and (min-width: 320px) and (max-width: 475px) {
 
-    #hero{background-image: url(./assets/images/3_6.png); background-repeat: no-repeat; background-size: cover; background-position: bottom; width: 100%; height: 300px; display: flex; align-items: center;}
+    #hero{background-image: url(./assets/images/hero.jpg); background-repeat: no-repeat; background-size: cover; background-position: bottom; width: 100%; height: 300px; display: flex; align-items: center;}
     #hero .text-area{position: relative; top: 0;}
     #hero .text-area h1{font-size: 22px; line-height: 22px; margin-bottom: 16px;}
     #hero .text-area p{ font-size: 14px; line-height: 12px;margin-bottom: 20px;}
