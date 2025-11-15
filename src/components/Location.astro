@@ -95,14 +95,6 @@ import Union from "../assets/images/union.svg";
 </section>
 
 <style>
-    /* Container */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        width: 100%;
-    }
-
     /* Contact Links */
     .contact-link {
         color: inherit;
@@ -110,7 +102,7 @@ import Union from "../assets/images/union.svg";
         cursor: pointer;
         border-bottom: 1px dotted transparent;
         padding-bottom: 1px;
-        transition: all 0.3s ease;
+        transition: all var(--transition-normal);
     }
 
     .contact-link:hover {
@@ -120,8 +112,8 @@ import Union from "../assets/images/union.svg";
 
     /* LOCATION STYLES */
     #location {
-        background-color: #333333;
-        padding: 100px 0;
+        background-color: var(--bg-dark);
+        padding: var(--section-padding-desktop) 0;
     }
 
     .location-grid {
@@ -134,20 +126,20 @@ import Union from "../assets/images/union.svg";
     /* Text Area */
     .text-area h3 {
         font-weight: 500;
-        font-size: 40px;
+        font-size: var(--font-h1-desktop);
         line-height: 45px;
         letter-spacing: 0.02em;
-        font-family: "Ubuntu", sans-serif;
+        font-family: var(--font-secondary);
         color: #ffffff;
         margin-bottom: 50px;
     }
 
     .text-area p {
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--font-primary);
         font-style: normal;
         font-weight: normal;
-        font-size: 18px;
-        line-height: 36px;
+        font-size: var(--font-body-desktop);
+        line-height: var(--line-height-loose);
         letter-spacing: 0.002em;
         color: #ffffff;
         margin: 0;
@@ -219,9 +211,9 @@ import Union from "../assets/images/union.svg";
     .points p {
         color: #ffffff;
         margin: 2px 0;
-        font-family: "Open Sans", sans-serif;
-        font-size: 18px;
-        line-height: 36px;
+        font-family: var(--font-primary);
+        font-size: var(--font-body-desktop);
+        line-height: var(--line-height-loose);
     }
 
     /* Copyright */
@@ -234,7 +226,7 @@ import Union from "../assets/images/union.svg";
         text-decoration: none;
         display: inline-flex;
         align-items: center;
-        transition: opacity 0.3s ease;
+        transition: opacity var(--transition-normal);
     }
 
     .copyright a:hover {
@@ -242,11 +234,11 @@ import Union from "../assets/images/union.svg";
     }
 
     .copyright h6 {
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--font-primary);
         font-style: normal;
         font-weight: normal;
-        font-size: 18px;
-        line-height: 36px;
+        font-size: var(--font-body-desktop);
+        line-height: var(--line-height-loose);
         letter-spacing: 0.002em;
         color: #ffffff;
         margin: 0;
@@ -277,7 +269,7 @@ import Union from "../assets/images/union.svg";
     /* Large Mobile: 480px - 770px */
     @media only screen and (max-width: 770px) {
         #location {
-            padding: 50px 0;
+            padding: var(--section-padding-tablet) 0;
         }
 
         .location-grid {
@@ -290,7 +282,7 @@ import Union from "../assets/images/union.svg";
         }
 
         .text-area h3 {
-            font-size: 30px;
+            font-size: var(--font-h1-tablet);
             line-height: 45px;
             margin-bottom: 30px;
             text-align: center;
@@ -301,7 +293,7 @@ import Union from "../assets/images/union.svg";
         }
 
         .text-area p {
-            font-size: 14px;
+            font-size: var(--font-body-mobile);
             line-height: 28px;
         }
 
@@ -327,7 +319,7 @@ import Union from "../assets/images/union.svg";
         }
 
         .points p {
-            font-size: 14px;
+            font-size: var(--font-body-mobile);
             line-height: 28px;
         }
 
@@ -339,11 +331,7 @@ import Union from "../assets/images/union.svg";
     /* Small Mobile: 320px - 479px */
     @media only screen and (max-width: 479px) {
         #location {
-            padding: 40px 0;
-        }
-
-        .container {
-            padding: 0 15px;
+            padding: var(--section-padding-mobile) 0;
         }
 
         .location-grid {
@@ -351,7 +339,7 @@ import Union from "../assets/images/union.svg";
         }
 
         .text-area h3 {
-            font-size: 25px;
+            font-size: var(--font-h1-mobile);
             line-height: 32px;
             margin-bottom: 20px;
         }
