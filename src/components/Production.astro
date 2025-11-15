@@ -2,124 +2,206 @@
 const { lang } = Astro.props;
 
 import { Image } from "astro:assets";
-import Production1 from "../assets/images/production/Production1.png"
-import Production2 from "../assets/images/production/Production2.png"
-import Production3 from "../assets/images/production/Production3.png"
-import Production4 from "../assets/images/production/Production4.png"
-import Production5 from "../assets/images/production/Production5.png"
-import Production6 from "../assets/images/production/Production6.png"
-import Production7 from "../assets/images/production/Production7.png"
-import Production8 from "../assets/images/production/Production8.png"
-import Production9 from "../assets/images/production/Production9.png"
-import Production10 from "../assets/images/production/Production10.png"
-import Production11 from "../assets/images/production/Production11.png"
-import Production12 from "../assets/images/production/Production12.png"
+import Production1 from "../assets/images/production/Production1.png";
+import Production2 from "../assets/images/production/Production2.png";
+import Production3 from "../assets/images/production/Production3.png";
+import Production4 from "../assets/images/production/Production4.png";
+import Production5 from "../assets/images/production/Production5.png";
+import Production6 from "../assets/images/production/Production6.png";
+import Production7 from "../assets/images/production/Production7.png";
+import Production8 from "../assets/images/production/Production8.png";
+import Production9 from "../assets/images/production/Production9.png";
+import Production10 from "../assets/images/production/Production10.png";
+import Production11 from "../assets/images/production/Production11.png";
+import Production12 from "../assets/images/production/Production12.png";
 
 const title = {
-	lv: "Izstrādājumi no porolona dažādām nozarēm:",
-	ru: "Доверьтесь профессионалам:",
-	en: "Trust the professionals:",
-}
+    lv: "Izstrādājumi no porolona dažādām nozarēm:",
+    ru: "Доверьтесь профессионалам:",
+    en: "Trust the professionals:",
+};
 
 const photoItems = [
-	{
-		imgSrc: Production1,
-		text_lv: "Mēbeles",
-		text_ru: "Мебель",
-		text_en: "Furniture",
-	},
-	{
-		imgSrc: Production2,
-		text_lv: "Matrači un matraču pārvalki",
-		text_ru: "Матрасы и наматрасники",
-		text_en: "Mattresses and mattress pads",
-	},
-	{
-		imgSrc: Production3,
-		text_lv: "Spilveni",
-		text_ru: "Подушки",
-		text_en: "Pillows",
-	},
-	{
-		imgSrc: Production4,
-		text_lv: "Preces mājai",
-		text_ru: "Товары домашнего обихода",
-		text_en: "Household goods",
-	},
-	{
-		imgSrc: Production5,
-		text_lv: "Apģērbs + Apavi",
-		text_ru: "Одежда+ Обувь",
-		text_en: "Clothing+ Footwear",
-	},
-	{
-		imgSrc: Production6,
-		text_lv: "Šūšanas rūpniecība",
-		text_ru: "Швейная промышленность",
-		text_en: "Garment industry",
-	},
-	{
-		imgSrc: Production7,
-		text_lv: "Ortopēdija",
-		text_ru: "Ортопедия",
-		text_en: "Orthopedics",
-	},
-	{
-		imgSrc: Production8,
-		text_lv: "Sports",
-		text_ru: "Спорт",
-		text_en: "Sport",
-	},
-	{
-		imgSrc: Production9,
-		text_lv: "Transporta līdzekļi",
-		text_ru: "Транспортные средства",
-		text_en: "Transport equipment",
-	},
-	{
-		imgSrc: Production10,
-		text_lv: "Celtniecība",
-		text_ru: "Строительство",
-		text_en: "Construction",
-	},
-	{
-		imgSrc: Production11,
-		text_lv: "Hermetizācija un skaņas izolācija",
-		text_ru: "Герметизация и звукоизоляция",
-		text_en: "Sealing and sound insulation",
-	},
-	{
-		imgSrc: Production12,
-		text_lv: "Iepakojumi",
-		text_ru: "Упаковки",
-		text_en: "Packaging",
-	},
+    {
+        imgSrc: Production1,
+        text_lv: "Mēbeles",
+        text_ru: "Мебель",
+        text_en: "Furniture",
+    },
+    {
+        imgSrc: Production2,
+        text_lv: "Matrači un matraču pārvalki",
+        text_ru: "Матрасы и наматрасники",
+        text_en: "Mattresses and mattress pads",
+    },
+    {
+        imgSrc: Production3,
+        text_lv: "Spilveni",
+        text_ru: "Подушки",
+        text_en: "Pillows",
+    },
+    {
+        imgSrc: Production4,
+        text_lv: "Preces mājai",
+        text_ru: "Товары домашнего обихода",
+        text_en: "Household goods",
+    },
+    {
+        imgSrc: Production5,
+        text_lv: "Apģērbs + Apavi",
+        text_ru: "Одежда+ Обувь",
+        text_en: "Clothing+ Footwear",
+    },
+    {
+        imgSrc: Production6,
+        text_lv: "Šūšanas rūpniecība",
+        text_ru: "Швейная промышленность",
+        text_en: "Garment industry",
+    },
+    {
+        imgSrc: Production7,
+        text_lv: "Ortopēdija",
+        text_ru: "Ортопедия",
+        text_en: "Orthopedics",
+    },
+    {
+        imgSrc: Production8,
+        text_lv: "Sports",
+        text_ru: "Спорт",
+        text_en: "Sport",
+    },
+    {
+        imgSrc: Production9,
+        text_lv: "Transporta līdzekļi",
+        text_ru: "Транспортные средства",
+        text_en: "Transport equipment",
+    },
+    {
+        imgSrc: Production10,
+        text_lv: "Celtniecība",
+        text_ru: "Строительство",
+        text_en: "Construction",
+    },
+    {
+        imgSrc: Production11,
+        text_lv: "Hermetizācija un skaņas izolācija",
+        text_ru: "Герметизация и звукоизоляция",
+        text_en: "Sealing and sound insulation",
+    },
+    {
+        imgSrc: Production12,
+        text_lv: "Iepakojumi",
+        text_ru: "Упаковки",
+        text_en: "Packaging",
+    },
 ];
 ---
 
 <section id="photos">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center photoHeading">
-				<div class="heading">
-					<h1>{title[lang]}</h1>
-				</div>
-			</div>
-			{
-				photoItems.map((item) => (
-					<div class="col-md-3 col-sm-6 text-center">
-						<div class="item">
-							<Image src={item.imgSrc} class="img-fluid" alt="" />
-							<p>{item["text_" + lang]}</p>
-						</div>
-					</div>
-				))
-			}
-			<!-- <div class="col-md-12 text-center buttonField">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center photoHeading">
+                <div class="heading">
+                    <h1>{title[lang]}</h1>
+                </div>
+            </div>
+            {
+                photoItems.map((item) => (
+                    <div class="col-md-3 col-sm-6 text-center">
+                        <div class="item">
+                            <Image src={item.imgSrc} class="img-fluid" alt="" />
+                            <p>{item["text_" + lang]}</p>
+                        </div>
+                    </div>
+                ))
+            }
+            <!-- <div class="col-md-12 text-center buttonField">
               <div class="button">
                   <a href="#contact" class="btn btn-danger">Sazinieties ar mums</a>
               </div>
           </div> -->
-		</div>
-	</div>
+        </div>
+    </div>
 </section>
+
+<style>
+    #photos {
+        background: #f5f5f5;
+        padding: 100px 0;
+    }
+
+    #photos .heading h1 {
+        font-size: 40px;
+        color: var(--main-accent);
+        font-family: "Ubuntu", sans-serif;
+        line-height: 40px;
+        font-weight: 500;
+        margin-bottom: 80px;
+    }
+
+    #photos .item {
+        margin: 30px 0;
+    }
+
+    #photos .item img {
+        margin-bottom: 16px;
+    }
+
+    #photos .item p {
+        font-size: 20px;
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+        letter-spacing: 0.005em;
+        color: #565656;
+    }
+
+    #photos .button .btn {
+        background: var(--main-accent);
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        padding: 16px 24px;
+        color: var(--btn-accent);
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 50px;
+    }
+
+    /* Large Mobile :480px. */
+    @media only screen and (min-width: 480px) and (max-width: 770px) {
+    }
+
+    /* Large Mobile :320. */
+    @media only screen and (min-width: 320px) and (max-width: 475px) {
+        #photos .heading h1 {
+            font-size: 25px;
+            line-height: 36px;
+            margin-bottom: 20px;
+        }
+        #photos {
+            padding: 50px 0;
+        }
+        #photos .row > * {
+            width: 50%;
+        }
+        #photos .photoHeading {
+            width: 100%;
+        }
+        #photos .item {
+            margin: 20px 0;
+        }
+        #photos .item p {
+            font-size: 13px;
+            line-height: 20px;
+        }
+        #photos .buttonField {
+            width: 100%;
+        }
+        #photos .button .btn {
+            padding: 8px 24px;
+            font-size: 15px;
+        }
+    }
+</style>

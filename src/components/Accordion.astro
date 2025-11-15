@@ -1,118 +1,222 @@
 ---
 const { lang } = Astro.props;
 import { Image } from "astro:assets";
-import Accordion1 from "../assets/images/accordion/Accordion1.svg"
-import Accordion2 from "../assets/images/accordion/Accordion2.svg"
-import Accordion3 from "../assets/images/accordion/Accordion3.svg"
-import Accordion4 from "../assets/images/accordion/Accordion4.svg"
-import Accordion5 from "../assets/images/accordion/Accordion5.svg"
-import Accordion6 from "../assets/images/accordion/Accordion6.svg"
+import Accordion1 from "../assets/images/accordion/Accordion1.svg";
+import Accordion2 from "../assets/images/accordion/Accordion2.svg";
+import Accordion3 from "../assets/images/accordion/Accordion3.svg";
+import Accordion4 from "../assets/images/accordion/Accordion4.svg";
+import Accordion5 from "../assets/images/accordion/Accordion5.svg";
+import Accordion6 from "../assets/images/accordion/Accordion6.svg";
 
 const title = {
-	lv: "Mēs piedāvājam:",
-	ru: "Мы предоставляем:",
-	en: "We offer:",
-}
+    lv: "Mēs piedāvājam:",
+    ru: "Мы предоставляем:",
+    en: "We offer:",
+};
 
 const accordionItems = [
-	{
-		id: "flush-collapseTwo",
-		headingId: "flush-headingTwo",
-		imgSrc: Accordion1,
-		title_lv: "Loksnes",
-		title_ru: "Листы",
-		title_en: "Sheets",
-		body_lv: "Tiek izgatavotas speciālajās iekārtās, sagriežot putu poliuretāna blokus. Porolona loksnes tiek izmantotas matraču, mēbeļu detaļu un citu izstrādājumu ražošanā.",
-		body_ru: "Изготавливаются на специальных станках путем разрезки блоков пенополиуретана. Листы поролона используются для производства матрасов, мебельных деталей и других изделий.",
-		body_en: "We produce sheets by using special machines for cutting blocks from polyurethane foam. Foam rubber sheets are used for the production of mattresses, furniture parts and other products.",
-	},
-	{
-		id: "flush-collapseThree",
-		headingId: "flush-headingThree",
-		imgSrc: Accordion2,
-		title_lv: "Smalki sagrieztas putas",
-		title_ru: "Измельчённый поролон",
-		title_en: "Crushed foam rubber",
-		body_lv: "Porolona detaļas, sasmalcinātas speciālajā iekārtā, tiek izmantotas spilvenu, segu un iepakojumu utt. piepildīšanai. Sasmalcināšanai tiek izmantots vidēja mīkstuma vieglais porolons.",
-		body_ru: "Детали из поролона, измельченного на специальном оборудовании, используются как наполнитель для подушек, одеял, для упаковки и т.д. Для измельчения используется лёгкий поролон средней мягкости.",
-		body_en: "Parts made of foam rubber are crushed on special equipment and are later used as a filler for pillows, blankets, packaging, etc. For grinding, a light foam of medium softness is used.",
-	},
-	{
-		id: "flush-collapsefive",
-		headingId: "flush-headingfive",
-		imgSrc: Accordion4,
-		title_lv: "Detaļas, sagataves mēbelēm un pārējā produkcija",
-		title_ru: "Детали, заготовки для мебели и прочая продукция",
-		title_en: "Parts, blanks for the furniture and other products",
-		body_lv: "Tiek izgatavotas ar speciālu porolona pārstrādes iekārtu palīdzību pēc iepriekš saskaņotajiem rasējumiem. Pēc pasūtītāju vēlmēm mēs sagatavojam pusfabrikātus, savienojam detaļas no porolona, pielīmējam sinteponu, tīklu, aplīmējam ar līmplēvi utt.",
-		body_ru: "Изготавливаются с помощью специализированного оборудования для переработки поролона в соответствии с заранее согласованными чертежами. В зависимости от потребностей заказчиков мы подготавливаем полуфабрикаты, соединяем детали из поролона, приклеиваем синтепон, сетку, покрываем клейкой плёнкой и т.д.",
-		body_en: "Are manufactured using equipment specialized for processing foam rubber in accordance with pre-agreed drawings. Depending on the needs of our customers, we prepare semi-finished products, connect foam rubber parts, glue sintepon (polyester wadding), mesh, cover details with adhesive film, etc.",
-	},
-	{
-		id: "flush-collapseseven",
-		headingId: "flush-headingseven",
-		imgSrc: Accordion6,
-		title_lv: "Laminētais porolons",
-		title_ru: "Ламинированный",
-		title_en: "Laminated",
-		body_lv: "Tiek veidoti standartizmēra porolona bloki, kurus izmanto lokšņu, detaļu utt. ražošanai. Izgatavojam dažāda veida porolona blokus, kuriem piemīt dažādas īpašības.",
-		body_ru: "Формируются блоки поролона стандартных размеров, которые используются для переработки в листы, детали и т.д. Мы изготавливаем блоки поролона различного вида и обладающие различными свойствами.",
-		body_en: "Foam rubber blocks of standard sizes are formed, which are used for processing into sheets, parts, etc. We produce blocks of foam rubber of various types and with different properties.",
-	},
+    {
+        id: "flush-collapseTwo",
+        headingId: "flush-headingTwo",
+        imgSrc: Accordion1,
+        title_lv: "Loksnes",
+        title_ru: "Листы",
+        title_en: "Sheets",
+        body_lv:
+            "Tiek izgatavotas speciālajās iekārtās, sagriežot putu poliuretāna blokus. Porolona loksnes tiek izmantotas matraču, mēbeļu detaļu un citu izstrādājumu ražošanā.",
+        body_ru:
+            "Изготавливаются на специальных станках путем разрезки блоков пенополиуретана. Листы поролона используются для производства матрасов, мебельных деталей и других изделий.",
+        body_en:
+            "We produce sheets by using special machines for cutting blocks from polyurethane foam. Foam rubber sheets are used for the production of mattresses, furniture parts and other products.",
+    },
+    {
+        id: "flush-collapseThree",
+        headingId: "flush-headingThree",
+        imgSrc: Accordion2,
+        title_lv: "Smalki sagrieztas putas",
+        title_ru: "Измельчённый поролон",
+        title_en: "Crushed foam rubber",
+        body_lv:
+            "Porolona detaļas, sasmalcinātas speciālajā iekārtā, tiek izmantotas spilvenu, segu un iepakojumu utt. piepildīšanai. Sasmalcināšanai tiek izmantots vidēja mīkstuma vieglais porolons.",
+        body_ru:
+            "Детали из поролона, измельченного на специальном оборудовании, используются как наполнитель для подушек, одеял, для упаковки и т.д. Для измельчения используется лёгкий поролон средней мягкости.",
+        body_en:
+            "Parts made of foam rubber are crushed on special equipment and are later used as a filler for pillows, blankets, packaging, etc. For grinding, a light foam of medium softness is used.",
+    },
+    {
+        id: "flush-collapsefive",
+        headingId: "flush-headingfive",
+        imgSrc: Accordion4,
+        title_lv: "Detaļas, sagataves mēbelēm un pārējā produkcija",
+        title_ru: "Детали, заготовки для мебели и прочая продукция",
+        title_en: "Parts, blanks for the furniture and other products",
+        body_lv:
+            "Tiek izgatavotas ar speciālu porolona pārstrādes iekārtu palīdzību pēc iepriekš saskaņotajiem rasējumiem. Pēc pasūtītāju vēlmēm mēs sagatavojam pusfabrikātus, savienojam detaļas no porolona, pielīmējam sinteponu, tīklu, aplīmējam ar līmplēvi utt.",
+        body_ru:
+            "Изготавливаются с помощью специализированного оборудования для переработки поролона в соответствии с заранее согласованными чертежами. В зависимости от потребностей заказчиков мы подготавливаем полуфабрикаты, соединяем детали из поролона, приклеиваем синтепон, сетку, покрываем клейкой плёнкой и т.д.",
+        body_en:
+            "Are manufactured using equipment specialized for processing foam rubber in accordance with pre-agreed drawings. Depending on the needs of our customers, we prepare semi-finished products, connect foam rubber parts, glue sintepon (polyester wadding), mesh, cover details with adhesive film, etc.",
+    },
+    {
+        id: "flush-collapseseven",
+        headingId: "flush-headingseven",
+        imgSrc: Accordion6,
+        title_lv: "Laminētais porolons",
+        title_ru: "Ламинированный",
+        title_en: "Laminated",
+        body_lv:
+            "Tiek veidoti standartizmēra porolona bloki, kurus izmanto lokšņu, detaļu utt. ražošanai. Izgatavojam dažāda veida porolona blokus, kuriem piemīt dažādas īpašības.",
+        body_ru:
+            "Формируются блоки поролона стандартных размеров, которые используются для переработки в листы, детали и т.д. Мы изготавливаем блоки поролона различного вида и обладающие различными свойствами.",
+        body_en:
+            "Foam rubber blocks of standard sizes are formed, which are used for processing into sheets, parts, etc. We produce blocks of foam rubber of various types and with different properties.",
+    },
 ];
-
 ---
 
 <section id="accordian">
-	<div class="container">
-		<div class="row">
-			<div class="heading text-center">
-				<h1>{title[lang]}</h1>
-			</div>
-			<div class="faqs">
-				<div
-					class="accordion accordion-flush"
-					id="accordionFlushExample"
-				>
-					{
-						accordionItems.map((item) => (
-							<div class="accordion-item">
-								<h2
-									class="accordion-header"
-									id={item.headingId}
-								>
-									<button
-										class="accordion-button collapsed"
-										type="button"
-										data-bs-toggle="collapse"
-										data-bs-target={`#${item.id}`}
-										aria-expanded="false"
-										aria-controls={item.id}
-									>
-										<Image
-											src={item.imgSrc}
-											class="img-fluid mr-4"
-											width="55"
-											alt=""
-										/>
-										{item["title_" + lang]}
-									</button>
-								</h2>
-								<div
-									id={item.id}
-									class="accordion-collapse collapse"
-									aria-labelledby={item.headingId}
-									data-bs-parent="#accordionFlushExample"
-								>
-									<div class="accordion-body">
-										{item["body_" + lang]}
-									</div>
-								</div>
-							</div>
-						))
-					}
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="heading text-center">
+                <h1>{title[lang]}</h1>
+            </div>
+            <div class="faqs">
+                <div
+                    class="accordion accordion-flush"
+                    id="accordionFlushExample"
+                >
+                    {
+                        accordionItems.map((item) => (
+                            <div class="accordion-item">
+                                <h2
+                                    class="accordion-header"
+                                    id={item.headingId}
+                                >
+                                    <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target={`#${item.id}`}
+                                        aria-expanded="false"
+                                        aria-controls={item.id}
+                                    >
+                                        <Image
+                                            src={item.imgSrc}
+                                            class="img-fluid mr-4"
+                                            width="55"
+                                            alt=""
+                                        />
+                                        {item["title_" + lang]}
+                                    </button>
+                                </h2>
+                                <div
+                                    id={item.id}
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby={item.headingId}
+                                    data-bs-parent="#accordionFlushExample"
+                                >
+                                    <div class="accordion-body">
+                                        {item["body_" + lang]}
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
+<style>
+    #accordian {
+        padding: 100px 0;
+    }
+
+    #accordian .row .col-md-12 .btn {
+        background: var(--main-accent);
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        padding: 16px 24px;
+        color: var(--btn-accent);
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 50px;
+    }
+
+    #accordian .container {
+        width: 70% !important;
+    }
+
+    #accordian .heading h1 {
+        font-size: 40px;
+        color: var(--main-accent);
+        font-family: "Ubuntu", sans-serif;
+        line-height: 40px;
+        font-weight: 500;
+        margin-bottom: 80px;
+    }
+
+    :global(.accordion-flush .accordion-button) {
+        font-size: 26px;
+        line-height: 70px;
+        color: #5c5c5c;
+        font-family: "Ubuntu";
+        font-weight: 400;
+    }
+
+    :global(.accordion-flush .accordion-button:not(.collapsed)) {
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    :global(.accordion-body) {
+        font-family: Open "Sans";
+        font-size: 18px;
+        line-height: 36px;
+        color: #6f6f6f;
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    :global(.accordion-button:not(.collapsed)) {
+        background-color: #ffffff !important;
+        border: none;
+        outline: none;
+        color: #000;
+    }
+
+    :global(.accordion-button:focus) {
+        box-shadow: none;
+    }
+
+    :global(.accordion-button:not(.collapsed)::after) {
+        color: var(--btn-accent);
+    }
+
+    :global(.accordion-button:focus) {
+        border-color: rgba(0, 0, 0, 0.125);
+    }
+
+    /* Large Mobile :320. */
+    @media only screen and (min-width: 320px) and (max-width: 475px) {
+        #accordian {
+            padding: 50px 0;
+        }
+        #accordian .heading h1 {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+        #accordian .container {
+            width: auto !important;
+        }
+        #accordian
+            :global(.accordion-flush .accordion-item .accordion-button img) {
+            width: 40px !important;
+        }
+        #accordian :global(.accordion-button) {
+            padding: 1rem 1.25rem;
+            font-size: 16px;
+            line-height: 28px;
+        }
+    }
+</style>

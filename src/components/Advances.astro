@@ -2,66 +2,153 @@
 const { lang } = Astro.props;
 
 import { Image } from "astro:assets";
-import Advances1 from "../assets/images/advances/Advances1.svg"
-import Advances2 from "../assets/images/advances/Advances2.svg"
-import Advances3 from "../assets/images/advances/Advances3.svg"
-import Advances4 from "../assets/images/advances/Advances4.svg"
+import Advances1 from "../assets/images/advances/Advances1.svg";
+import Advances2 from "../assets/images/advances/Advances2.svg";
+import Advances3 from "../assets/images/advances/Advances3.svg";
+import Advances4 from "../assets/images/advances/Advances4.svg";
 
 const title = {
-	lv: "Uzticieties profesionāļiem",
-	ru: "Доверьтесь профессионалам",
-	en: "Trust the professionals"
-}
+    lv: "Uzticieties profesionāļiem",
+    ru: "Доверьтесь профессионалам",
+    en: "Trust the professionals",
+};
 const contentItems = [
-	{
-		imgSrc: Advances1,
-		text_lv: "Vienīgais Vita pārstāvis Latvijā un Igaunijā",
-		text_ru: "Единственный представитель Vita в Латвии и Эстонии",
-		text_en: "The only Vita representative in Latvia and Estonia",
-	},
-	{
-		imgSrc: Advances2,
-		text_lv: "Pārstrādājam 120 tonnas porolona mēnesī",
-		text_ru: "Перерабатываем 120 тон поролона ежемесячно",
-		text_en: "Monthly we process 120 tons of foam rubber",
-	},
-	{
-		imgSrc: Advances3,
-		text_lv: "Produkcija atbilst OEKO-TEX sertifikāta prasībām",
-		text_ru: "Продукция соответствует сертификации OEKO-TEX",
-		text_en: "Products comply with OEKO-TEX certification",
-	},
-	{
-		imgSrc: Advances4,
-		text_lv: "Vairāk nekā 25 gadu pieredze",
-		text_ru: "Более 25 лет опыта",
-		text_en: "More than 25 years of experience",
-	},
+    {
+        imgSrc: Advances1,
+        text_lv: "Vienīgais Vita pārstāvis Latvijā un Igaunijā",
+        text_ru: "Единственный представитель Vita в Латвии и Эстонии",
+        text_en: "The only Vita representative in Latvia and Estonia",
+    },
+    {
+        imgSrc: Advances2,
+        text_lv: "Pārstrādājam 120 tonnas porolona mēnesī",
+        text_ru: "Перерабатываем 120 тон поролона ежемесячно",
+        text_en: "Monthly we process 120 tons of foam rubber",
+    },
+    {
+        imgSrc: Advances3,
+        text_lv: "Produkcija atbilst OEKO-TEX sertifikāta prasībām",
+        text_ru: "Продукция соответствует сертификации OEKO-TEX",
+        text_en: "Products comply with OEKO-TEX certification",
+    },
+    {
+        imgSrc: Advances4,
+        text_lv: "Vairāk nekā 25 gadu pieredze",
+        text_ru: "Более 25 лет опыта",
+        text_en: "More than 25 years of experience",
+    },
 ];
 ---
 
 <section id="content">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="heading">
-					<h1>{title[lang]}</h1>
-				</div>
-			</div>
-			{
-				contentItems.map((item) => (
-					<div class="col-md-3 text-center">
-						<div class="icon">
-							<Image
-								src={item.imgSrc}
-								class="img-fluid"
-								alt="icon"
-							/>
-							<p>{item["text_" + lang]}</p>
-						</div>
-					</div>
-				))
-			}
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="heading">
+                    <h1>{title[lang]}</h1>
+                </div>
+            </div>
+            {
+                contentItems.map((item) => (
+                    <div class="col-md-3 text-center">
+                        <div class="icon">
+                            <Image
+                                src={item.imgSrc}
+                                class="img-fluid"
+                                alt="icon"
+                            />
+                            <p>{item["text_" + lang]}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </section>
+
+<style>
+    #content {
+        padding: 100px 0;
+    }
+
+    #content .heading h1 {
+        font-size: 40px;
+        color: #565656;
+        font-family: "Ubuntu", sans-serif;
+        line-height: 57px;
+        font-weight: 500;
+        margin-bottom: 80px;
+    }
+
+    #content .icon {
+        margin: 50px 0;
+    }
+
+    #content .icon img {
+        width: 70px;
+        margin-bottom: 20px;
+    }
+
+    #content .icon p {
+        font-size: 16px;
+        line-height: 26px;
+        color: #6f6f6f;
+        letter-spacing: 0.002em;
+        font-family: Open Sans;
+    }
+
+    #content .button {
+        margin-top: 50px;
+    }
+
+    #content .button .btn {
+        background: var(--main-accent);
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        padding: 16px 24px;
+        color: var(--btn-accent);
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    /* Large Mobile :480px. */
+    @media only screen and (min-width: 480px) and (max-width: 770px) {
+        #content .heading h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #content {
+            padding: 50px 0;
+        }
+    }
+
+    /* Large Mobile :320. */
+    @media only screen and (min-width: 320px) and (max-width: 475px) {
+        #content .heading h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        #content {
+            padding: 50px 0;
+        }
+        #content .icon {
+            margin: 10px 30px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        #content .icon img {
+            width: 45px;
+            margin-right: 10px;
+            float: left;
+        }
+        #content .button {
+            margin-top: 20px;
+        }
+        #content .button .btn {
+            padding: 8px 24px;
+            font-size: 15px;
+        }
+    }
+</style>
