@@ -163,16 +163,17 @@ const images = [Accordion1, Accordion2, Accordion4, Accordion6];
     /* Accordion Content */
     .accordion-content {
         overflow: hidden;
-        max-height: 0;
-        transition: max-height var(--transition-normal) ease-in-out;
-        will-change: max-height;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
+        transition: height var(--transition-normal) ease-in-out;
+        height: 0;
+        /* Hardware acceleration for smoother animations on iOS */
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
     }
 
     .accordion-content.active {
         border-top: 1px solid var(--border-color);
-        max-height: 2000px;
     }
 
     .accordion-body {
@@ -292,87 +293,5 @@ const images = [Accordion1, Accordion2, Accordion4, Accordion6];
 </style>
 
 <script>
-    function initAccordion() {
-        const accordionButtons = document.querySelectorAll(
-            "[data-accordion-button]",
-        );
-
-        // Use passive event listeners for better iOS performance
-        accordionButtons.forEach((button) => {
-            button.addEventListener(
-                "click",
-                () => {
-                    const accordionItem = button.closest(".accordion-item");
-                    const accordionContent = accordionItem?.querySelector(
-                        "[data-accordion-content]",
-                    ) as HTMLElement;
-
-                    if (!accordionContent) return;
-
-                    const isExpanded =
-                        button.getAttribute("aria-expanded") === "true";
-
-                    // Use requestAnimationFrame for smoother animations on iOS
-                    requestAnimationFrame(() => {
-                        // Close all other accordion items
-                        accordionButtons.forEach((otherButton) => {
-                            if (otherButton !== button) {
-                                const otherItem =
-                                    otherButton.closest(".accordion-item");
-                                const otherContent = otherItem?.querySelector(
-                                    "[data-accordion-content]",
-                                ) as HTMLElement;
-
-                                if (otherContent) {
-                                    otherButton.setAttribute(
-                                        "aria-expanded",
-                                        "false",
-                                    );
-                                    otherContent.classList.remove("active");
-                                }
-                            }
-                        });
-
-                        // Toggle current accordion item
-                        if (isExpanded) {
-                            button.setAttribute("aria-expanded", "false");
-                            accordionContent.classList.remove("active");
-                        } else {
-                            button.setAttribute("aria-expanded", "true");
-                            accordionContent.classList.add("active");
-                        }
-                    });
-                },
-                { passive: true },
-            );
-        });
-
-        // Use ResizeObserver instead of resize event for better performance
-        if (typeof ResizeObserver !== "undefined") {
-            const resizeObserver = new ResizeObserver((entries) => {
-                // Only recalculate if accordion is actually visible
-                for (const entry of entries) {
-                    if (entry.contentRect.width > 0) {
-                        // Trigger reflow only when needed
-                        requestAnimationFrame(() => {
-                            // Heights are now managed by CSS max-height
-                            // No manual recalculation needed
-                        });
-                    }
-                }
-            });
-
-            const accordion = document.getElementById("accordion");
-            if (accordion) {
-                resizeObserver.observe(accordion);
-            }
-        }
-    }
-
-    // Initialize on DOM ready
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initAccordion);
-    } else {
-        initAccordion();
-    }
+    import { initAccordion } from "../scripts/accordion";
 </script>
