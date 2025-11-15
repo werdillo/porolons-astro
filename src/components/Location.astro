@@ -1,36 +1,10 @@
 ---
+import { locationData } from "../data/location";
 const { lang } = Astro.props;
 
 import { Image } from "astro:assets";
 import Map from "../assets/images/map.png";
 import Union from "../assets/images/union.svg";
-
-const scheme = {
-    lv: "Ielādēt braukšanas maršrutu",
-    ru: "Скачать схему проезда",
-    en: "Download the entrance scheme",
-};
-const title = {
-    lv: "Ražotne",
-    ru: "Производство",
-    en: "Production of the goods",
-};
-const email = "order@eliza-k.lv";
-const phone1 = "27862121";
-const phone2 = "26653510";
-const address = "Rīga, A. Deglava iela 52A, LV-1035";
-
-const item = {
-    weekday_ru: "Пн-Пт 8:30 - 16:00",
-    break_ru: "Перерыв 12:00 - 13:00",
-    weeken_ru: "Сб, Вскр - закрыто",
-    weekday_lv: "Pirmd-Piekt 8:30 - 16:00",
-    break_lv: "Pārtraukums 12:00 - 13:00",
-    weeken_lv: "Sestd, Svētd - brīvdiena",
-    weekday_en: "Mon-Fri 8:30 - 16:00",
-    break_en: "Break 12:00 - 13:00",
-    weeken_en: "Sat, Sun - closed",
-};
 ---
 
 <!-- Location -->
@@ -38,21 +12,26 @@ const item = {
     <div class="container">
         <div class="location-grid">
             <div class="text-area">
-                <h3>{title[lang]}</h3>
+                <h3>{locationData.title[lang]}</h3>
                 <div class="email">
                     <p>
                         <i class="fa fa-envelope"></i>
-                        <a href={`mailto:${email}`} class="contact-link"
-                            >{email}</a
+                        <a
+                            href={`mailto:${locationData.contact.email}`}
+                            class="contact-link">{locationData.contact.email}</a
                         >
                     </p>
                     <p>
                         <i class="fa fa-phone"></i>
-                        <a href={`tel:+371${phone1}`} class="contact-link"
-                            >{phone1}</a
+                        <a
+                            href={`tel:+371${locationData.contact.phone1}`}
+                            class="contact-link"
+                            >{locationData.contact.phone1}</a
                         >,
-                        <a href={`tel:+371${phone2}`} class="contact-link"
-                            >{phone2}</a
+                        <a
+                            href={`tel:+371${locationData.contact.phone2}`}
+                            class="contact-link"
+                            >{locationData.contact.phone2}</a
                         >
                     </p>
                 </div>
@@ -60,25 +39,25 @@ const item = {
                     <i class="fa fa-map-marker-alt"></i>
                     <p>
                         <a
-                            href={`https://maps.google.com/?q=${address}`}
+                            href={`https://maps.google.com/?q=${locationData.contact.address}`}
                             target="_blank"
                             class="contact-link"
                         >
-                            {address}
+                            {locationData.contact.address}
                         </a>
                     </p>
                 </div>
                 <div class="time">
-                    <p>{item["weekday_" + lang]}</p>
-                    <p>{item["break_" + lang]}</p>
-                    <p>{item["weeken_" + lang]}</p>
+                    <p>{locationData.workingHours["weekday_" + lang]}</p>
+                    <p>{locationData.workingHours["break_" + lang]}</p>
+                    <p>{locationData.workingHours["weekend_" + lang]}</p>
                 </div>
             </div>
 
             <div class="map-container">
                 <div class="map">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d790.9258588960025!2d24.166916021392023!3d56.95046509910395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecf1ae790db37%3A0x341a98d829cf03d0!2sEL%C4%AAZA-K%20porolona%20cehs!5e0!3m2!1sru!2slv!4v1667739898401!5m2!1sru!2slv"
+                        src={locationData.mapUrl}
                         width="500"
                         height="400"
                         frameborder="0"
@@ -94,49 +73,20 @@ const item = {
             </div>
 
             <div class="points-container">
-                {
-                    lang === "lv" && (
-                        <div class="points">
-                            <p>1. Mēbeļu salons</p>
-                            <p>2. Caurlaides punkts (gājējiem)</p>
-                            <p>3. Caurlaides punkts (transportam)</p>
-                            <p>4. Mēbeļu noliktava</p>
-                            <p>5. Porolona ražošanas cehs</p>
-                            <p>6. Audumu noliktava</p>
-                        </div>
-                    )
-                }
-                {
-                    lang === "ru" && (
-                        <div class="points">
-                            <p> 1. Салон мебели</p>
-                            <p> 2. Пропускной пункт (для пешеходов)</p>
-                            <p> 3. Пропускной пункт (для транспорта)</p>
-                            <p> 4. Мебельный склад</p>
-                            <p> 5. Цех по производству поролона</p>
-                            <p> 6. Склад ткани</p>
-                        </div>
-                    )
-                }
-                {
-                    lang === "en" && (
-                        <div class="points">
-                            <p> 1. Furniture salon</p>
-                            <p> 2. Checkpoint (for pedestrians)</p>
-                            <p> 3. Checkpoint (for transport)</p>
-                            <p> 4. Furniture warehouse</p>
-                            <p> 5. Polyurethane foam production shop</p>
-                            <p> 6. Fabric warehouse</p>
-                        </div>
-                    )
-                }
+                <div class="points">
+                    {
+                        locationData.mapPoints[lang].map((point) => (
+                            <p>{point}</p>
+                        ))
+                    }
+                </div>
             </div>
 
             <div class="copyright">
                 <a href="/map.png" target="_blank">
                     <h6>
                         <Image src={Union} alt="" />
-                        {scheme[lang]}
+                        {locationData.scheme[lang]}
                     </h6>
                 </a>
             </div>

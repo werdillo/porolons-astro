@@ -1,4 +1,5 @@
 ---
+import { productionData } from "../data/production";
 const { lang } = Astro.props;
 
 import { Image } from "astro:assets";
@@ -15,96 +16,30 @@ import Production10 from "../assets/images/production/Production10.png";
 import Production11 from "../assets/images/production/Production11.png";
 import Production12 from "../assets/images/production/Production12.png";
 
-const title = {
-    lv: "Izstrādājumi no porolona dažādām nozarēm:",
-    ru: "Доверьтесь профессионалам:",
-    en: "Trust the professionals:",
-};
-
-const photoItems = [
-    {
-        imgSrc: Production1,
-        text_lv: "Mēbeles",
-        text_ru: "Мебель",
-        text_en: "Furniture",
-    },
-    {
-        imgSrc: Production2,
-        text_lv: "Matrači un matraču pārvalki",
-        text_ru: "Матрасы и наматрасники",
-        text_en: "Mattresses and mattress pads",
-    },
-    {
-        imgSrc: Production3,
-        text_lv: "Spilveni",
-        text_ru: "Подушки",
-        text_en: "Pillows",
-    },
-    {
-        imgSrc: Production4,
-        text_lv: "Preces mājai",
-        text_ru: "Товары домашнего обихода",
-        text_en: "Household goods",
-    },
-    {
-        imgSrc: Production5,
-        text_lv: "Apģērbs + Apavi",
-        text_ru: "Одежда+ Обувь",
-        text_en: "Clothing+ Footwear",
-    },
-    {
-        imgSrc: Production6,
-        text_lv: "Šūšanas rūpniecība",
-        text_ru: "Швейная промышленность",
-        text_en: "Garment industry",
-    },
-    {
-        imgSrc: Production7,
-        text_lv: "Ortopēdija",
-        text_ru: "Ортопедия",
-        text_en: "Orthopedics",
-    },
-    {
-        imgSrc: Production8,
-        text_lv: "Sports",
-        text_ru: "Спорт",
-        text_en: "Sport",
-    },
-    {
-        imgSrc: Production9,
-        text_lv: "Transporta līdzekļi",
-        text_ru: "Транспортные средства",
-        text_en: "Transport equipment",
-    },
-    {
-        imgSrc: Production10,
-        text_lv: "Celtniecība",
-        text_ru: "Строительство",
-        text_en: "Construction",
-    },
-    {
-        imgSrc: Production11,
-        text_lv: "Hermetizācija un skaņas izolācija",
-        text_ru: "Герметизация и звукоизоляция",
-        text_en: "Sealing and sound insulation",
-    },
-    {
-        imgSrc: Production12,
-        text_lv: "Iepakojumi",
-        text_ru: "Упаковки",
-        text_en: "Packaging",
-    },
+const images = [
+    Production1,
+    Production2,
+    Production3,
+    Production4,
+    Production5,
+    Production6,
+    Production7,
+    Production8,
+    Production9,
+    Production10,
+    Production11,
+    Production12,
 ];
 ---
 
 <section id="photos">
     <div class="container">
-        <h1>{title[lang]}</h1>
+        <h1>{productionData.title[lang]}</h1>
         <div class="production-grid">
             {
-                photoItems.map((item) => (
+                productionData.items.map((item, index) => (
                     <div class="production-item">
-                        <Image src={item.imgSrc} alt={item["text_" + lang]} />
+                        <Image src={images[index]} alt={item["text_" + lang]} />
                         <p>{item["text_" + lang]}</p>
                     </div>
                 ))
@@ -115,23 +50,17 @@ const photoItems = [
 
 <style>
     #photos {
-        background: #f5f5f5;
-        padding: 100px 0;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
+        background: var(--bg-secondary);
+        padding: var(--section-padding-desktop) 0;
     }
 
     h1 {
-        font-size: 40px;
+        font-size: var(--font-h1-desktop);
         color: var(--main-accent);
-        font-family: "Ubuntu", sans-serif;
-        line-height: 40px;
+        font-family: var(--font-secondary);
+        line-height: 1;
         font-weight: 500;
-        margin-bottom: 80px;
+        margin-bottom: var(--heading-margin-desktop);
         text-align: center;
     }
 
@@ -159,23 +88,23 @@ const photoItems = [
 
     .production-item p {
         font-size: 20px;
-        font-family: "Ubuntu", sans-serif;
+        font-family: var(--font-secondary);
         font-weight: 500;
-        line-height: 26px;
+        line-height: 1.3;
         letter-spacing: 0.005em;
-        color: #565656;
+        color: var(--text-primary);
         margin: 0;
     }
 
-    @media only screen and (max-width: 770px) {
+    @media (max-width: 770px) {
         #photos {
-            padding: 50px 0;
+            padding: var(--section-padding-tablet) 0;
         }
 
         h1 {
-            font-size: 28px;
-            line-height: 36px;
-            margin-bottom: 40px;
+            font-size: var(--font-h1-tablet);
+            line-height: 1.3;
+            margin-bottom: var(--heading-margin-tablet);
         }
 
         .production-grid {
@@ -189,11 +118,11 @@ const photoItems = [
         }
     }
 
-    @media only screen and (max-width: 479px) {
+    @media (max-width: 479px) {
         h1 {
-            font-size: 25px;
-            line-height: 32px;
-            margin-bottom: 30px;
+            font-size: var(--font-h1-mobile);
+            line-height: 1.3;
+            margin-bottom: var(--heading-margin-mobile);
         }
 
         .production-grid {
@@ -201,8 +130,8 @@ const photoItems = [
         }
 
         .production-item p {
-            font-size: 13px;
-            line-height: 20px;
+            font-size: var(--font-small-mobile);
+            line-height: 1.5;
         }
     }
 </style>

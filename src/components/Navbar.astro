@@ -1,13 +1,17 @@
 ---
 import { Image } from "astro:assets";
 import Logo from "../assets/images/logo.svg";
+
 const { lang } = Astro.props;
+
+// Language options
+const languages = ["lv", "en", "ru"];
+const availableLanguages = languages.filter((l) => l !== lang);
 ---
 
-<!-- Header -->
 <nav class="navbar">
     <div class="container">
-        <a class="navbar-brand" href={"https://eliza-mebeles.lv/" + lang}>
+        <a class="navbar-brand" href={`https://eliza-mebeles.lv/${lang}`}>
             <Image src={Logo} alt="Eliza Logo" />
         </a>
 
@@ -38,31 +42,16 @@ const { lang } = Astro.props;
             </button>
             <ul class="dropdown-menu" id="languageMenu">
                 {
-                    lang !== "lv" && (
+                    availableLanguages.map((language) => (
                         <li>
-                            <a class="dropdown-item" href="/">
-                                LV
+                            <a
+                                class="dropdown-item"
+                                href={language === "lv" ? "/" : `/${language}`}
+                            >
+                                {language.toUpperCase()}
                             </a>
                         </li>
-                    )
-                }
-                {
-                    lang !== "en" && (
-                        <li>
-                            <a class="dropdown-item" href="/en">
-                                EN
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    lang !== "ru" && (
-                        <li>
-                            <a class="dropdown-item" href="/ru">
-                                RU
-                            </a>
-                        </li>
-                    )
+                    ))
                 }
             </ul>
         </div>
@@ -70,20 +59,9 @@ const { lang } = Astro.props;
 </nav>
 
 <style>
-    /* Container */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        width: 100%;
-    }
-
-    /* Navbar */
     .navbar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        inset: 0 0 auto;
         background: #fff;
         min-height: 60px;
         font-family: "Ubuntu", sans-serif;
@@ -91,25 +69,30 @@ const { lang } = Astro.props;
         z-index: 1000;
     }
 
-    .navbar .container {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 60px;
+        min-height: inherit;
     }
 
     .navbar-brand {
         display: flex;
-        align-items: center;
         text-decoration: none;
+        transition: opacity 0.3s;
+    }
+
+    .navbar-brand:hover {
+        opacity: 0.8;
     }
 
     .navbar-brand img {
         height: 40px;
-        width: auto;
     }
 
-    /* Language Dropdown */
     .language-dropdown {
         position: relative;
     }
@@ -126,8 +109,8 @@ const { lang } = Astro.props;
         display: flex;
         align-items: center;
         gap: 8px;
-        transition: all 0.3s ease;
-        font-family: "Ubuntu", sans-serif;
+        transition: all 0.3s;
+        font-family: inherit;
     }
 
     .dropdown-toggle:hover {
@@ -141,7 +124,7 @@ const { lang } = Astro.props;
     }
 
     .dropdown-arrow {
-        transition: transform 0.3s ease;
+        transition: transform 0.3s;
     }
 
     .dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
@@ -163,7 +146,7 @@ const { lang } = Astro.props;
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
-        transition: all 0.3s ease;
+        transition: all 0.3s;
         z-index: 1001;
     }
 
@@ -180,7 +163,7 @@ const { lang } = Astro.props;
         text-decoration: none;
         font-size: 14px;
         font-weight: 500;
-        transition: background-color 0.2s ease;
+        transition: background-color 0.2s;
         cursor: pointer;
     }
 
@@ -189,8 +172,7 @@ const { lang } = Astro.props;
         color: var(--main-accent, #d06d35);
     }
 
-    /* Tablet: 768px - 991px */
-    @media only screen and (max-width: 991px) {
+    @media (max-width: 991px) {
         .navbar-brand img {
             height: 38px;
         }
@@ -201,87 +183,92 @@ const { lang } = Astro.props;
         }
     }
 
-    /* Large Mobile: 480px - 770px */
-    @media only screen and (max-width: 770px) {
+    @media (max-width: 770px) {
         .navbar {
-            min-height: 50px;
+            min-height: 70px;
         }
 
-        .navbar .container {
-            min-height: 50px;
+        .container {
             padding: 0 15px;
         }
 
         .navbar-brand img {
-            height: 35px;
+            height: 48px;
         }
 
         .dropdown-toggle {
-            padding: 6px 10px;
-            font-size: 12px;
-        }
-
-        .dropdown-item {
-            padding: 6px 12px;
-            font-size: 13px;
-        }
-    }
-
-    /* Small Mobile: 320px - 479px */
-    @media only screen and (max-width: 479px) {
-        .navbar {
-            min-height: 45px;
-        }
-
-        .navbar .container {
-            min-height: 45px;
-        }
-
-        .navbar-brand img {
-            height: 30px;
-        }
-
-        .dropdown-toggle {
-            padding: 5px 8px;
-            font-size: 11px;
-            gap: 4px;
-        }
-
-        .dropdown-arrow {
-            width: 10px;
-            height: 6px;
+            padding: 10px 16px;
+            font-size: 15px;
         }
 
         .dropdown-menu {
-            min-width: 60px;
+            min-width: 85px;
         }
 
         .dropdown-item {
-            padding: 5px 10px;
-            font-size: 12px;
+            padding: 10px 16px;
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 479px) {
+        .navbar {
+            min-height: 65px;
+        }
+
+        .navbar-brand img {
+            height: 42px;
+        }
+
+        .dropdown-toggle {
+            padding: 9px 14px;
+            font-size: 14px;
+            gap: 6px;
+        }
+
+        .dropdown-arrow {
+            width: 11px;
+            height: 7px;
+        }
+
+        .dropdown-menu {
+            min-width: 75px;
+        }
+
+        .dropdown-item {
+            padding: 8px 14px;
+            font-size: 14px;
         }
     }
 </style>
 
 <script>
-    // Dropdown functionality
-    document.addEventListener("DOMContentLoaded", () => {
+    function initDropdown() {
         const dropdownToggle = document.getElementById("languageDropdown");
         const dropdownMenu = document.getElementById("languageMenu");
 
         if (!dropdownToggle || !dropdownMenu) return;
 
+        const openDropdown = () => {
+            dropdownToggle.setAttribute("aria-expanded", "true");
+            dropdownMenu.classList.add("show");
+        };
+
+        const closeDropdown = () => {
+            dropdownToggle.setAttribute("aria-expanded", "false");
+            dropdownMenu.classList.remove("show");
+        };
+
+        const toggleDropdown = () => {
+            const isExpanded =
+                dropdownToggle.getAttribute("aria-expanded") === "true";
+            isExpanded ? closeDropdown() : openDropdown();
+        };
+
         // Toggle dropdown on button click
         dropdownToggle.addEventListener("click", (e) => {
             e.stopPropagation();
-            const isExpanded =
-                dropdownToggle.getAttribute("aria-expanded") === "true";
-
-            if (isExpanded) {
-                closeDropdown();
-            } else {
-                openDropdown();
-            }
+            toggleDropdown();
         });
 
         // Close dropdown when clicking outside
@@ -301,15 +288,12 @@ const { lang } = Astro.props;
                 closeDropdown();
             }
         });
+    }
 
-        function openDropdown() {
-            dropdownToggle.setAttribute("aria-expanded", "true");
-            dropdownMenu.classList.add("show");
-        }
-
-        function closeDropdown() {
-            dropdownToggle.setAttribute("aria-expanded", "false");
-            dropdownMenu.classList.remove("show");
-        }
-    });
+    // Initialize on DOM ready
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initDropdown);
+    } else {
+        initDropdown();
+    }
 </script>

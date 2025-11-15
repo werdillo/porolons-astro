@@ -1,4 +1,5 @@
 ---
+import { advancesData } from "../data/advances";
 const { lang } = Astro.props;
 
 import { Image } from "astro:assets";
@@ -7,47 +8,17 @@ import Advances2 from "../assets/images/advances/Advances2.svg";
 import Advances3 from "../assets/images/advances/Advances3.svg";
 import Advances4 from "../assets/images/advances/Advances4.svg";
 
-const title = {
-    lv: "Uzticieties profesionāļiem",
-    ru: "Доверьтесь профессионалам",
-    en: "Trust the professionals",
-};
-const contentItems = [
-    {
-        imgSrc: Advances1,
-        text_lv: "Vienīgais Vita pārstāvis Latvijā un Igaunijā",
-        text_ru: "Единственный представитель Vita в Латвии и Эстонии",
-        text_en: "The only Vita representative in Latvia and Estonia",
-    },
-    {
-        imgSrc: Advances2,
-        text_lv: "Pārstrādājam 120 tonnas porolona mēnesī",
-        text_ru: "Перерабатываем 120 тон поролона ежемесячно",
-        text_en: "Monthly we process 120 tons of foam rubber",
-    },
-    {
-        imgSrc: Advances3,
-        text_lv: "Produkcija atbilst OEKO-TEX sertifikāta prasībām",
-        text_ru: "Продукция соответствует сертификации OEKO-TEX",
-        text_en: "Products comply with OEKO-TEX certification",
-    },
-    {
-        imgSrc: Advances4,
-        text_lv: "Vairāk nekā 25 gadu pieredze",
-        text_ru: "Более 25 лет опыта",
-        text_en: "More than 25 years of experience",
-    },
-];
+const images = [Advances1, Advances2, Advances3, Advances4];
 ---
 
 <section id="content">
     <div class="container">
-        <h1>{title[lang]}</h1>
+        <h1>{advancesData.title[lang]}</h1>
         <div class="advantages-grid">
             {
-                contentItems.map((item) => (
+                advancesData.items.map((item, index) => (
                     <div class="advantage-item">
-                        <Image src={item.imgSrc} alt="icon" />
+                        <Image src={images[index]} alt="icon" />
                         <p>{item["text_" + lang]}</p>
                     </div>
                 ))
@@ -58,22 +29,16 @@ const contentItems = [
 
 <style>
     #content {
-        padding: 100px 0;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
+        padding: var(--section-padding-desktop) 0;
     }
 
     h1 {
-        font-size: 40px;
-        color: #565656;
-        font-family: "Ubuntu", sans-serif;
-        line-height: 57px;
+        font-size: var(--font-h1-desktop);
+        color: var(--text-primary);
+        font-family: var(--font-secondary);
+        line-height: 1.4;
         font-weight: 500;
-        margin-bottom: 80px;
+        margin-bottom: var(--heading-margin-desktop);
         text-align: center;
     }
 
@@ -96,21 +61,19 @@ const contentItems = [
     .advantage-item p {
         font-size: 16px;
         line-height: 26px;
-        color: #6f6f6f;
+        color: var(--text-secondary);
         letter-spacing: 0.002em;
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--font-primary);
         margin: 0;
     }
 
-    @media only screen and (max-width: 770px) {
+    @media (max-width: 770px) {
         #content {
-            padding: 50px 20px;
+            padding: var(--section-padding-tablet) 0;
         }
-
         h1 {
-            font-size: 28px;
-            line-height: 36px;
-            margin-bottom: 40px;
+            font-size: var(--font-h1-tablet);
+            margin-bottom: var(--heading-margin-tablet);
         }
 
         .advantages-grid {
@@ -119,11 +82,13 @@ const contentItems = [
         }
     }
 
-    @media only screen and (max-width: 479px) {
+    @media (max-width: 479px) {
+        #content {
+            padding: var(--section-padding-mobile) 0;
+        }
         h1 {
-            font-size: 24px;
-            line-height: 32px;
-            margin-bottom: 30px;
+            font-size: var(--font-h1-mobile);
+            margin-bottom: var(--heading-margin-mobile);
         }
 
         .advantages-grid {
@@ -146,8 +111,8 @@ const contentItems = [
         }
 
         .advantage-item p {
-            font-size: 14px;
-            line-height: 20px;
+            font-size: var(--font-body-mobile);
+            line-height: 1.4;
         }
     }
 </style>
