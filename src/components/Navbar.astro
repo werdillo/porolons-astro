@@ -5,33 +5,38 @@ const { lang } = Astro.props;
 ---
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar">
     <div class="container">
         <a class="navbar-brand" href={"https://eliza-mebeles.lv/" + lang}>
-            <Image src={Logo} alt="" />
+            <Image src={Logo} alt="Eliza Logo" />
         </a>
-        <!-- <a class="nav-link phone" href="#">+371 28 363 860</a> -->
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <!-- <span class="navbar-toggler-icon"></span> -->
-        </button>
-        <div class="dropdown">
+
+        <div class="language-dropdown">
             <button
-                class="btn btn-secondary dropdown-toggle"
+                class="dropdown-toggle"
                 type="button"
-                data-bs-toggle="dropdown"
+                id="languageDropdown"
                 aria-expanded="false"
+                aria-label="Select language"
             >
                 {lang.toUpperCase()}
+                <svg
+                    class="dropdown-arrow"
+                    width="12"
+                    height="8"
+                    viewBox="0 0 12 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M1 1.5L6 6.5L11 1.5"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" id="languageMenu">
                 {
                     lang !== "lv" && (
                         <li>
@@ -65,112 +70,246 @@ const { lang } = Astro.props;
 </nav>
 
 <style>
+    /* Container */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    /* Navbar */
     .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
         background: #fff;
         min-height: 60px;
         font-family: "Ubuntu", sans-serif;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar .navbar-nav .nav-link {
-        color: #3e3e3e;
-        margin: 0 5px;
-        font-size: 18px;
-        letter-spacing: 0.5px;
-    }
-
-    .navbar .navbar-nav .nav-link span {
-        background: rgba(141, 136, 136, 0.16);
-        color: var(--main-accent);
-        padding: 8px 24px;
-        border-radius: 50px;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    .navbar .navbar-toggler {
-        color: var(--main-accent);
-        font-size: 32px;
+        z-index: 1000;
     }
 
     .navbar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 60px;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .navbar-brand img {
+        height: 40px;
+        width: auto;
+    }
+
+    /* Language Dropdown */
+    .language-dropdown {
         position: relative;
     }
 
-    .navbar .nav-link.phone {
+    .dropdown-toggle {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-family: "Ubuntu", sans-serif;
+    }
+
+    .dropdown-toggle:hover {
+        background: #e9ecef;
+        border-color: #adb5bd;
+    }
+
+    .dropdown-toggle:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    }
+
+    .dropdown-arrow {
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
         position: absolute;
-        top: 10px;
-        right: 110px;
-        color: #3e3e3e;
-        font-size: 18px;
-        letter-spacing: 0.5px;
+        top: calc(100% + 8px);
+        right: 0;
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        min-width: 80px;
+        padding: 4px 0;
+        margin: 0;
+        list-style: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 1001;
     }
 
-    .hidden-lg {
-        display: none;
+    .dropdown-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
-    /* Tablet desktop :768px. */
-    @media (min-width: 768px) and (max-width: 991px) {
+    .dropdown-item {
+        display: block;
+        padding: 8px 16px;
+        color: #212529;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: background-color 0.2s ease;
+        cursor: pointer;
     }
 
-    /* Large Mobile :480px. */
-    @media only screen and (min-width: 480px) and (max-width: 770px) {
-        .navbar .nav-link.phone {
-            top: 3px;
-            right: 40px;
-            font-size: 15px;
-        }
-        .navbar .navbar-nav .nav-link span {
-            font-size: 11px;
-        }
-        .navbar-collapse.show .navbar-nav {
-            display: inline-block;
-            width: 100%;
-        }
-        .navbar .navbar-nav .nav-link {
-            display: inline-block;
-        }
-        .navbar .navbar-nav .nav-link.phoneIcon img {
-            max-height: 33px;
-            position: relative;
-            top: 3px;
-        }
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+        color: var(--main-accent, #d06d35);
     }
 
-    /* Large Mobile :320. */
-    @media only screen and (min-width: 320px) and (max-width: 475px) {
-        .navbar .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.1rem !important;
-        }
-        .navbar .navbar-toggler {
-            padding: 0.25rem 0.5rem;
-        }
-        .hidden-lg {
-            display: block;
-        }
+    /* Tablet: 768px - 991px */
+    @media only screen and (max-width: 991px) {
         .navbar-brand img {
-            max-height: 35px;
+            height: 38px;
         }
-        .navbar .nav-link.phone {
-            top: 3px;
-            right: 40px;
-            font-size: 15px;
+
+        .dropdown-toggle {
+            padding: 6px 12px;
+            font-size: 13px;
         }
-        .navbar .navbar-nav .nav-link span {
+    }
+
+    /* Large Mobile: 480px - 770px */
+    @media only screen and (max-width: 770px) {
+        .navbar {
+            min-height: 50px;
+        }
+
+        .navbar .container {
+            min-height: 50px;
+            padding: 0 15px;
+        }
+
+        .navbar-brand img {
+            height: 35px;
+        }
+
+        .dropdown-toggle {
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+
+        .dropdown-item {
+            padding: 6px 12px;
+            font-size: 13px;
+        }
+    }
+
+    /* Small Mobile: 320px - 479px */
+    @media only screen and (max-width: 479px) {
+        .navbar {
+            min-height: 45px;
+        }
+
+        .navbar .container {
+            min-height: 45px;
+        }
+
+        .navbar-brand img {
+            height: 30px;
+        }
+
+        .dropdown-toggle {
+            padding: 5px 8px;
             font-size: 11px;
+            gap: 4px;
         }
-        .navbar-collapse.show .navbar-nav {
-            display: inline-block;
-            width: 100%;
+
+        .dropdown-arrow {
+            width: 10px;
+            height: 6px;
         }
-        .navbar .navbar-nav .nav-link {
-            display: inline-block;
+
+        .dropdown-menu {
+            min-width: 60px;
         }
-        .navbar .navbar-nav .nav-link.phoneIcon img {
-            max-height: 33px;
-            position: relative;
-            top: 3px;
+
+        .dropdown-item {
+            padding: 5px 10px;
+            font-size: 12px;
         }
     }
 </style>
+
+<script>
+    // Dropdown functionality
+    document.addEventListener("DOMContentLoaded", () => {
+        const dropdownToggle = document.getElementById("languageDropdown");
+        const dropdownMenu = document.getElementById("languageMenu");
+
+        if (!dropdownToggle || !dropdownMenu) return;
+
+        // Toggle dropdown on button click
+        dropdownToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isExpanded =
+                dropdownToggle.getAttribute("aria-expanded") === "true";
+
+            if (isExpanded) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (e) => {
+            const target = e.target as Node;
+            if (
+                !dropdownToggle.contains(target) &&
+                !dropdownMenu.contains(target)
+            ) {
+                closeDropdown();
+            }
+        });
+
+        // Close dropdown on Escape key
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeDropdown();
+            }
+        });
+
+        function openDropdown() {
+            dropdownToggle.setAttribute("aria-expanded", "true");
+            dropdownMenu.classList.add("show");
+        }
+
+        function closeDropdown() {
+            dropdownToggle.setAttribute("aria-expanded", "false");
+            dropdownMenu.classList.remove("show");
+        }
+    });
+</script>

@@ -16,8 +16,7 @@ const title = {
 
 const accordionItems = [
     {
-        id: "flush-collapseTwo",
-        headingId: "flush-headingTwo",
+        id: "accordion-item-1",
         imgSrc: Accordion1,
         title_lv: "Loksnes",
         title_ru: "Листы",
@@ -30,8 +29,7 @@ const accordionItems = [
             "We produce sheets by using special machines for cutting blocks from polyurethane foam. Foam rubber sheets are used for the production of mattresses, furniture parts and other products.",
     },
     {
-        id: "flush-collapseThree",
-        headingId: "flush-headingThree",
+        id: "accordion-item-2",
         imgSrc: Accordion2,
         title_lv: "Smalki sagrieztas putas",
         title_ru: "Измельчённый поролон",
@@ -44,8 +42,7 @@ const accordionItems = [
             "Parts made of foam rubber are crushed on special equipment and are later used as a filler for pillows, blankets, packaging, etc. For grinding, a light foam of medium softness is used.",
     },
     {
-        id: "flush-collapsefive",
-        headingId: "flush-headingfive",
+        id: "accordion-item-3",
         imgSrc: Accordion4,
         title_lv: "Detaļas, sagataves mēbelēm un pārējā produkcija",
         title_ru: "Детали, заготовки для мебели и прочая продукция",
@@ -58,8 +55,7 @@ const accordionItems = [
             "Are manufactured using equipment specialized for processing foam rubber in accordance with pre-agreed drawings. Depending on the needs of our customers, we prepare semi-finished products, connect foam rubber parts, glue sintepon (polyester wadding), mesh, cover details with adhesive film, etc.",
     },
     {
-        id: "flush-collapseseven",
-        headingId: "flush-headingseven",
+        id: "accordion-item-4",
         imgSrc: Accordion6,
         title_lv: "Laminētais porolons",
         title_ru: "Ламинированный",
@@ -74,149 +70,369 @@ const accordionItems = [
 ];
 ---
 
-<section id="accordian">
+<section id="accordion-section">
     <div class="container">
-        <div class="row">
-            <div class="heading text-center">
-                <h1>{title[lang]}</h1>
-            </div>
-            <div class="faqs">
-                <div
-                    class="accordion accordion-flush"
-                    id="accordionFlushExample"
-                >
-                    {
-                        accordionItems.map((item) => (
-                            <div class="accordion-item">
-                                <h2
-                                    class="accordion-header"
-                                    id={item.headingId}
-                                >
-                                    <button
-                                        class="accordion-button collapsed"
-                                        type="button"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target={`#${item.id}`}
-                                        aria-expanded="false"
-                                        aria-controls={item.id}
-                                    >
-                                        <Image
-                                            src={item.imgSrc}
-                                            class="img-fluid mr-4"
-                                            width="55"
-                                            alt=""
-                                        />
-                                        {item["title_" + lang]}
-                                    </button>
-                                </h2>
-                                <div
-                                    id={item.id}
-                                    class="accordion-collapse collapse"
-                                    aria-labelledby={item.headingId}
-                                    data-bs-parent="#accordionFlushExample"
-                                >
-                                    <div class="accordion-body">
-                                        {item["body_" + lang]}
-                                    </div>
-                                </div>
+        <div class="heading">
+            <h1>{title[lang]}</h1>
+        </div>
+        <div class="accordion" id="accordion">
+            {
+                accordionItems.map((item, index) => (
+                    <div class="accordion-item" data-index={index}>
+                        <button
+                            class="accordion-button"
+                            type="button"
+                            aria-expanded="false"
+                            data-accordion-button
+                        >
+                            <div class="accordion-button-content">
+                                <Image
+                                    src={item.imgSrc}
+                                    alt=""
+                                    width={55}
+                                    height={55}
+                                    class="accordion-icon"
+                                />
+                                <span class="accordion-title">
+                                    {item["title_" + lang]}
+                                </span>
                             </div>
-                        ))
-                    }
-                </div>
-            </div>
+                            <svg
+                                class="accordion-arrow"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M5 7.5L10 12.5L15 7.5"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="accordion-content" data-accordion-content>
+                            <div class="accordion-body">
+                                {item["body_" + lang]}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
         </div>
     </div>
 </section>
 
 <style>
-    #accordian {
+    /* Container */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    /* Section */
+    #accordion-section {
         padding: 100px 0;
+        background: #fff;
     }
 
-    #accordian .row .col-md-12 .btn {
-        background: var(--main-accent);
-        border-radius: 8px;
-        outline: none;
-        border: none;
-        padding: 16px 24px;
-        color: var(--btn-accent);
-        font-size: 20px;
-        font-weight: 500;
-        margin-top: 50px;
-    }
-
-    #accordian .container {
-        width: 70% !important;
-    }
-
-    #accordian .heading h1 {
-        font-size: 40px;
-        color: var(--main-accent);
-        font-family: "Ubuntu", sans-serif;
-        line-height: 40px;
-        font-weight: 500;
+    /* Heading */
+    .heading {
+        text-align: center;
         margin-bottom: 80px;
     }
 
-    :global(.accordion-flush .accordion-button) {
+    .heading h1 {
+        font-size: 40px;
+        color: var(--main-accent);
+        font-family: "Ubuntu", sans-serif;
+        line-height: 45px;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    /* Accordion */
+    .accordion {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* Accordion Item */
+    .accordion-item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .accordion-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Accordion Button */
+    .accordion-button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #ffffff;
+        border: none;
+        padding: 20px 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: "Ubuntu", sans-serif;
+        text-align: left;
+    }
+
+    .accordion-button:hover {
+        background: #f8f9fa;
+    }
+
+    .accordion-button:focus {
+        outline: none;
+    }
+
+    .accordion-button[aria-expanded="true"] {
+        background: #ffffff;
+    }
+
+    .accordion-button-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex: 1;
+    }
+
+    .accordion-icon {
+        width: 55px;
+        height: 55px;
+        flex-shrink: 0;
+    }
+
+    .accordion-title {
         font-size: 26px;
-        line-height: 70px;
+        line-height: 1.4;
         color: #5c5c5c;
-        font-family: "Ubuntu";
         font-weight: 400;
     }
 
-    :global(.accordion-flush .accordion-button:not(.collapsed)) {
+    .accordion-arrow {
+        flex-shrink: 0;
+        color: #5c5c5c;
+        transition: transform 0.3s ease;
+    }
+
+    .accordion-button[aria-expanded="true"] .accordion-arrow {
+        transform: rotate(180deg);
+    }
+
+    /* Accordion Content */
+    .accordion-content {
+        overflow: hidden;
+        transition: height 0.3s ease;
+        height: 0;
+    }
+
+    .accordion-content.active {
         border-top: 1px solid rgba(0, 0, 0, 0.125);
     }
 
-    :global(.accordion-body) {
-        font-family: Open "Sans";
+    .accordion-body {
+        padding: 24px;
+        font-family: "Open Sans", sans-serif;
         font-size: 18px;
         line-height: 36px;
         color: #6f6f6f;
-        border-top: 1px solid rgba(0, 0, 0, 0.125);
     }
 
-    :global(.accordion-button:not(.collapsed)) {
-        background-color: #ffffff !important;
-        border: none;
-        outline: none;
-        color: #000;
+    /* Tablet: 768px - 991px */
+    @media only screen and (max-width: 991px) {
+        .container {
+            padding: 0 20px;
+        }
+
+        .accordion-title {
+            font-size: 22px;
+        }
+
+        .accordion-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .accordion-body {
+            font-size: 16px;
+            line-height: 32px;
+        }
     }
 
-    :global(.accordion-button:focus) {
-        box-shadow: none;
-    }
-
-    :global(.accordion-button:not(.collapsed)::after) {
-        color: var(--btn-accent);
-    }
-
-    :global(.accordion-button:focus) {
-        border-color: rgba(0, 0, 0, 0.125);
-    }
-
-    /* Large Mobile :320. */
-    @media only screen and (min-width: 320px) and (max-width: 475px) {
-        #accordian {
+    /* Large Mobile: 480px - 770px */
+    @media only screen and (max-width: 770px) {
+        #accordion-section {
             padding: 50px 0;
         }
-        #accordian .heading h1 {
-            font-size: 20px;
-            margin-bottom: 25px;
+
+        .heading {
+            margin-bottom: 40px;
         }
-        #accordian .container {
-            width: auto !important;
+
+        .heading h1 {
+            font-size: 30px;
+            line-height: 36px;
         }
-        #accordian
-            :global(.accordion-flush .accordion-item .accordion-button img) {
-            width: 40px !important;
+
+        .accordion-button {
+            padding: 16px 20px;
         }
-        #accordian :global(.accordion-button) {
-            padding: 1rem 1.25rem;
-            font-size: 16px;
+
+        .accordion-button-content {
+            gap: 15px;
+        }
+
+        .accordion-title {
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        .accordion-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .accordion-arrow {
+            width: 18px;
+            height: 18px;
+        }
+
+        .accordion-body {
+            padding: 20px;
+            font-size: 14px;
             line-height: 28px;
         }
     }
+
+    /* Small Mobile: 320px - 479px */
+    @media only screen and (max-width: 479px) {
+        #accordion-section {
+            padding: 40px 0;
+        }
+
+        .container {
+            padding: 0 15px;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 25px;
+            line-height: 32px;
+        }
+
+        .accordion-button {
+            padding: 16px;
+        }
+
+        .accordion-button-content {
+            gap: 12px;
+        }
+
+        .accordion-title {
+            font-size: 16px;
+            line-height: 1.3;
+        }
+
+        .accordion-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+        .accordion-arrow {
+            width: 16px;
+            height: 16px;
+        }
+
+        .accordion-body {
+            padding: 16px;
+            font-size: 13px;
+            line-height: 24px;
+        }
+    }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const accordionButtons = document.querySelectorAll(
+            "[data-accordion-button]",
+        );
+
+        accordionButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const accordionItem = button.closest(".accordion-item");
+                const accordionContent = accordionItem?.querySelector(
+                    "[data-accordion-content]",
+                ) as HTMLElement;
+
+                if (!accordionContent) return;
+
+                const isExpanded =
+                    button.getAttribute("aria-expanded") === "true";
+
+                // Close all other accordion items
+                accordionButtons.forEach((otherButton) => {
+                    if (otherButton !== button) {
+                        const otherItem =
+                            otherButton.closest(".accordion-item");
+                        const otherContent = otherItem?.querySelector(
+                            "[data-accordion-content]",
+                        ) as HTMLElement;
+
+                        if (otherContent) {
+                            otherButton.setAttribute("aria-expanded", "false");
+                            otherContent.style.height = "0px";
+                            otherContent.classList.remove("active");
+                        }
+                    }
+                });
+
+                // Toggle current accordion item
+                if (isExpanded) {
+                    button.setAttribute("aria-expanded", "false");
+                    accordionContent.style.height = "0px";
+                    accordionContent.classList.remove("active");
+                } else {
+                    button.setAttribute("aria-expanded", "true");
+                    accordionContent.classList.add("active");
+                    const height = accordionContent.scrollHeight;
+                    accordionContent.style.height = `${height}px`;
+                }
+            });
+        });
+
+        // Recalculate heights on window resize
+        let resizeTimer: number;
+        window.addEventListener("resize", () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(() => {
+                accordionButtons.forEach((button) => {
+                    const isExpanded =
+                        button.getAttribute("aria-expanded") === "true";
+                    if (isExpanded) {
+                        const accordionItem = button.closest(".accordion-item");
+                        const accordionContent = accordionItem?.querySelector(
+                            "[data-accordion-content]",
+                        ) as HTMLElement;
+
+                        if (accordionContent) {
+                            const height = accordionContent.scrollHeight;
+                            accordionContent.style.height = `${height}px`;
+                        }
+                    }
+                });
+            }, 250);
+        });
+    });
+</script>

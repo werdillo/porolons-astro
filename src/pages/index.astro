@@ -8,14 +8,14 @@ import Location from "../components/Location.astro";
 import Layout from "../layouts/Layout.astro";
 import "../main.css";
 
-const lang = "lv" 
+const lang = "lv";
 ---
 
-<Layout>
-	<Navbar lang={lang}/>
-	<Hero lang={lang}/>
-	<Advances lang={lang}/>
-	<Production lang={lang}/>
-	<Accordion lang={lang} />
-	<Location lang={lang}/>
+<Layout lang={lang}>
+    <Navbar lang={lang} />
+    <Hero lang={lang} />
+    <Advances lang={lang} />
+    <Production lang={lang} />
+    <Accordion lang={lang} />
+    <Location lang={lang} />
 </Layout>

@@ -12,18 +12,15 @@ import "../../main.css";
 const { lang } = Astro.params;
 
 export function getStaticPaths() {
-	return [
-		{ params: { lang: "en" } },
-		{ params: { lang: "ru" } },
-	];
+    return [{ params: { lang: "en" } }, { params: { lang: "ru" } }];
 }
 ---
 
-<Layout>
-	<Navbar lang={lang}/>
-	<Hero lang={lang}/>
-	<Advances lang={lang}/>
-	<Production lang={lang}/>
-	<Accordion lang={lang} />
-	<Location lang={lang}/>
+<Layout lang={lang}>
+    <Navbar lang={lang} />
+    <Hero lang={lang} />
+    <Advances lang={lang} />
+    <Production lang={lang} />
+    <Accordion lang={lang} />
+    <Location lang={lang} />
 </Layout>
