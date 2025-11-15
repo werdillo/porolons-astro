@@ -21,20 +21,13 @@ const text = {
 
 <section id="hero">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="text-area hero">
-                    <h1 style="margin-top: 20px;">
-                        {title1[lang]}
-                        <br />
-                        {title2[lang]}
-                        <p style="margin-top: 20px;">
-                            {text[lang]}
-                        </p>
-                        <!-- <a href="#contact" class="btn btn-danger">Sazinieties ar mums</a> -->
-                    </h1>
-                </div>
-            </div>
+        <div class="text-area">
+            <h1>
+                {title1[lang]}
+                <br />
+                {title2[lang]}
+            </h1>
+            <p>{text[lang]}</p>
         </div>
     </div>
 </section>
@@ -47,112 +40,72 @@ const text = {
         background-position: bottom;
         width: 100%;
         height: 60vh;
+        display: grid;
+        place-items: center;
     }
 
-    #hero .text-area {
-        position: relative;
-        top: 50%;
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 0 20px;
     }
 
-    #hero .text-area h1 {
+    .text-area {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        border-radius: 5px;
+        backdrop-filter: blur(2px);
+    }
+
+    h1 {
         font-size: 88px;
         color: #ffffff;
         font-family: "Ubuntu", sans-serif;
         line-height: 90px;
         letter-spacing: 0.02em;
+        margin-top: 20px;
         margin-bottom: 20px;
     }
 
-    #hero .text-area p {
+    p {
         font-family: "Open Sans", sans-serif;
         font-size: 38px;
         line-height: 52px;
         font-weight: 600;
         letter-spacing: -0.01em;
         color: #ffffff;
-        margin-bottom: 40px;
+        margin-top: 20px;
+        margin-bottom: 0;
     }
 
-    #hero .text-area .btn {
-        background: var(--main-accent);
-        border-radius: 8px;
-        outline: none;
-        border: none;
-        padding: 16px 24px;
-        color: var(--btn-accent);
-        font-size: 20px;
-        font-weight: 500;
-    }
-
-    .text-area.hero {
-        position: relative;
-        top: 50%;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 20px;
-        border-radius: 5px;
-    }
-
-    .text-area.hero::before {
-        content: "";
-        filter: blur(5px);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: -1;
-    }
-
-    /* Large Mobile :480px. */
     @media only screen and (min-width: 480px) and (max-width: 770px) {
-        #hero .text-area h1 {
+        h1 {
             font-size: 34px;
-            line-height: 30px;
-            margin-bottom: 20px;
+            line-height: 36px;
         }
-        #hero .text-area p {
+
+        p {
             font-size: 20px;
-            line-height: 12px;
-            margin-bottom: 20px;
-        }
-        #hero .text-area .btn {
-            padding: 12px 18px;
-            font-size: 12px;
-            font-weight: 500;
+            line-height: 28px;
         }
     }
 
-    /* Large Mobile :320. */
-    @media only screen and (min-width: 320px) and (max-width: 475px) {
+    @media only screen and (max-width: 479px) {
         #hero {
-            background-image: url(../assets/images/hero.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: bottom;
-            width: 100%;
             height: 300px;
-            display: flex;
-            align-items: center;
         }
-        #hero .text-area {
-            position: relative;
-            top: 0;
-        }
-        #hero .text-area h1 {
+
+        h1 {
             font-size: 22px;
-            line-height: 22px;
-            margin-bottom: 16px;
+            line-height: 26px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
-        #hero .text-area p {
+
+        p {
             font-size: 14px;
-            line-height: 12px;
-            margin-bottom: 20px;
-        }
-        #hero .text-area .btn {
-            padding: 10px 14px;
-            font-size: 12px;
-            font-weight: 500;
+            line-height: 20px;
+            margin-top: 10px;
         }
     }
 </style>

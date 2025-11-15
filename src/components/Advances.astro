@@ -42,23 +42,13 @@ const contentItems = [
 
 <section id="content">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="heading">
-                    <h1>{title[lang]}</h1>
-                </div>
-            </div>
+        <h1>{title[lang]}</h1>
+        <div class="advantages-grid">
             {
                 contentItems.map((item) => (
-                    <div class="col-md-3 text-center">
-                        <div class="icon">
-                            <Image
-                                src={item.imgSrc}
-                                class="img-fluid"
-                                alt="icon"
-                            />
-                            <p>{item["text_" + lang]}</p>
-                        </div>
+                    <div class="advantage-item">
+                        <Image src={item.imgSrc} alt="icon" />
+                        <p>{item["text_" + lang]}</p>
                     </div>
                 ))
             }
@@ -71,84 +61,93 @@ const contentItems = [
         padding: 100px 0;
     }
 
-    #content .heading h1 {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    h1 {
         font-size: 40px;
         color: #565656;
         font-family: "Ubuntu", sans-serif;
         line-height: 57px;
         font-weight: 500;
         margin-bottom: 80px;
+        text-align: center;
     }
 
-    #content .icon {
-        margin: 50px 0;
+    .advantages-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 50px;
     }
 
-    #content .icon img {
+    .advantage-item {
+        text-align: center;
+    }
+
+    .advantage-item img {
         width: 70px;
+        height: 70px;
         margin-bottom: 20px;
     }
 
-    #content .icon p {
+    .advantage-item p {
         font-size: 16px;
         line-height: 26px;
         color: #6f6f6f;
         letter-spacing: 0.002em;
-        font-family: Open Sans;
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
     }
 
-    #content .button {
-        margin-top: 50px;
-    }
-
-    #content .button .btn {
-        background: var(--main-accent);
-        border-radius: 8px;
-        outline: none;
-        border: none;
-        padding: 16px 24px;
-        color: var(--btn-accent);
-        font-size: 20px;
-        font-weight: 500;
-    }
-
-    /* Large Mobile :480px. */
-    @media only screen and (min-width: 480px) and (max-width: 770px) {
-        #content .heading h1 {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
+    @media only screen and (max-width: 770px) {
         #content {
-            padding: 50px 0;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            line-height: 36px;
+            margin-bottom: 40px;
+        }
+
+        .advantages-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
         }
     }
 
-    /* Large Mobile :320. */
-    @media only screen and (min-width: 320px) and (max-width: 475px) {
-        #content .heading h1 {
-            font-size: 18px;
-            margin-bottom: 20px;
+    @media only screen and (max-width: 479px) {
+        h1 {
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 30px;
         }
-        #content {
-            padding: 50px 0;
+
+        .advantages-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
-        #content .icon {
-            margin: 10px 30px;
-            text-align: left;
+
+        .advantage-item {
             display: flex;
             align-items: center;
+            text-align: left;
+            gap: 15px;
         }
-        #content .icon img {
-            width: 45px;
-            margin-right: 10px;
-            float: left;
+
+        .advantage-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 0;
+            flex-shrink: 0;
         }
-        #content .button {
-            margin-top: 20px;
-        }
-        #content .button .btn {
-            padding: 8px 24px;
-            font-size: 15px;
+
+        .advantage-item p {
+            font-size: 14px;
+            line-height: 20px;
         }
     }
 </style>

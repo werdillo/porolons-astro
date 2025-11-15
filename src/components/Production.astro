@@ -99,27 +99,16 @@ const photoItems = [
 
 <section id="photos">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center photoHeading">
-                <div class="heading">
-                    <h1>{title[lang]}</h1>
-                </div>
-            </div>
+        <h1>{title[lang]}</h1>
+        <div class="production-grid">
             {
                 photoItems.map((item) => (
-                    <div class="col-md-3 col-sm-6 text-center">
-                        <div class="item">
-                            <Image src={item.imgSrc} class="img-fluid" alt="" />
-                            <p>{item["text_" + lang]}</p>
-                        </div>
+                    <div class="production-item">
+                        <Image src={item.imgSrc} alt={item["text_" + lang]} />
+                        <p>{item["text_" + lang]}</p>
                     </div>
                 ))
             }
-            <!-- <div class="col-md-12 text-center buttonField">
-              <div class="button">
-                  <a href="#contact" class="btn btn-danger">Sazinieties ar mums</a>
-              </div>
-          </div> -->
         </div>
     </div>
 </section>
@@ -130,78 +119,90 @@ const photoItems = [
         padding: 100px 0;
     }
 
-    #photos .heading h1 {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    h1 {
         font-size: 40px;
         color: var(--main-accent);
         font-family: "Ubuntu", sans-serif;
         line-height: 40px;
         font-weight: 500;
         margin-bottom: 80px;
+        text-align: center;
     }
 
-    #photos .item {
-        margin: 30px 0;
+    .production-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px 30px;
+        width: 100%;
     }
 
-    #photos .item img {
+    .production-item {
+        text-align: center;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .production-item img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
         margin-bottom: 16px;
+        display: block;
+        object-fit: contain;
     }
 
-    #photos .item p {
+    .production-item p {
         font-size: 20px;
-        font-family: "Ubuntu";
-        font-style: normal;
+        font-family: "Ubuntu", sans-serif;
         font-weight: 500;
         line-height: 26px;
         letter-spacing: 0.005em;
         color: #565656;
+        margin: 0;
     }
 
-    #photos .button .btn {
-        background: var(--main-accent);
-        border-radius: 8px;
-        outline: none;
-        border: none;
-        padding: 16px 24px;
-        color: var(--btn-accent);
-        font-size: 20px;
-        font-weight: 500;
-        margin-top: 50px;
-    }
-
-    /* Large Mobile :480px. */
-    @media only screen and (min-width: 480px) and (max-width: 770px) {
-    }
-
-    /* Large Mobile :320. */
-    @media only screen and (min-width: 320px) and (max-width: 475px) {
-        #photos .heading h1 {
-            font-size: 25px;
-            line-height: 36px;
-            margin-bottom: 20px;
-        }
+    @media only screen and (max-width: 770px) {
         #photos {
             padding: 50px 0;
         }
-        #photos .row > * {
-            width: 50%;
+
+        h1 {
+            font-size: 28px;
+            line-height: 36px;
+            margin-bottom: 40px;
         }
-        #photos .photoHeading {
-            width: 100%;
+
+        .production-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px 20px;
         }
-        #photos .item {
-            margin: 20px 0;
+
+        .production-item p {
+            font-size: 16px;
+            line-height: 22px;
         }
-        #photos .item p {
+    }
+
+    @media only screen and (max-width: 479px) {
+        h1 {
+            font-size: 25px;
+            line-height: 32px;
+            margin-bottom: 30px;
+        }
+
+        .production-grid {
+            gap: 30px 15px;
+        }
+
+        .production-item p {
             font-size: 13px;
             line-height: 20px;
-        }
-        #photos .buttonField {
-            width: 100%;
-        }
-        #photos .button .btn {
-            padding: 8px 24px;
-            font-size: 15px;
         }
     }
 </style>
