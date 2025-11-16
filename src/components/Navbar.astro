@@ -1,6 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import Logo from "../assets/images/logo.svg";
+import {
+    Dropdown,
+    DropdownTrigger,
+    DropdownContent,
+    DropdownItem,
+} from "./ui/starwind/dropdown";
 
 const { lang } = Astro.props;
 
@@ -9,23 +15,30 @@ const languages = ["lv", "en", "ru"];
 const availableLanguages = languages.filter((l) => l !== lang);
 ---
 
-<nav class="navbar">
-    <div class="container">
-        <a class="navbar-brand" href={`https://eliza-mebeles.lv/${lang}`}>
-            <Image src={Logo} alt="Eliza Logo" />
+<nav
+    class="fixed top-0 left-0 right-0 py-3 bg-(--bg-primary) min-h-[60px] sm:min-h-[65px] md:min-h-[70px] lg:min-h-[60px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] z-100"
+>
+    <div
+        class="container max-w-[1200px] mx-auto px-5 flex items-center justify-between min-h-inherit"
+    >
+        <a
+            class="flex no-underline transition-opacity duration-300 hover:opacity-80"
+            href={`https://eliza-mebeles.lv/${lang}`}
+        >
+            <Image
+                src={Logo}
+                alt="Eliza Logo"
+                class="h-[42px] sm:h-[42px] md:h-12 lg:h-10"
+            />
         </a>
 
-        <div class="language-dropdown">
-            <button
-                class="dropdown-toggle"
-                type="button"
-                id="languageDropdown"
-                aria-expanded="false"
-                aria-label="Select language"
+        <Dropdown>
+            <DropdownTrigger
+                class="bg(--hover-bg)] border border-(--border-color) text-(--text-tertiary) px-3.5 py-[9px] sm:py-[9px] md:px-4 md:py-2.5 lg:px-4 lg:py-2 text-sm sm:text-sm md:text-[15px] lg:text-[14px] font-medium rounded gap-1.5 md:gap-2 lg:gap-2 hover:bg-(--bg-secondary) hover:border-(--text-secondary) transition-all duration-300"
             >
                 {lang.toUpperCase()}
                 <svg
-                    class="dropdown-arrow"
+                    class="w-[11px] h-[7px] sm:w-[11px] sm:h-[7px] md:w-3 md:h-2 lg:w-3 lg:h-2 transition-transform duration-300"
                     width="12"
                     height="8"
                     viewBox="0 0 12 8"
@@ -39,202 +52,23 @@ const availableLanguages = languages.filter((l) => l !== lang);
                         stroke-linecap="round"
                         stroke-linejoin="round"></path>
                 </svg>
-            </button>
-            <ul class="dropdown-menu" id="languageMenu">
+            </DropdownTrigger>
+            <DropdownContent
+                class="min-w-[75px] sm:min-w-[75px] md:min-w-[85px] lg:min-w-20"
+                align="end"
+            >
                 {
                     availableLanguages.map((language) => (
-                        <li>
-                            <a
-                                class="dropdown-item"
-                                href={language === "lv" ? "/" : `/${language}`}
-                            >
-                                {language.toUpperCase()}
-                            </a>
-                        </li>
+                        <DropdownItem
+                            as="a"
+                            href={language === "lv" ? "/" : `/${language}`}
+                            class="text-(--text-primary) text-sm sm:text-sm md:text-[15px] lg:text-sm font-medium py-2 sm:py-2 md:py-2.5 lg:py-2 px-3.5 md:px-4 lg:px-4 hover:bg-(--hover-bg) hover:text-(--main-accent) no-underline block"
+                        >
+                            {language.toUpperCase()}
+                        </DropdownItem>
                     ))
                 }
-            </ul>
-        </div>
+            </DropdownContent>
+        </Dropdown>
     </div>
 </nav>
-
-<style>
-    .navbar {
-        position: fixed;
-        inset: 0 0 auto;
-        background: var(--bg-primary);
-        min-height: 60px;
-        font-family: var(--font-secondary);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-    }
-
-    .navbar .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: inherit;
-    }
-
-    .navbar-brand {
-        display: flex;
-        text-decoration: none;
-        transition: opacity var(--transition-normal);
-    }
-
-    .navbar-brand:hover {
-        opacity: 0.8;
-    }
-
-    .navbar-brand img {
-        height: 40px;
-    }
-
-    .language-dropdown {
-        position: relative;
-    }
-
-    .dropdown-toggle {
-        background: var(--hover-bg);
-        border: 1px solid var(--border-color);
-        color: var(--text-tertiary);
-        padding: 8px 16px;
-        font-size: 14px;
-        font-weight: 500;
-        border-radius: 4px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all var(--transition-normal);
-        font-family: inherit;
-    }
-
-    .dropdown-toggle:hover {
-        background: var(--bg-secondary);
-        border-color: var(--text-secondary);
-    }
-
-    .dropdown-toggle:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-    }
-
-    .dropdown-arrow {
-        transition: transform var(--transition-normal);
-    }
-
-    .dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
-        transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-        position: absolute;
-        top: calc(100% + 8px);
-        right: 0;
-        background: var(--bg-primary);
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        min-width: 80px;
-        padding: 4px 0;
-        margin: 0;
-        list-style: none;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: all var(--transition-normal);
-        z-index: 1001;
-    }
-
-    .dropdown-menu.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .dropdown-item {
-        display: block;
-        padding: 8px 16px;
-        color: var(--text-primary);
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        transition: background-color var(--transition-fast);
-        cursor: pointer;
-    }
-
-    .dropdown-item:hover {
-        background-color: var(--hover-bg);
-        color: var(--main-accent);
-    }
-
-    @media (max-width: 991px) {
-        .navbar-brand img {
-            height: 38px;
-        }
-
-        .dropdown-toggle {
-            padding: 6px 12px;
-            font-size: 13px;
-        }
-    }
-
-    @media (max-width: 770px) {
-        .navbar {
-            min-height: 70px;
-        }
-
-        .navbar-brand img {
-            height: 48px;
-        }
-
-        .dropdown-toggle {
-            padding: 10px 16px;
-            font-size: 15px;
-        }
-
-        .dropdown-menu {
-            min-width: 85px;
-        }
-
-        .dropdown-item {
-            padding: 10px 16px;
-            font-size: 15px;
-        }
-    }
-
-    @media (max-width: 479px) {
-        .navbar {
-            min-height: 65px;
-        }
-
-        .navbar-brand img {
-            height: 42px;
-        }
-
-        .dropdown-toggle {
-            padding: 9px 14px;
-            font-size: 14px;
-            gap: 6px;
-        }
-
-        .dropdown-arrow {
-            width: 11px;
-            height: 7px;
-        }
-
-        .dropdown-menu {
-            min-width: 75px;
-        }
-
-        .dropdown-item {
-            padding: 8px 14px;
-            font-size: 14px;
-        }
-    }
-</style>
-
-<script>
-    import { initDropdown } from "../scripts/dropdown";
-</script>
