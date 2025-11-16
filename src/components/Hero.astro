@@ -1,83 +1,28 @@
 ---
 import { heroData } from "../data/hero";
 const { lang } = Astro.props;
+import heroImage from "../assets/images/hero.jpg";
 ---
 
-<section id="hero">
-    <div class="container">
-        <div class="text-area">
-            <h1>
+<section
+    id="hero"
+    class="bg-no-repeat bg-bottom bg-cover w-full h-[300px] sm:h-[60vh] grid place-items-center"
+    style={`background-image: url(${heroImage.src})`}
+>
+    <div class="container max-w-[1200px] mx-auto px-5">
+        <div class="bg-black/40 p-5 rounded-[5px] backdrop-blur-[2px]">
+            <h1
+                class="text-[22px] sm:text-[34px] md:text-[88px] text-white leading-[26px] font-semibold sm:leading-9 md:leading-[90px] tracking-[0.02em] my-2.5 sm:my-5 md:my-5"
+            >
                 {heroData.title1[lang]}
                 <br />
                 {heroData.title2[lang]}
             </h1>
-            <p>{heroData.text[lang]}</p>
+            <p
+                class="text-sm sm:text-xl md:text-[38px] leading-5 sm:leading-7 md:leading-[52px] tracking-[-0.01em] text-white mt-2.5 sm:mt-5 md:mt-5 mb-0"
+            >
+                {heroData.text[lang]}
+            </p>
         </div>
     </div>
 </section>
-
-<style>
-    #hero {
-        background: url(../assets/images/hero.jpg) no-repeat bottom / cover;
-        width: 100%;
-        height: 60vh;
-        display: grid;
-        place-items: center;
-    }
-
-    .text-area {
-        background: rgba(0, 0, 0, 0.4);
-        padding: 20px;
-        border-radius: 5px;
-        backdrop-filter: blur(2px);
-    }
-
-    h1 {
-        font-size: 88px;
-        color: var(--bg-primary);
-        font-family: var(--font-secondary);
-        line-height: 90px;
-        letter-spacing: 0.02em;
-        margin: 20px 0;
-    }
-
-    p {
-        font-family: var(--font-primary);
-        font-size: 38px;
-        line-height: 52px;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        color: var(--bg-primary);
-        margin: 20px 0 0;
-    }
-
-    @media (min-width: 480px) and (max-width: 770px) {
-        h1 {
-            font-size: 34px;
-            line-height: 36px;
-        }
-
-        p {
-            font-size: 20px;
-            line-height: 28px;
-        }
-    }
-
-    @media (max-width: 479px) {
-        #hero {
-            height: 300px;
-        }
-
-        h1 {
-            font-size: 22px;
-            line-height: 26px;
-            margin: 10px 0;
-        }
-
-        p {
-            font-size: var(--font-body-mobile);
-            line-height: 20px;
-            margin-top: 10px;
-        }
-    }
-</style>

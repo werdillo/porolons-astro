@@ -1,0 +1,59 @@
+---
+import { accordionData } from "../data/accordion";
+const { lang } = Astro.props;
+import { Image } from "astro:assets";
+import Accordion1 from "../assets/images/accordion/Accordion1.svg";
+import Accordion2 from "../assets/images/accordion/Accordion2.svg";
+import Accordion4 from "../assets/images/accordion/Accordion4.svg";
+import Accordion6 from "../assets/images/accordion/Accordion6.svg";
+
+import {
+    Accordion,
+    AccordionItem,
+    AccordionTrigger,
+    AccordionContent,
+} from "./ui/starwind/accordion";
+import "../starwind.css";
+
+const images = [Accordion1, Accordion2, Accordion4, Accordion6];
+---
+
+<section class="py-14 md:py-20 lg:py-22">
+    <div class="container mx-auto px-1 md:px-10 max-w-5xl">
+        <div class="text-center mb-6 md:mb-10">
+            <h1
+                class="text-[25px] md:text-5xl text-(--text-tertiary) lg:text-5xl font-medium"
+            >
+                {accordionData.title[lang]}
+            </h1>
+        </div>
+
+        <Accordion type="single">
+            {
+                accordionData.items.map((item, index) => (
+                    <AccordionItem value={item.id}>
+                        <AccordionTrigger class="px-3 md:px-6">
+                            <div class="flex items-center md:py-2  gap-4 md:gap-6 flex-1 text-(--text-tertiary)">
+                                <Image
+                                    src={images[index]}
+                                    alt={item["title_" + lang]}
+                                    width={56}
+                                    height={56}
+                                    class="shrink-0 w-[35px] h-[35px] md:w-14 md:h-14"
+                                />
+                                <span class=" text-(--text-tertiary) font-normal text-md md:text-2xl lg:text-2.5xl text-left">
+                                    {item["title_" + lang]}
+                                </span>
+                            </div>
+                        </AccordionTrigger>
+                        <AccordionContent class="px-3 md:px-6 text-(--text-tertiary)">
+                            <p class="text-sm py-3 md:text-xl font-light leading-relaxed">
+                                {item["body_" + lang]}
+                            </p>
+                        </AccordionContent>
+                    </AccordionItem>
+                ))
+            }
+        </Accordion>
+    </div>
+</section>

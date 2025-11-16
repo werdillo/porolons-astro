@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 import relativeLinks from "astro-relative-links";
@@ -10,4 +11,7 @@ export default defineConfig({
 		format: "directory",
 	},
 	integrations: [relativeLinks()],
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });

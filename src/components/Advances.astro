@@ -11,108 +11,32 @@ import Advances4 from "../assets/images/advances/Advances4.svg";
 const images = [Advances1, Advances2, Advances3, Advances4];
 ---
 
-<section id="content">
-    <div class="container">
-        <h1>{advancesData.title[lang]}</h1>
-        <div class="advantages-grid">
+<section id="content" class="py-10 sm:py-[50px] md:py-[100px]">
+    <div class="container max-w-[1200px] mx-auto px-5">
+        <h1
+            class="text-[25px] sm:text-[30px] md:text-[40px] text-(--text-primary) leading-[1.4] font-medium mb-[30px] sm:mb-10 md:mb-20 text-center"
+        >
+            {advancesData.title[lang]}
+        </h1>
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 sm:gap-[30px] md:gap-[50px]"
+        >
             {
                 advancesData.items.map((item, index) => (
-                    <div class="advantage-item">
-                        <Image src={images[index]} alt="icon" />
-                        <p>{item["text_" + lang]}</p>
+                    <div class="flex sm:flex-col items-center text-left sm:text-center gap-4 sm:gap-0">
+                        <Image
+                            src={images[index]}
+                            alt="icon"
+                            width={70}
+                            height={70}
+                            class="w-[50px] h-[50px] sm:w-[70px] sm:h-[70px] shrink-0 sm:mb-5"
+                        />
+                        <p class="text-sm sm:text-base leading-[1.4] sm:leading-[26px] text-(--text-secondary) tracking-[0.002em] m-0">
+                            {item["text_" + lang]}
+                        </p>
                     </div>
                 ))
             }
         </div>
     </div>
 </section>
-
-<style>
-    #content {
-        padding: var(--section-padding-desktop) 0;
-    }
-
-    h1 {
-        font-size: var(--font-h1-desktop);
-        color: var(--text-primary);
-        font-family: var(--font-secondary);
-        line-height: var(--line-height-normal);
-        font-weight: 500;
-        margin-bottom: var(--heading-margin-desktop);
-        text-align: center;
-    }
-
-    .advantages-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 50px;
-    }
-
-    .advantage-item {
-        text-align: center;
-    }
-
-    .advantage-item img {
-        width: 70px;
-        height: 70px;
-        margin-bottom: 20px;
-    }
-
-    .advantage-item p {
-        font-size: var(--font-body-tablet);
-        line-height: 26px;
-        color: var(--text-secondary);
-        letter-spacing: 0.002em;
-        font-family: var(--font-primary);
-        margin: 0;
-    }
-
-    @media (max-width: 770px) {
-        #content {
-            padding: var(--section-padding-tablet) 0;
-        }
-        h1 {
-            font-size: var(--font-h1-tablet);
-            margin-bottom: var(--heading-margin-tablet);
-        }
-
-        .advantages-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-    }
-
-    @media (max-width: 479px) {
-        #content {
-            padding: var(--section-padding-mobile) 0;
-        }
-        h1 {
-            font-size: var(--font-h1-mobile);
-            margin-bottom: var(--heading-margin-mobile);
-        }
-
-        .advantages-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .advantage-item {
-            display: flex;
-            align-items: center;
-            text-align: left;
-            gap: 15px;
-        }
-
-        .advantage-item img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 0;
-            flex-shrink: 0;
-        }
-
-        .advantage-item p {
-            font-size: var(--font-body-mobile);
-            line-height: var(--line-height-normal);
-        }
-    }
-</style>
