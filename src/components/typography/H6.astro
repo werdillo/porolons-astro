@@ -1,0 +1,11 @@
+---
+// A small label or caption: Ubuntu 500, 14px, 16px from md. The look is the text-h6 class; `as` sets the tag, so the tag can follow the meaning.
+import type { HTMLAttributes } from "astro/types";
+import "./typography.css";
+
+type Props = HTMLAttributes<"h6"> & { as?: string };
+
+const { as: Tag = "h6", class: extra, ...rest } = Astro.props;
+---
+
+<Tag class:list={["text-h6", extra]} {...rest}><slot /></Tag>

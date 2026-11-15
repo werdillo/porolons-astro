@@ -1,0 +1,11 @@
+---
+// The lead paragraph under the hero title: Ubuntu 400, 14px, 20px from sm, 38px from md. The look is the text-h5 class; `as` sets the tag, so the tag can follow the meaning.
+import type { HTMLAttributes } from "astro/types";
+import "./typography.css";
+
+type Props = HTMLAttributes<"h5"> & { as?: string };
+
+const { as: Tag = "h5", class: extra, ...rest } = Astro.props;
+---
+
+<Tag class:list={["text-h5", extra]} {...rest}><slot /></Tag>

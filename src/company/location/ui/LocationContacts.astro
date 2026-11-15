@@ -1,0 +1,39 @@
+---
+import { P3 } from "#/components/typography";
+import type { Language } from "#/features/i18n";
+import { locationData } from "../data";
+import { formatAddress } from "../services";
+import ContactItem from "./ContactItem.astro";
+
+const { lang } = Astro.props as { lang: Language };
+const { contact } = locationData;
+const address = formatAddress(contact.address);
+---
+
+<div class="contact-gap">
+    <ContactItem icon="fa-envelope">
+        <a href={`mailto:${contact.email}`} class="contact-link">{contact.email}</a>
+    </ContactItem>
+    <ContactItem icon="fa-phone">
+        <a href={`tel:+371${contact.phone1}`} class="contact-link">{contact.phone1}</a>,
+        <a href={`tel:+371${contact.phone2}`} class="contact-link">{contact.phone2}</a>
+    </ContactItem>
+</div>
+
+<div class="contact-gap">
+    <ContactItem icon="fa-map-marker-alt">
+        <a
+            href={`https://maps.google.com/?q=${encodeURIComponent(address)}`}
+            target="_blank"
+            rel="noopener"
+            class="contact-link">{address}</a>
+    </ContactItem>
+</div>
+
+<div class="ml-2.5 sm:ml-5 md:ml-10">
+    {
+        (["weekday", "break", "weekend"] as const).map((key) => (
+            <P3 class="m-0 text-on-dark">{locationData.workingHours[`${key}_${lang}` as const]}</P3>
+        ))
+    }
+</div>

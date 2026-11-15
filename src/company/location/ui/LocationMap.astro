@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import { P3 } from "#/components/typography";
+import type { Language } from "#/features/i18n";
+import { locationData } from "../data";
+import mapPicture from "../assets/map.png";
+import Union from "../assets/Union.svg";
+
+const { lang } = Astro.props as { lang: Language };
+---
+
+<div class="w-full flex justify-center">
+    <iframe
+        src={locationData.mapUrl}
+        title={locationData.mapTitle[lang]}
+        class="map-frame max-w-[500px] border-0"
+        loading="lazy"
+        allowfullscreen
+    ></iframe>
+</div>
+
+<div class="w-full overflow-hidden">
+    <Image src={mapPicture} alt={locationData.planAlt[lang]} loading="lazy" class="map-frame object-cover block" />
+</div>
+
+<div class="flex items-center">
+    <div class="py-0 md:py-[30px]">
+        {locationData.mapPoints[lang].map((point) => <P3 class="text-on-dark my-0.5">{point}</P3>)}
+    </div>
+</div>
+
+<div class="col-span-1 md:col-span-2 mt-[15px] md:mt-[30px] hidden sm:block">
+    <a href="/map.png" target="_blank" rel="noopener" class="dim-on-hover no-underline inline-flex items-center">
+        <Image src={Union} alt="" class="mr-[30px]" />
+        <P3 as="span" class="text-on-dark m-0 flex items-center">{locationData.scheme[lang]}</P3>
+    </a>
+</div>

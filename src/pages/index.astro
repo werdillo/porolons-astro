@@ -1,7 +1,7 @@
 ---
-import { Layout } from "#/app/layout";
+import { Layout, homeSeo } from "#/app/layout";
 import { Navbar } from "#/app/frame";
-import { Hero } from "#/company/hero";
+import { Hero, heroImage } from "#/company/hero";
 import { Advances } from "#/company/advances";
 import { Production } from "#/company/production";
 import { AccordionSection } from "#/company/faq";
@@ -10,11 +10,11 @@ import { Location } from "#/company/location";
 const lang = "lv";
 ---
 
-<Layout lang={lang}>
-    <Navbar lang={lang} />
+<Layout lang={lang} title={homeSeo.title[lang]} description={homeSeo.description[lang]} image={heroImage}>
+    <Navbar slot="header" lang={lang} />
     <Hero lang={lang} />
     <Advances lang={lang} />
     <Production lang={lang} />
     <AccordionSection lang={lang} />
-    <Location lang={lang} />
+    <Location slot="footer" lang={lang} />
 </Layout>

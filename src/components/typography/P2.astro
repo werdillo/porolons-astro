@@ -1,0 +1,11 @@
+---
+// Light body text: Ubuntu 300, 14px, 20px from md. The look is the text-p2 class; `as` sets the tag, so the tag can follow the meaning.
+import type { HTMLAttributes } from "astro/types";
+import "./typography.css";
+
+type Props = HTMLAttributes<"p"> & { as?: string };
+
+const { as: Tag = "p", class: extra, ...rest } = Astro.props;
+---
+
+<Tag class:list={["text-p2", extra]} {...rest}><slot /></Tag>

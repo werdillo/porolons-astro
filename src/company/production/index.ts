@@ -1,1 +1,1 @@
-export { default as Production } from "./Production.astro";
+export { default as Production } from "./ui/Production.astro";

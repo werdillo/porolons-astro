@@ -1,0 +1,17 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import { H6 } from "#/components/typography";
+
+interface Props {
+    image: ImageMetadata;
+    text: string;
+}
+
+const { image, text } = Astro.props;
+---
+
+<li class="text-center min-w-0 overflow-hidden">
+    <Image src={image} alt={text} loading="lazy" class="w-full max-w-full h-auto mb-4 block object-contain" />
+    <H6 as="p" class="text-body m-0">{text}</H6>
+</li>

@@ -1,5 +1,18 @@
 import type { Rule } from "unocss";
 
+// The type scale: text-h1 … text-h6 and text-p1 … text-p3 set the five properties of a style, each read from
+// its variable in src/components/typography/typography.css (the breakpoints are in those variables).
+const textStyle: Rule = [
+  /^text-(h[1-6]|p[1-3])$/,
+  ([, name]) => ({
+    "font-family": `var(--text-${name}-family)`,
+    "font-size": `var(--text-${name}-size)`,
+    "font-weight": `var(--text-${name}-weight)`,
+    "line-height": `var(--text-${name}-line-height)`,
+    "letter-spacing": `var(--text-${name}-tracking)`,
+  }),
+];
+
 // The enter and exit animations, driven by the --tw-enter-* and --tw-exit-* properties.
 const animateIn =
   "enter var(--tw-animation-duration, var(--tw-duration, 0.15s)) var(--tw-ease, ease) var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1) var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none)";
@@ -8,6 +21,7 @@ const animateOut =
 
 /** Utilities the site uses that the preset does not have: the transition, the tw-animate-css set and the accordion motion. */
 export const rules: Rule[] = [
+  textStyle,
   // transform-gpu: its own transform, so the computed matrix is the one it always was.
   ["transform-gpu", { transform: "translateZ(0)" }],
   // transition-colors also covers outline, fill and stroke.

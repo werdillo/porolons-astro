@@ -1,0 +1,11 @@
+---
+// An item title: Ubuntu 400, 16px, 24px from md. The look is the text-h4 class; `as` sets the tag, so the tag can follow the meaning.
+import type { HTMLAttributes } from "astro/types";
+import "./typography.css";
+
+type Props = HTMLAttributes<"h4"> & { as?: string };
+
+const { as: Tag = "h4", class: extra, ...rest } = Astro.props;
+---
+
+<Tag class:list={["text-h4", extra]} {...rest}><slot /></Tag>

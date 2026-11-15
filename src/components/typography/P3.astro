@@ -1,0 +1,11 @@
+---
+// Small text: Ubuntu 600 on phones and 400 from sm; 12px, 14px from sm, 18px from md. The look is the text-p3 class; `as` sets the tag, so the tag can follow the meaning.
+import type { HTMLAttributes } from "astro/types";
+import "./typography.css";
+
+type Props = HTMLAttributes<"p"> & { as?: string };
+
+const { as: Tag = "p", class: extra, ...rest } = Astro.props;
+---
+
+<Tag class:list={["text-p3", extra]} {...rest}><slot /></Tag>

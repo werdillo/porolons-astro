@@ -1,0 +1,57 @@
+---
+import Sun from "@tabler/icons/outline/sun.svg";
+import Moon from "@tabler/icons/outline/moon.svg";
+
+/** A button that switches the light and dark theme. Pressed means dark. */
+interface Props {
+  /** The accessible name, in the language of the page. */
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<button
+  type="button"
+  class="inline-flex items-center justify-center p-2 rounded border border-line text-body hover:bg-surface hover:border-soft transition-colors duration-300 focus-visible:ring-3 focus-visible:ring-outline/50 outline-none"
+  aria-label={label}
+  aria-pressed="false"
+  data-theme-toggle
+>
+  <Sun class="w-5 h-5 dark:hidden" aria-hidden="true" />
+  <Moon class="w-5 h-5 hidden dark:block" aria-hidden="true" />
+</button>
+
+<script>
+  const STORAGE_KEY = "theme";
+  const isDark = () => document.documentElement.classList.contains("dark");
+
+  /** The theme-color of the browser UI follows the page background of the theme in use. */
+  function syncThemeColor(): void {
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+    const background = getComputedStyle(document.documentElement).getPropertyValue("--background").trim();
+    if (meta && background) meta.content = background;
+  }
+
+  function sync(): void {
+    document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(isDark()));
+    });
+    syncThemeColor();
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const dark = !isDark();
+      document.documentElement.classList.toggle("dark", dark);
+      try {
+        localStorage.setItem(STORAGE_KEY, dark ? "dark" : "light");
+      } catch {
+        // Private windows and blocked storage: the choice lasts for this page only.
+      }
+      sync();
+    });
+  });
+
+  sync();
+</script>

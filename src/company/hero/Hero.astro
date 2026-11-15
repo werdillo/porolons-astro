@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import { Container } from "#/components/container";
+import { H1, H5 } from "#/components/typography";
 import type { Language } from "#/features/i18n";
 import { heroData } from "./data";
 import heroImage from "./assets/hero.jpg";
@@ -9,23 +11,24 @@ const { lang } = Astro.props as { lang: Language };
 
 <section
     id="hero"
-    class="bg-no-repeat bg-bottom bg-cover w-full h-[300px] sm:h-[60vh] grid place-items-center"
-    style={`background-image: url(${heroImage.src})`}
+    aria-labelledby="hero-title"
+    class="relative w-full h-[300px] sm:h-[60vh] grid place-items-center overflow-hidden"
 >
-    <Container>
-        <div class="bg-black/40 p-5 rounded-[5px] backdrop-blur-[2px]">
-            <h1
-                class="text-[22px] sm:text-[34px] md:text-[88px] text-white leading-[26px] font-semibold sm:leading-9 md:leading-[90px] tracking-title my-2.5 sm:my-5"
-            >
+    <Image
+        src={heroImage}
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+        class="absolute inset-0 w-full h-full object-cover object-bottom"
+    />
+    <Container class="relative">
+        <div class="bg-overlay p-5 rounded-[5px] backdrop-blur-[2px]">
+            <H1 id="hero-title" class="text-on-dark my-2.5 sm:my-5">
                 {heroData.title1[lang]}
                 <br />
                 {heroData.title2[lang]}
-            </h1>
-            <p
-                class="text-sm sm:text-xl md:text-[38px] leading-5 sm:leading-7 md:leading-[52px] tracking-[-0.01em] text-white mt-2.5 sm:mt-5 mb-0"
-            >
-                {heroData.text[lang]}
-            </p>
+            </H1>
+            <H5 as="p" class="text-on-dark mt-2.5 sm:mt-5 mb-0">{heroData.text[lang]}</H5>
         </div>
     </Container>
 </section>

@@ -1,0 +1,16 @@
+---
+import { P3 } from "#/components/typography";
+
+/** One contact line: an icon, then the text or link. */
+interface Props {
+    /** The Font Awesome icon class, e.g. "fa-phone". */
+    icon: string;
+}
+
+const { icon } = Astro.props;
+---
+
+<P3 class="m-0 text-on-dark">
+    <i class:list={["fa", icon, "mr-2.5 sm:mr-5 text-body"]} aria-hidden="true"></i>
+    <slot />
+</P3>

@@ -1,0 +1,21 @@
+---
+import { Container } from "#/components/container";
+import { Section } from "#/components/section";
+import { H2 } from "#/components/typography";
+import type { Language } from "#/features/i18n";
+import { advancesData } from "../data";
+import AdvanceItem from "./AdvanceItem.astro";
+
+const { lang } = Astro.props as { lang: Language };
+---
+
+<Section id="content" aria-labelledby="advances-title">
+    <Container>
+        <H2 id="advances-title" class="text-center text-body mb-[30px] sm:mb-10 md:mb-20">
+            {advancesData.title[lang]}
+        </H2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 sm:gap-[30px] md:gap-[50px]">
+            {advancesData.items.map((item) => <AdvanceItem icon={item.icon} text={item[`text_${lang}` as const]} />)}
+        </ul>
+    </Container>
+</Section>

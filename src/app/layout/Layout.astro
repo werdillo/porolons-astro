@@ -1,10 +1,27 @@
 ---
 import "../styles/tokens.css";
 import "../styles/animations.css";
-import type { Language } from "#/features/i18n";
+import type { ImageMetadata } from "astro";
+import { languages, localePath, ogLocales, type Language } from "#/features/i18n";
+import { absoluteUrl, jsonLd } from "#/core/seo";
+import { localBusinessSchema } from "#/company/location";
+import { siteName } from "./seo";
 
-// The navigation bar is fixed, so the body starts below it: the height steps down on small screens.
-const { lang = "lv" } = Astro.props as { lang?: Language };
+interface Props {
+    lang: Language;
+    title: string;
+    description: string;
+    /** The picture of the page for link previews. */
+    image: ImageMetadata;
+}
+
+const { lang, title, description, image } = Astro.props;
+if (!Astro.site) {
+    throw new Error("Set `site` in astro.config.mjs: the canonical, hreflang and sitemap URLs are built from it.");
+}
+const site = Astro.site;
+const canonical = absoluteUrl(localePath(lang), site);
+const imageUrl = absoluteUrl(image.src, site);
 ---
 
 <html lang={lang}>
@@ -15,10 +32,42 @@ const { lang = "lv" } = Astro.props as { lang?: Language };
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="color-scheme" content="light dark" />
+        <!-- Set from the page background of the theme in use (see the theme toggle). -->
+        <meta name="theme-color" content="" />
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        {
+            languages.map((alternate) => (
+                <link rel="alternate" hreflang={alternate} href={absoluteUrl(localePath(alternate), site)} />
+            ))
+        }
+        <link rel="alternate" hreflang="x-default" href={absoluteUrl(localePath("lv"), site)} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:locale" content={ogLocales[lang]} />
+        {
+            languages
+                .filter((other) => other !== lang)
+                .map((other) => <meta property="og:locale:alternate" content={ogLocales[other]} />)
+        }
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:image:width" content={String(image.width)} />
+        <meta property="og:image:height" content={String(image.height)} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
+
         <link rel="icon" href="/favicon.png" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
         <!-- Google Font -->
         <link
@@ -34,9 +83,36 @@ const { lang = "lv" } = Astro.props as { lang?: Language };
             crossorigin="anonymous"
         />
 
-        <title>Eliza Upholstery</title>
+        <script type="application/ld+json" set:html={jsonLd(localBusinessSchema({ site, lang, name: siteName, image: imageUrl }))} />
+
+        <!-- The theme before the first paint: the stored choice, else the system setting. -->
+        <script is:inline>
+            (function () {
+                var dark = false;
+                try {
+                    var stored = localStorage.getItem("theme");
+                    dark = stored ? stored === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+                } catch (e) {
+                    try {
+                        dark = matchMedia("(prefers-color-scheme: dark)").matches;
+                    } catch (e2) {}
+                }
+                document.documentElement.classList.toggle("dark", dark);
+                var meta = document.querySelector('meta[name="theme-color"]');
+                var background = getComputedStyle(document.documentElement).getPropertyValue("--background").trim();
+                if (meta && background) meta.content = background;
+            })();
+        </script>
     </head>
     <body class="font-primary overflow-x-hidden pt-header max-[770px]:pt-header-md max-[479px]:!pt-header-sm">
-        <slot />
+        <header>
+            <slot name="header" />
+        </header>
+        <main>
+            <slot />
+        </main>
+        <footer>
+            <slot name="footer" />
+        </footer>
     </body>
 </html>

@@ -1,0 +1,25 @@
+---
+import { Container } from "#/components/container";
+import { Section } from "#/components/section";
+import { H2 } from "#/components/typography";
+import type { Language } from "#/features/i18n";
+import { locationData } from "../data";
+import LocationContacts from "./LocationContacts.astro";
+import LocationMap from "./LocationMap.astro";
+
+const { lang } = Astro.props as { lang: Language };
+---
+
+<Section tone="dark" id="location" aria-labelledby="location-title">
+    <Container>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-[30px]">
+            <div class="text-on-dark">
+                <H2 id="location-title" class="text-on-dark text-center md:text-left mb-5 sm:mb-[30px] md:mb-[50px]">
+                    {locationData.title[lang]}
+                </H2>
+                <LocationContacts lang={lang} />
+            </div>
+            <LocationMap lang={lang} />
+        </div>
+    </Container>
+</Section>

@@ -1,1 +1,1 @@
-export { default as Advances } from "./Advances.astro";
+export { default as Advances } from "./ui/Advances.astro";

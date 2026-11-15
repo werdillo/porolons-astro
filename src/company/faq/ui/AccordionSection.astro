@@ -1,0 +1,34 @@
+---
+import { Accordion } from "#/components/accordion";
+import { Container } from "#/components/container";
+import { Section } from "#/components/section";
+import { H3 } from "#/components/typography";
+import type { Language } from "#/features/i18n";
+import { accordionData } from "../data";
+import FaqItem from "./FaqItem.astro";
+
+const { lang } = Astro.props as { lang: Language };
+---
+
+<Section spacing="loose" aria-labelledby="faq-title">
+    <Container size="narrow">
+        <div class="text-center mb-6 md:mb-10">
+            <H3 as="h2" id="faq-title" class="text-body">
+                {accordionData.title[lang]}
+            </H3>
+        </div>
+
+        <Accordion type="single">
+            {
+                accordionData.items.map((item) => (
+                    <FaqItem
+                        value={item.id}
+                        image={item.image}
+                        title={item[`title_${lang}` as const]}
+                        body={item[`body_${lang}` as const]}
+                    />
+                ))
+            }
+        </Accordion>
+    </Container>
+</Section>

@@ -1,5 +1,8 @@
 # production
 
-The grid of products made from foam, each with its picture and name.
+The products made from foam, with their pictures.
 
-- `index.ts`: exports `Production`.
+- `index.ts`: the door; exports `Production`.
+- `ui/Production.astro`: the section, the heading and the grid.
+- `ui/ProductionItem.astro`: one picture and its caption.
+- `data.ts`, `types.ts`: the captions and pictures.

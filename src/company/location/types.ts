@@ -1,10 +1,16 @@
 import type { TranslatedText } from "#/features/i18n";
 
+export interface PostalAddress {
+    locality: string;
+    street: string;
+    postalCode: string;
+}
+
 export interface ContactInfo {
     email: string;
     phone1: string;
     phone2: string;
-    address: string;
+    address: PostalAddress;
 }
 
 export interface WorkingHours {
@@ -31,5 +37,7 @@ export interface LocationData {
     contact: ContactInfo;
     workingHours: WorkingHours;
     mapPoints: MapPoints;
+    mapTitle: TranslatedText;
+    planAlt: TranslatedText;
     mapUrl: string;
 }

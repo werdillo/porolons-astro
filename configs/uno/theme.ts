@@ -1,23 +1,9 @@
-// The site's theme: colors, text sizes, radii and the container, spacing, shadow, font and tracking
-// names. Each value is a CSS custom property from src/app/styles/tokens.css.
+// The site's theme: colors, radii and the container, spacing, shadow and font names. Each value is a CSS
+// custom property from src/app/styles/tokens.css.
 
 export const theme = {
-  // The sizes with their unitless line-heights: text-sm is 1.25/0.875 of its size, not a fixed 1.25rem.
-  // The section sizes keep the page line-height (1.5, inherited) unless a leading class sets one.
-  text: {
-    xs: { fontSize: "0.75rem", lineHeight: "calc(1 / 0.75)" },
-    sm: { fontSize: "0.875rem", lineHeight: "calc(1.25 / 0.875)" },
-    base: { fontSize: "1rem", lineHeight: "1.5" },
-    lg: { fontSize: "1.125rem", lineHeight: "calc(1.75 / 1.125)" },
-    xl: { fontSize: "1.25rem", lineHeight: "calc(1.75 / 1.25)" },
-    "2xl": { fontSize: "1.5rem", lineHeight: "calc(2 / 1.5)" },
-    "5xl": { fontSize: "3rem", lineHeight: "1" },
-    section: { fontSize: "25px", lineHeight: "1.5" },
-    "section-sm": { fontSize: "30px", lineHeight: "1.5" },
-    "section-md": { fontSize: "40px", lineHeight: "1.5" },
-    // The menu text of the language switcher; its line-height is the text-sm one.
-    menu: { fontSize: "15px", lineHeight: "calc(1.25 / 0.875)" },
-  },
+  // The text styles are the text-h1 … text-p3 classes, made by a rule in rules.ts from the variables
+  // of src/components/typography/typography.css.
   colors: {
     background: "var(--background)",
     foreground: "var(--foreground)",
@@ -47,6 +33,8 @@ export const theme = {
     input: "var(--input)",
     outline: "var(--outline)",
     body: "var(--color-body)",
+    "on-dark": "var(--color-on-dark)",
+    overlay: "var(--color-overlay)",
     soft: "var(--color-soft)",
     surface: "var(--color-surface)",
     dark: "var(--color-dark)",
@@ -72,5 +60,4 @@ export const theme = {
   },
   shadow: { nav: "var(--shadow-nav)" },
   font: { primary: "var(--font-primary)" },
-  tracking: { text: "0.002em", title: "0.02em" },
 };

@@ -1,0 +1,11 @@
+---
+// The large title of the FAQ section: Ubuntu 500, 25px, 48px from md. The look is the text-h3 class; `as` sets the tag, so the tag can follow the meaning.
+import type { HTMLAttributes } from "astro/types";
+import "./typography.css";
+
+type Props = HTMLAttributes<"h3"> & { as?: string };
+
+const { as: Tag = "h3", class: extra, ...rest } = Astro.props;
+---
+
+<Tag class:list={["text-h3", extra]} {...rest}><slot /></Tag>

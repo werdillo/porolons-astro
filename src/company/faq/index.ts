@@ -1,1 +1,1 @@
-export { default as AccordionSection } from "./AccordionSection.astro";
+export { default as AccordionSection } from "./ui/AccordionSection.astro";

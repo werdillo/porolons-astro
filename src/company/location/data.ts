@@ -15,7 +15,11 @@ export const locationData: LocationData = {
         email: "order@eliza-k.lv",
         phone1: "27862121",
         phone2: "26653510",
-        address: "Rīga, A. Deglava iela 52A, LV-1035",
+        address: {
+            locality: "Rīga",
+            street: "A. Deglava iela 52A",
+            postalCode: "LV-1035",
+        },
     },
     workingHours: {
         weekday_lv: "Pirmd-Piekt 8:30 - 16:00",
@@ -53,6 +57,16 @@ export const locationData: LocationData = {
             "5. Polyurethane foam production shop",
             "6. Fabric warehouse",
         ],
+    },
+    mapTitle: {
+        lv: "Ražotne kartē",
+        ru: "Производство на карте",
+        en: "The production site on the map",
+    },
+    planAlt: {
+        lv: "Ražotnes plāns",
+        ru: "План производства",
+        en: "Plan of the production site",
     },
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d790.9258588960025!2d24.166916021392023!3d56.95046509910395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecf1ae790db37%3A0x341a98d829cf03d0!2sEL%C4%AAZA-K%20porolona%20cehs!5e0!3m2!1sru!2slv!4v1667739898401!5m2!1sru!2slv",
 };
