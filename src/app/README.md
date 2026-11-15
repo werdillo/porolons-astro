@@ -4,6 +4,6 @@ The composition root: the page frame, the layout, the global styles, the shared 
 
 - `layout/`: the HTML document shell (`Layout`).
 - `frame/`: the navigation bar (`Navbar`).
-- `styles/`: the design tokens, the base CSS and the keyframes.
-- `assets/`: images used across boxes (the logo and unused pictures).
+- `styles/`: the design tokens (`tokens.css`) and the keyframes (`animations.css`). Classes and the element reset are UnoCSS (`uno.config.ts`).
+- `assets/`: images used across boxes (the logo).
 - `tests/`: the layers and boxes test (`boundaries.test.ts`).

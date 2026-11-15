@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+import { cn } from "#/core/cn";
+
+type Props = HTMLAttributes<"section"> & {
+  /**
+   * The background: plain (the page), surface (light band) or dark (dark band).
+   * @default plain
+   */
+  tone?: "plain" | "surface" | "dark";
+  /**
+   * The vertical padding: default (10 / 50 / 100 units by breakpoint) or loose (a taller rhythm).
+   * @default default
+   */
+  spacing?: "default" | "loose";
+};
+
+const section = cva("", {
+  variants: {
+    tone: {
+      plain: "",
+      surface: "bg-surface",
+      dark: "bg-dark",
+    },
+    spacing: {
+      default: "py-10 sm:py-[50px] md:py-[100px]",
+      loose: "py-14 md:py-20 lg:py-22",
+    },
+  },
+  defaultVariants: {
+    tone: "plain",
+    spacing: "default",
+  },
+});
+
+const { tone = "plain", spacing = "default", class: className, ...rest } = Astro.props;
+---
+
+<section class={cn(section({ tone, spacing }), className)} {...rest}>
+  <slot />
+</section>

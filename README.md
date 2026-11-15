@@ -11,7 +11,9 @@ src/
   core/                 cn(): the class-name helper (clsx)
   components/           the UI kit, no business subject
     accordion/          Accordion, AccordionItem, AccordionTrigger, AccordionContent
+    container/          Container: the page width and gutters
     dropdown/           Dropdown, DropdownTrigger, DropdownContent, DropdownItem, ...
+    section/            Section: vertical padding and the background bands
   features/             needed by every domain, owned by none
     i18n/               languages, Language / TranslatedText types, LanguageDropdown
   company/              the producer's business subjects
@@ -23,7 +25,7 @@ src/
   app/                  composition root
     layout/             Layout: the HTML document
     frame/              Navbar: logo and language switcher
-    styles/             tokens.css, main.css, animations.css
+    styles/             tokens.css, animations.css
     assets/             the logo and images used across boxes
     tests/              boundaries.test.ts: the layers and doors
   pages/                thin: / (Latvian), /[lang] (en, ru)
@@ -45,7 +47,7 @@ bun run check        # typecheck (astro check), lint (oxlint) and tests (vitest)
 
 - Runtime and package manager: Bun (`bun.lock`).
 - Astro 7.4.12 (static output), `astro-relative-links` 0.4.2, `@tabler/icons` 3.52.0.
-- Styling: UnoCSS 66.13.0 with `presetWind4` (`uno.config.ts`, `@unocss/astro` 66.13.0). Colors and radii are CSS variables in `src/app/styles/tokens.css`.
+- Styling: UnoCSS 66.13.0 with `presetWind4` (`uno.config.ts`, `@unocss/astro` 66.13.0). Colors, sizes and the shadow are theme names backed by CSS variables in `src/app/styles/tokens.css`; repeated class strings are shortcuts in `uno.config.ts`.
 - Variants: `class-variance-authority` 0.7.1 and `clsx` 2.1.1.
 - Checks: `@astrojs/check` 0.9.12, TypeScript 6.0.3, oxlint 1.93.0, vitest 5.1.0.
 

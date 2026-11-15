@@ -1,7 +1,8 @@
 /*
  * Design tokens: the CSS custom properties behind the UnoCSS theme (uno.config.ts).
- * Light values on :root, dark overrides on .dark. The colors are the palette the
- * site was built with, written out as values.
+ * The starwind palette (background, primary, border ...) is used by the kit components;
+ * the site palette and layout values below are the ones the pages were built with.
+ * Light values on :root, dark overrides on .dark.
  */
 
 :root {
@@ -33,6 +34,23 @@
     --input: oklch(92.2% 0 0);
     --outline: oklch(70.8% 0 0);
     --radius: 0.625rem;
+
+    /* Site text colors: text-body (copy, titles, icons) and text-soft (secondary copy). */
+    --color-body: #565656;
+    --color-soft: #6f6f6f;
+    /* Site surfaces: bg-surface, bg-dark, bg-hover, border-line. */
+    --color-surface: #f5f5f5;
+    --color-dark: #333333;
+    --color-hover: #f8f9fa;
+    --color-line: rgba(0, 0, 0, 0.125);
+
+    /* Layout: container-page, spacing-header (-sm, -md), shadow-nav, font-primary. */
+    --container-width: 1200px;
+    --header-height: 60px;
+    --header-height-sm: 65px;
+    --header-height-md: 70px;
+    --shadow-nav: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --font-primary: "Ubuntu", sans-serif;
 }
 
 .dark {

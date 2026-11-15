@@ -1,4 +1,8 @@
 import type { AccordionData } from "./types";
+import Accordion1 from "./assets/Accordion1.svg";
+import Accordion2 from "./assets/Accordion2.svg";
+import Accordion4 from "./assets/Accordion4.svg";
+import Accordion6 from "./assets/Accordion6.svg";
 
 export const accordionData: AccordionData = {
     title: {
@@ -9,6 +13,7 @@ export const accordionData: AccordionData = {
     items: [
         {
             id: "accordion-item-1",
+            image: Accordion1,
             title_lv: "Loksnes",
             title_ru: "Листы",
             title_en: "Sheets",
@@ -21,6 +26,7 @@ export const accordionData: AccordionData = {
         },
         {
             id: "accordion-item-2",
+            image: Accordion2,
             title_lv: "Smalki sagrieztas putas",
             title_ru: "Измельчённый поролон",
             title_en: "Crushed foam rubber",
@@ -33,6 +39,7 @@ export const accordionData: AccordionData = {
         },
         {
             id: "accordion-item-3",
+            image: Accordion4,
             title_lv: "Detaļas, sagataves mēbelēm un pārējā produkcija",
             title_ru: "Детали, заготовки для мебели и прочая продукция",
             title_en: "Parts, blanks for the furniture and other products",
@@ -45,6 +52,7 @@ export const accordionData: AccordionData = {
         },
         {
             id: "accordion-item-4",
+            image: Accordion6,
             title_lv: "Laminētais porolons",
             title_ru: "Ламинированный",
             title_en: "Laminated",

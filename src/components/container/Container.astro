@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+import { cn } from "#/core/cn";
+
+type Props = HTMLAttributes<"div"> & {
+  /**
+   * page: the 1200px page width. narrow: a 72rem column, with wider side gutters from the tablet size up.
+   * @default page
+   */
+  size?: "page" | "narrow";
+};
+
+const container = cva("container mx-auto", {
+  variants: {
+    size: {
+      page: "max-w-page px-5",
+      narrow: "max-w-6xl px-1 md:px-10",
+    },
+  },
+  defaultVariants: {
+    size: "page",
+  },
+});
+
+const { size = "page", class: className, ...rest } = Astro.props;
+---
+
+<div class={cn(container({ size }), className)} {...rest}>
+  <slot />
+</div>

@@ -16,11 +16,11 @@ const availableLanguages = languages.filter((l) => l !== lang);
 
 <Dropdown>
     <DropdownTrigger
-        class="bg(--hover-bg)] border border-(--border-color) text-(--text-tertiary) px-3.5 py-[9px] sm:py-[9px] md:px-4 md:py-2.5 lg:px-4 lg:py-2 text-sm sm:text-sm md:text-[15px] lg:text-[14px] font-medium rounded gap-1.5 md:gap-2 lg:gap-2 hover:bg-(--bg-secondary) hover:border-(--text-secondary) transition-all duration-300"
+        class="border border-line text-body px-3.5 py-[9px] md:px-4 md:py-2.5 lg:py-2 text-sm md:text-menu lg:text-[14px] font-medium rounded gap-1.5 md:gap-2 hover:bg-surface hover:border-soft transition-all duration-300"
     >
         {lang.toUpperCase()}
         <svg
-            class="w-[11px] h-[7px] sm:w-[11px] sm:h-[7px] md:w-3 md:h-2 lg:w-3 lg:h-2 transition-transform duration-300"
+            class="w-[11px] h-[7px] md:w-3 md:h-2 transition-transform duration-300"
             width="12"
             height="8"
             viewBox="0 0 12 8"
@@ -35,16 +35,13 @@ const availableLanguages = languages.filter((l) => l !== lang);
                 stroke-linejoin="round"></path>
         </svg>
     </DropdownTrigger>
-    <DropdownContent
-        class="min-w-[75px] sm:min-w-[75px] md:min-w-[85px] lg:min-w-20"
-        align="end"
-    >
+    <DropdownContent class="min-w-[75px] md:min-w-[85px] lg:min-w-20" align="end">
         {
             availableLanguages.map((language) => (
                 <DropdownItem
                     as="a"
                     href={language === "lv" ? "/" : `/${language}`}
-                    class="text-(--text-primary) text-sm sm:text-sm md:text-[15px] lg:text-sm font-medium py-2 sm:py-2 md:py-2.5 lg:py-2 px-3.5 md:px-4 lg:px-4 hover:bg-(--hover-bg) hover:text-(--main-accent) no-underline block"
+                    class="text-body text-sm md:text-menu lg:text-sm font-medium py-2 md:py-2.5 lg:py-2 px-3.5 md:px-4 hover:bg-hover hover:text-body no-underline block"
                 >
                     {language.toUpperCase()}
                 </DropdownItem>

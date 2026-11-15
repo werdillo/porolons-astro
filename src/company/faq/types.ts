@@ -1,7 +1,9 @@
+import type { ImageMetadata } from "astro";
 import type { TranslatedText } from "#/features/i18n";
 
 export interface AccordionItem {
     id: string;
+    image: ImageMetadata;
     title_lv: string;
     title_ru: string;
     title_en: string;

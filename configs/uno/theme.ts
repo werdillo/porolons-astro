@@ -1,0 +1,76 @@
+// The site's theme: colors, text sizes, radii and the container, spacing, shadow, font and tracking
+// names. Each value is a CSS custom property from src/app/styles/tokens.css.
+
+export const theme = {
+  // The sizes with their unitless line-heights: text-sm is 1.25/0.875 of its size, not a fixed 1.25rem.
+  // The section sizes keep the page line-height (1.5, inherited) unless a leading class sets one.
+  text: {
+    xs: { fontSize: "0.75rem", lineHeight: "calc(1 / 0.75)" },
+    sm: { fontSize: "0.875rem", lineHeight: "calc(1.25 / 0.875)" },
+    base: { fontSize: "1rem", lineHeight: "1.5" },
+    lg: { fontSize: "1.125rem", lineHeight: "calc(1.75 / 1.125)" },
+    xl: { fontSize: "1.25rem", lineHeight: "calc(1.75 / 1.25)" },
+    "2xl": { fontSize: "1.5rem", lineHeight: "calc(2 / 1.5)" },
+    "5xl": { fontSize: "3rem", lineHeight: "1" },
+    section: { fontSize: "25px", lineHeight: "1.5" },
+    "section-sm": { fontSize: "30px", lineHeight: "1.5" },
+    "section-md": { fontSize: "40px", lineHeight: "1.5" },
+    // The menu text of the language switcher; its line-height is the text-sm one.
+    menu: { fontSize: "15px", lineHeight: "calc(1.25 / 0.875)" },
+  },
+  colors: {
+    background: "var(--background)",
+    foreground: "var(--foreground)",
+    card: "var(--card)",
+    "card-foreground": "var(--card-foreground)",
+    popover: "var(--popover)",
+    "popover-foreground": "var(--popover-foreground)",
+    primary: "var(--primary)",
+    "primary-foreground": "var(--primary-foreground)",
+    "primary-accent": "var(--primary-accent)",
+    secondary: "var(--secondary)",
+    "secondary-foreground": "var(--secondary-foreground)",
+    "secondary-accent": "var(--secondary-accent)",
+    muted: "var(--muted)",
+    "muted-foreground": "var(--muted-foreground)",
+    accent: "var(--accent)",
+    "accent-foreground": "var(--accent-foreground)",
+    info: "var(--info)",
+    "info-foreground": "var(--info-foreground)",
+    success: "var(--success)",
+    "success-foreground": "var(--success-foreground)",
+    warning: "var(--warning)",
+    "warning-foreground": "var(--warning-foreground)",
+    error: "var(--error)",
+    "error-foreground": "var(--error-foreground)",
+    border: "var(--border)",
+    input: "var(--input)",
+    outline: "var(--outline)",
+    body: "var(--color-body)",
+    soft: "var(--color-soft)",
+    surface: "var(--color-surface)",
+    dark: "var(--color-dark)",
+    hover: "var(--color-hover)",
+    line: "var(--color-line)",
+  },
+  radius: {
+    xs: "calc(var(--radius) - 0.375rem)",
+    sm: "calc(var(--radius) - 0.25rem)",
+    md: "calc(var(--radius) - 0.125rem)",
+    lg: "var(--radius)",
+    xl: "calc(var(--radius) + 0.25rem)",
+    "2xl": "calc(var(--radius) + 0.5rem)",
+    "3xl": "calc(var(--radius) + 1rem)",
+  },
+  // max-w-page: the 1200px page width of every container.
+  container: { page: "var(--container-width)" },
+  // pt-header, min-h-header-md ...: the fixed navigation bar's height at each breakpoint.
+  spacing: {
+    header: "var(--header-height)",
+    "header-sm": "var(--header-height-sm)",
+    "header-md": "var(--header-height-md)",
+  },
+  shadow: { nav: "var(--shadow-nav)" },
+  font: { primary: "var(--font-primary)" },
+  tracking: { text: "0.002em", title: "0.02em" },
+};

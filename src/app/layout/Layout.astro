@@ -1,9 +1,9 @@
 ---
 import "../styles/tokens.css";
 import "../styles/animations.css";
-import "../styles/main.css";
 import type { Language } from "#/features/i18n";
 
+// The navigation bar is fixed, so the body starts below it: the height steps down on small screens.
 const { lang = "lv" } = Astro.props as { lang?: Language };
 ---
 
@@ -36,7 +36,7 @@ const { lang = "lv" } = Astro.props as { lang?: Language };
 
         <title>Eliza Upholstery</title>
     </head>
-    <body>
+    <body class="font-primary overflow-x-hidden pt-header max-[770px]:pt-header-md max-[479px]:!pt-header-sm">
         <slot />
     </body>
 </html>
