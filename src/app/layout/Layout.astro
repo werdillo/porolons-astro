@@ -1,0 +1,42 @@
+---
+import "../styles/tokens.css";
+import "../styles/animations.css";
+import "../styles/main.css";
+import type { Language } from "#/features/i18n";
+
+const { lang = "lv" } = Astro.props as { lang?: Language };
+---
+
+<html lang={lang}>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" href="/favicon.png" sizes="any" />
+
+        <!-- Google Font -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- FONT AWESOME -->
+        <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous"
+        />
+
+        <title>Eliza Upholstery</title>
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>

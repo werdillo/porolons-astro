@@ -1,0 +1,30 @@
+---
+import type { Language } from "#/features/i18n";
+import { heroData } from "./data";
+import heroImage from "./assets/hero.jpg";
+
+const { lang } = Astro.props as { lang: Language };
+---
+
+<section
+    id="hero"
+    class="bg-no-repeat bg-bottom bg-cover w-full h-[300px] sm:h-[60vh] grid place-items-center"
+    style={`background-image: url(${heroImage.src})`}
+>
+    <div class="container max-w-[1200px] mx-auto px-5">
+        <div class="bg-black/40 p-5 rounded-[5px] backdrop-blur-[2px]">
+            <h1
+                class="text-[22px] sm:text-[34px] md:text-[88px] text-white leading-[26px] font-semibold sm:leading-9 md:leading-[90px] tracking-[0.02em] my-2.5 sm:my-5 md:my-5"
+            >
+                {heroData.title1[lang]}
+                <br />
+                {heroData.title2[lang]}
+            </h1>
+            <p
+                class="text-sm sm:text-xl md:text-[38px] leading-5 sm:leading-7 md:leading-[52px] tracking-[-0.01em] text-white mt-2.5 sm:mt-5 md:mt-5 mb-0"
+            >
+                {heroData.text[lang]}
+            </p>
+        </div>
+    </div>
+</section>

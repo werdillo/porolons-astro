@@ -1,0 +1,53 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+import { cn } from "#/core/cn";
+
+type Props = Omit<HTMLAttributes<"button">, "role" | "type"> & {
+  /**
+   * When true, the component will render its child element with a simple wrapper instead of a button component
+   */
+  asChild?: boolean;
+};
+
+const dropdownTrigger = cva(
+  [
+    "starwind-dropdown-trigger",
+    "inline-flex items-center justify-center",
+    "focus-visible:ring-outline/50 outline-none focus-visible:ring-3",
+    "disabled:pointer-events-none",
+  ].join(" "),
+);
+
+const { class: className, asChild = false, ...rest } = Astro.props;
+
+// Get the first child element if asChild is true
+let hasChildren = false;
+if (Astro.slots.has("default")) {
+  hasChildren = true;
+}
+---
+
+{
+  asChild && hasChildren ? (
+    <div
+      class={cn("starwind-dropdown-trigger", className)}
+      data-slot="dropdown-trigger"
+      data-as-child
+    >
+      <slot />
+    </div>
+  ) : (
+    <button
+      class={cn(dropdownTrigger(), className)}
+      type="button"
+      aria-haspopup="true"
+      aria-expanded="false"
+      data-state="closed"
+      data-slot="dropdown-trigger"
+      {...rest}
+    >
+      <slot />
+    </button>
+  )
+}

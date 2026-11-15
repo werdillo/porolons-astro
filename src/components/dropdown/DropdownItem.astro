@@ -1,0 +1,51 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+import { cva } from "class-variance-authority";
+import { cn } from "#/core/cn";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+  /**
+   * Whether the item is inset (has left padding)
+   */
+  inset?: boolean;
+  /**
+   * Whether the item is disabled
+   */
+  disabled?: boolean;
+};
+
+const dropdownItem = cva(
+  [
+    "focus:bg-accent focus:text-accent-foreground relative cursor-default items-center gap-2 rounded-sm transition-colors outline-none select-none",
+    "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+    "[&>svg]:size-4 [&>svg]:shrink-0",
+  ].join(" "),
+  {
+    variants: {
+      inset: {
+        true: "pl-8",
+      },
+      disabled: {
+        true: "pointer-events-none opacity-50",
+      },
+    },
+    defaultVariants: {
+      inset: false,
+      disabled: false,
+    },
+  },
+);
+
+const { class: className, inset = false, disabled = false, as: Tag = "div", ...rest } = Astro.props;
+---
+
+<Tag
+  class={cn(dropdownItem({ inset, disabled }), className)}
+  role="menuitem"
+  tabindex={disabled ? "-1" : "0"}
+  data-disabled={disabled ? "true" : undefined}
+  data-slot="dropdown-item"
+  {...rest}
+>
+  <slot />
+</Tag>

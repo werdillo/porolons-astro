@@ -1,15 +1,14 @@
 ---
-import Navbar from "../../components/Navbar.astro";
-import Advances from "../../components/Advances.astro";
-import Production from "../../components/Production.astro";
-import AccordionSection from "../../components/AccordionSection.astro";
-import Hero from "../../components/Hero.astro";
-import Location from "../../components/Location.astro";
-import Layout from "../../layouts/Layout.astro";
+import { Layout } from "#/app/layout";
+import { Navbar } from "#/app/frame";
+import { Hero } from "#/company/hero";
+import { Advances } from "#/company/advances";
+import { Production } from "#/company/production";
+import { AccordionSection } from "#/company/faq";
+import { Location } from "#/company/location";
+import type { Language } from "#/features/i18n";
 
-import "../../main.css";
-
-const { lang } = Astro.params;
+const lang = Astro.params.lang as Language;
 
 export function getStaticPaths() {
     return [{ params: { lang: "en" } }, { params: { lang: "ru" } }];

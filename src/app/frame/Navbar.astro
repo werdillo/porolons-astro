@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../assets/logo.svg";
+import { LanguageDropdown, type Language } from "#/features/i18n";
+
+const { lang } = Astro.props as { lang: Language };
+---
+
+<nav
+    class="fixed top-0 left-0 right-0 py-3 bg-(--bg-primary) min-h-[60px] sm:min-h-[65px] md:min-h-[70px] lg:min-h-[60px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] z-100"
+>
+    <div
+        class="container max-w-[1200px] mx-auto px-5 flex items-center justify-between"
+    >
+        <a
+            class="flex no-underline transition-opacity duration-300 hover:opacity-80"
+            href={`https://eliza-mebeles.lv/${lang}`}
+        >
+            <Image
+                src={Logo}
+                alt="Eliza Logo"
+                class="h-[42px] sm:h-[42px] md:h-12 lg:h-10"
+            />
+        </a>
+
+        <LanguageDropdown lang={lang} />
+    </div>
+</nav>

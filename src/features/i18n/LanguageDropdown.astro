@@ -1,0 +1,54 @@
+---
+import {
+    Dropdown,
+    DropdownTrigger,
+    DropdownContent,
+    DropdownItem,
+} from "#/components/dropdown";
+import type { Language } from "./types";
+import { languages } from "./locales";
+
+const { lang } = Astro.props as { lang: Language };
+
+// Every language except the current one, in the order they are listed.
+const availableLanguages = languages.filter((l) => l !== lang);
+---
+
+<Dropdown>
+    <DropdownTrigger
+        class="bg(--hover-bg)] border border-(--border-color) text-(--text-tertiary) px-3.5 py-[9px] sm:py-[9px] md:px-4 md:py-2.5 lg:px-4 lg:py-2 text-sm sm:text-sm md:text-[15px] lg:text-[14px] font-medium rounded gap-1.5 md:gap-2 lg:gap-2 hover:bg-(--bg-secondary) hover:border-(--text-secondary) transition-all duration-300"
+    >
+        {lang.toUpperCase()}
+        <svg
+            class="w-[11px] h-[7px] sm:w-[11px] sm:h-[7px] md:w-3 md:h-2 lg:w-3 lg:h-2 transition-transform duration-300"
+            width="12"
+            height="8"
+            viewBox="0 0 12 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M1 1.5L6 6.5L11 1.5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+        </svg>
+    </DropdownTrigger>
+    <DropdownContent
+        class="min-w-[75px] sm:min-w-[75px] md:min-w-[85px] lg:min-w-20"
+        align="end"
+    >
+        {
+            availableLanguages.map((language) => (
+                <DropdownItem
+                    as="a"
+                    href={language === "lv" ? "/" : `/${language}`}
+                    class="text-(--text-primary) text-sm sm:text-sm md:text-[15px] lg:text-sm font-medium py-2 sm:py-2 md:py-2.5 lg:py-2 px-3.5 md:px-4 lg:px-4 hover:bg-(--hover-bg) hover:text-(--main-accent) no-underline block"
+                >
+                    {language.toUpperCase()}
+                </DropdownItem>
+            ))
+        }
+    </DropdownContent>
+</Dropdown>

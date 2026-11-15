@@ -1,0 +1,66 @@
+/*
+ * Design tokens: the CSS custom properties behind the UnoCSS theme (uno.config.ts).
+ * Light values on :root, dark overrides on .dark. The colors are the palette the
+ * site was built with, written out as values.
+ */
+
+:root {
+    --background: #fff;
+    --foreground: oklch(14.5% 0 0);
+    --card: #fff;
+    --card-foreground: oklch(14.5% 0 0);
+    --popover: #fff;
+    --popover-foreground: oklch(14.5% 0 0);
+    --primary: oklch(48.8% 0.243 264.376);
+    --primary-foreground: oklch(98.5% 0 0);
+    --primary-accent: oklch(48.8% 0.243 264.376);
+    --secondary: oklch(51.8% 0.253 323.949);
+    --secondary-foreground: oklch(98.5% 0 0);
+    --secondary-accent: oklch(51.8% 0.253 323.949);
+    --muted: oklch(97% 0 0);
+    --muted-foreground: oklch(43.9% 0 0);
+    --accent: oklch(97% 0 0);
+    --accent-foreground: oklch(20.5% 0 0);
+    --info: oklch(82.8% 0.111 230.318);
+    --info-foreground: oklch(29.3% 0.066 243.157);
+    --success: oklch(87.1% 0.15 154.449);
+    --success-foreground: oklch(26.6% 0.065 152.934);
+    --warning: oklch(87.9% 0.169 91.605);
+    --warning-foreground: oklch(27.9% 0.077 45.635);
+    --error: oklch(50.5% 0.213 27.518);
+    --error-foreground: oklch(98.5% 0 0);
+    --border: oklch(92.2% 0 0);
+    --input: oklch(92.2% 0 0);
+    --outline: oklch(70.8% 0 0);
+    --radius: 0.625rem;
+}
+
+.dark {
+    --background: oklch(14.5% 0 0);
+    --foreground: oklch(98.5% 0 0);
+    --card: oklch(20.5% 0 0);
+    --card-foreground: oklch(98.5% 0 0);
+    --popover: oklch(26.9% 0 0);
+    --popover-foreground: oklch(98.5% 0 0);
+    --primary: oklch(48.8% 0.243 264.376);
+    --primary-foreground: oklch(98.5% 0 0);
+    --primary-accent: oklch(70.7% 0.165 254.624);
+    --secondary: oklch(51.8% 0.253 323.949);
+    --secondary-foreground: oklch(98.5% 0 0);
+    --secondary-accent: oklch(74% 0.238 322.16);
+    --muted: oklch(26.9% 0 0);
+    --muted-foreground: oklch(70.8% 0 0);
+    --accent: oklch(37.1% 0 0);
+    --accent-foreground: oklch(97% 0 0);
+    --info: oklch(82.8% 0.111 230.318);
+    --info-foreground: oklch(29.3% 0.066 243.157);
+    --success: oklch(87.1% 0.15 154.449);
+    --success-foreground: oklch(26.6% 0.065 152.934);
+    --warning: oklch(87.9% 0.169 91.605);
+    --warning-foreground: oklch(27.9% 0.077 45.635);
+    --error: oklch(44.4% 0.177 26.899);
+    --error-foreground: oklch(98.5% 0 0);
+    --border: color-mix(in oklab, oklch(98.5% 0 0) 10%, transparent);
+    --input: color-mix(in oklab, oklch(98.5% 0 0) 15%, transparent);
+    --outline: oklch(55.6% 0 0);
+}
