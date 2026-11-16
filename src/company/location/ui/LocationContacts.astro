@@ -11,17 +11,17 @@ const address = formatAddress(contact.address);
 ---
 
 <div class="contact-gap">
-    <ContactItem icon="fa-envelope">
+    <ContactItem icon="mail">
         <a href={`mailto:${contact.email}`} class="contact-link">{contact.email}</a>
     </ContactItem>
-    <ContactItem icon="fa-phone">
+    <ContactItem icon="phone">
         <a href={`tel:+371${contact.phone1}`} class="contact-link">{contact.phone1}</a>,
         <a href={`tel:+371${contact.phone2}`} class="contact-link">{contact.phone2}</a>
     </ContactItem>
 </div>
 
 <div class="contact-gap">
-    <ContactItem icon="fa-map-marker-alt">
+    <ContactItem icon="map-pin">
         <a
             href={`https://maps.google.com/?q=${encodeURIComponent(address)}`}
             target="_blank"

@@ -1,16 +1,29 @@
 ---
+import MailIcon from "@tabler/icons/filled/mail.svg";
+import PhoneIcon from "@tabler/icons/filled/phone.svg";
+import MapPinIcon from "@tabler/icons/filled/map-pin.svg";
 import { P3 } from "#/components/typography";
+
+const icons = { mail: MailIcon, phone: PhoneIcon, "map-pin": MapPinIcon };
 
 /** One contact line: an icon, then the text or link. */
 interface Props {
-    /** The Font Awesome icon class, e.g. "fa-phone". */
-    icon: string;
+    /** The icon of the line, from the filled Tabler set. */
+    icon: keyof typeof icons;
 }
 
 const { icon } = Astro.props;
+const Icon = icons[icon];
 ---
 
 <P3 class="m-0 text-on-dark">
-    <i class:list={["fa", icon, "mr-2.5 sm:mr-5 text-body"]} aria-hidden="true"></i>
+    <Icon
+        width="1em"
+        height="1em"
+        fill="currentColor"
+        class="inline-block align-[-0.125em] mr-2.5 sm:mr-5 text-body"
+        aria-hidden="true"
+        focusable="false"
+    />
     <slot />
 </P3>

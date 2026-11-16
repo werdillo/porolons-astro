@@ -13,7 +13,12 @@ export const heroData: HeroData = {
     },
     text: {
         lv: "Putu poliuretāns ražotnēm",
-        ru: "Пенополиuretан для предприятий",
+        ru: "Пенополиуретан для предприятий",
         en: "Polyurethane foam for the enterprise",
+    },
+    imageAlt: {
+        lv: "Porolona ražotne Rīgā",
+        ru: "Производство поролона в Риге",
+        en: "Polyurethane foam production in Riga",
     },
 };

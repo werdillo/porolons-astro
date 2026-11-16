@@ -8,7 +8,7 @@ Layers run `core ← components ← features ← company`; `app` and `pages` com
 
 ```text
 src/
-  core/                 cn() (class names), absoluteUrl() and jsonLd() (structured data)
+  core/                 cn() (class names); seo/: absoluteUrl(), alternateLinks() (hreflang), jsonLd(), postalAddressLd(), websiteLd(), robotsTxt(), sitemapI18n()
   components/           the UI kit, no business subject
     accordion/          Accordion, AccordionItem, AccordionTrigger, AccordionContent
     container/          Container: the page width and gutters
@@ -30,7 +30,7 @@ src/
     styles/             tokens.css (light and dark colours), animations.css
     assets/             the logo (light and dark) and images used across boxes
     tests/              boundaries.test.ts (layers and doors), typography.test.ts (no raw text styles)
-  pages/                thin: / (Latvian), /[lang] (en, ru), robots.txt
+  pages/                thin: / (Latvian), /[lang] (en, ru), 404 (not found), robots.txt
 public/                 static files, URLs unchanged
 ```
 
@@ -55,7 +55,7 @@ The theme is the `dark` class on `<html>`. A small inline script in the head set
 
 ## SEO
 
-Each page has its title, description, canonical link, `hreflang` for lv, en, ru and `x-default`, Open Graph and Twitter tags, and a `LocalBusiness` JSON-LD with the address, phones, email and hours the location box shows. The sitemap (`@astrojs/sitemap`, with the locales) and `robots.txt` (pointing to the sitemap) are generated at build time.
+Each page has its title, description, canonical link, `hreflang` for lv-LV, en-US, ru-RU and `x-default`, Open Graph and Twitter tags, a `LocalBusiness` JSON-LD (the address, phones, email, hours and map coordinates the location box shows) and a `WebSite` JSON-LD. The language codes are one map, `hreflangCodes` in `src/features/i18n/locales.ts`, used by the head and by the sitemap (`@astrojs/sitemap`, built by `sitemapI18n` in `src/core/seo/`). `robots.txt` points to the sitemap. The 404 page (`src/pages/404.astro`) is `noindex, follow`, and its paths are absolute: it is served at any address.
 
 ## Stack
 
@@ -69,7 +69,7 @@ Deviations from the latest versions, and why:
 
 - TypeScript 6.0.3, not 7.0.2: `astro check` refuses TypeScript 7 (it supports 5 and 6).
 - `compressHTML: false` in `astro.config.mjs`: Astro 7's HTML compressor drops the space between an icon and the link after it and the spaces inside a link, which moved the text.
-- UnoCSS output is in CSS layers (`outputToCssLayers`), and the base rules are a preflight: the stylesheet of Font Awesome has no layer and must not beat the utilities, as it never did. The element defaults of the type scale sit in the base layer, so a text class beats them.
+- UnoCSS output is in CSS layers (`outputToCssLayers`), and the base rules are a preflight: a stylesheet without a layer would beat the utilities, so none is loaded. The element defaults of the type scale sit in the base layer, so a text class beats them.
 - No class-merge package: a class passed to a kit component is added after the kit's base classes, so where the site overrides a base utility the base one is removed from the kit (`DropdownContent` min-width, `DropdownTrigger` transition, `DropdownItem` display and padding).
 - Animation utilities from `tw-animate-css` are rules in `uno.config.ts` with their keyframes in `src/app/styles/animations.css`. The `@property` registrations are not carried over; they only give initial values that the rules already supply.
 - The type scale is nine styles (H1-H6, P1-P3) with their values in `typography.css`; the UnoCSS `text-h*`/`text-p*` classes read those variables instead of repeating them.

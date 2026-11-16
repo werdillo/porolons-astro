@@ -1,0 +1,56 @@
+---
+import { Layout, siteName } from "#/app/layout";
+import { Navbar } from "#/app/frame";
+import { Container } from "#/components/container";
+import { Section } from "#/components/section";
+import { H1, P2 } from "#/components/typography";
+import { heroImage } from "#/company/hero";
+import { languages, localePath, type Language } from "#/features/i18n";
+
+// Served at every address without a page, so the links are root paths and the stylesheets are
+// kept absolute (see astro.config.mjs): the file works at any depth.
+const lang = "lv";
+
+/** The message in each language, and the name of each language, which its home page is linked by. */
+const messages: Record<Language, string> = {
+    lv: "Lapa nav atrasta. Izvēlieties valodu un dodieties uz sākumlapu.",
+    en: "The page was not found. Choose a language to go to the home page.",
+    ru: "Страница не найдена. Выберите язык, чтобы перейти на главную.",
+};
+const names: Record<Language, string> = { lv: "Latviešu", en: "English", ru: "Русский" };
+---
+
+<Layout
+    lang={lang}
+    title={`Lapa nav atrasta | ${siteName}`}
+    description="Lapa nav atrasta. Porolona ražotne Rīgā."
+    image={heroImage}
+    noindex
+>
+    <Navbar slot="header" lang={lang} />
+    <Section>
+        <Container class="text-center">
+            <H1 class="my-5">404</H1>
+            {
+                languages.map((language) => (
+                    <P2 class="m-0 text-body" lang={language}>
+                        {messages[language]}
+                    </P2>
+                ))
+            }
+            <div class="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-4">
+                {
+                    languages.map((language) => (
+                        <a
+                            href={localePath(language)}
+                            lang={language}
+                            class="text-body text-h6 underline underline-offset-4 dim-on-hover"
+                        >
+                            {names[language]}
+                        </a>
+                    ))
+                }
+            </div>
+        </Container>
+    </Section>
+</Layout>

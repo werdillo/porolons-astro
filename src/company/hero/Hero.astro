@@ -16,7 +16,7 @@ const { lang } = Astro.props as { lang: Language };
 >
     <Image
         src={heroImage}
-        alt=""
+        alt={heroData.imageAlt[lang]}
         loading="eager"
         fetchpriority="high"
         class="absolute inset-0 w-full h-full object-cover object-bottom"

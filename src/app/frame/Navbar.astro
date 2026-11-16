@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import { Container } from "#/components/container";
 import { ThemeToggle } from "#/components/theme-toggle";
-import { LanguageDropdown, navigationLabel, themeToggleLabel, type Language } from "#/features/i18n";
+import { LanguageDropdown, localePath, navigationLabel, themeToggleLabel, type Language } from "#/features/i18n";
 import Logo from "../assets/logo.svg";
 import LogoDark from "../assets/logo-dark.svg";
 
@@ -14,7 +14,7 @@ const { lang } = Astro.props as { lang: Language };
     class="fixed top-0 left-0 right-0 z-100 py-3 bg-background min-h-header sm:min-h-header-sm md:min-h-header-md lg:min-h-header shadow-nav"
 >
     <Container class="flex items-center justify-between">
-        <a class="dim-on-hover flex no-underline" href={`https://eliza-mebeles.lv/${lang}`} rel="noopener">
+        <a class="dim-on-hover flex no-underline" href={new URL(localePath(lang), Astro.site).href} rel="noopener">
             <Image src={Logo} alt="Eliza Logo" class="h-[42px] md:h-12 lg:h-10 dark:hidden" />
             <Image src={LogoDark} alt="" class="hidden dark:block h-[42px] md:h-12 lg:h-10" />
         </a>

@@ -1,6 +1,11 @@
 import type { LocationData } from "./types";
 
 export const locationData: LocationData = {
+    // The centre of the map in mapUrl (the !3d and !2d values): the production site.
+    coordinates: {
+        latitude: 56.95046509910395,
+        longitude: 24.166916021392023,
+    },
     scheme: {
         lv: "Ielādēt braukšanas maršrutu",
         ru: "Скачать схему проезда",

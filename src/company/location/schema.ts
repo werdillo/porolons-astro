@@ -1,5 +1,5 @@
-import { absoluteUrl } from "#/core/seo";
-import { localePath, type Language } from "#/features/i18n";
+import { absoluteUrl, postalAddressLd } from "#/core/seo";
+import { hreflangCodes, localePath, type Language } from "#/features/i18n";
 import { locationData } from "./data";
 import { formatAddress } from "./services";
 
@@ -17,10 +17,11 @@ const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
 /**
  * The LocalBusiness of every page: the address, the phones, the email and the working hours that
- * the location box shows (08:30-16:00 on weekdays, with the break 12:00-13:00).
+ * the location box shows (08:30-16:00 on weekdays, with the break 12:00-13:00), and the coordinates
+ * of the production site.
  */
 export function localBusinessSchema({ site, lang, name, image }: SchemaOptions) {
-    const { contact } = locationData;
+    const { contact, coordinates } = locationData;
     const phones = [contact.phone1, contact.phone2].map((phone) => `+371${phone}`);
 
     return {
@@ -29,7 +30,7 @@ export function localBusinessSchema({ site, lang, name, image }: SchemaOptions) 
         name,
         url: absoluteUrl(localePath(lang), site),
         image,
-        inLanguage: lang,
+        inLanguage: hreflangCodes[lang],
         email: contact.email,
         telephone: phones[0],
         contactPoint: phones.map((telephone) => ({
@@ -38,12 +39,16 @@ export function localBusinessSchema({ site, lang, name, image }: SchemaOptions) 
             email: contact.email,
             contactType: "sales",
         })),
-        address: {
-            "@type": "PostalAddress",
+        address: postalAddressLd({
             streetAddress: contact.address.street,
             addressLocality: contact.address.locality,
             postalCode: contact.address.postalCode,
             addressCountry: "LV",
+        }),
+        geo: {
+            "@type": "GeoCoordinates",
+            latitude: coordinates.latitude,
+            longitude: coordinates.longitude,
         },
         hasMap: `https://maps.google.com/?q=${encodeURIComponent(formatAddress(contact.address))}`,
         openingHoursSpecification: [

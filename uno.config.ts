@@ -8,8 +8,8 @@ import { theme } from "./configs/uno/theme";
 
 export default defineConfig({
   presets: [presetWind4({ dark: "class" })],
-  // Utilities go in CSS layers. A stylesheet without a layer (Font Awesome, for one) must
-  // not beat a utility class, and the preflight below sits under the utilities.
+  // Utilities go in CSS layers. A stylesheet without a layer must not beat a utility class,
+  // and the preflight below sits under the utilities.
   outputToCssLayers: true,
   theme,
   // The element defaults the site relies on, under every utility.

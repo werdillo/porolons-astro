@@ -31,8 +31,14 @@ export interface MapPoints {
     en: string[];
 }
 
+export interface GeoPoint {
+    latitude: number;
+    longitude: number;
+}
+
 export interface LocationData {
     scheme: TranslatedText;
+    coordinates: GeoPoint;
     title: TranslatedText;
     contact: ContactInfo;
     workingHours: WorkingHours;
